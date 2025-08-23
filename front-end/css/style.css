@@ -106,6 +106,9 @@ main.main-conteudo {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
     background-color: blue;
 }
 #container.patrimonios .principal {
