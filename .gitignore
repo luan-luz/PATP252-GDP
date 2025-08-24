@@ -1,1 +1,4 @@
 .vscode/settings.json
+.env
+.idea/workspace.xml
+*.class
