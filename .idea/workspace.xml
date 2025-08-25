@@ -5,69 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd02ccc0-5541-4d7b-8f82-a1eeecdf2f82" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/api-spring.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Desktop/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Desktop/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Desktop/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Desktop/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Desktop/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/html/fornecedores.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/html/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/html/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/html/notas.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/html/patrimonios.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/js/fornecedores.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/js/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/js/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/js/notas.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/js/patrimonios.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ideau/patp/controller/HelloWorldController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ideau/patp/controller/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ideau/patp/patp_api.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/api-spring.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bd_scripts/dbpatp.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ideau/patp/controller/HelloWorldController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ideau/patp/controller/Usuario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ideau/patp/patp_api.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/demo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/html/fornecedores.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/html/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/html/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/html/notas.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/html/patrimonios.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/js/fornecedores.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/js/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/js/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/js/notas.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/front-end/js/patrimonios.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/classes/com/ideau/patp/ControlePatrimonioAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/ideau/patp/ControlePatrimonioAPI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +42,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.ControlePatrimonioAPI.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.Run.executor": "Run",
     "Application.patp_api.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -104,24 +52,38 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/edu_g/Desktop/Dev/Faculdade/PATP/PATP252-GDP",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\edu_g\Desktop\Dev\Faculdade\PATP\PATP252-GDP" />
       <recent name="C:\Users\edu_g\Desktop\Dev\Faculdade\PATP\PATP252-GDP\API" />
       <recent name="C:\Users\edu_g\Desktop\Dev\Faculdade\PATP\PATP252-GDP\API\.idea" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="ControlePatrimonioAPI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ideau.patp.ControlePatrimonioAPI" />
       <module name="demo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ideau.patp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ideau.ControlePatrimonioDesktop.Main" />
+      <module name="Desktop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ideau.ControlePatrimonioDesktop.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -195,6 +157,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.ControlePatrimonioAPI" />
       </list>
     </recent_temporary>
