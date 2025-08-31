@@ -1,0 +1,30 @@
+/* Sidebar */
+.boxSidebar {
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+    -fx-background-radius: 20;
+    -fx-min-height: 60px;
+    -fx-pref-width: 200px;
+    -fx-border-radius: 20px;
+}
+
+/* Hover do box inteiro */
+.boxSidebar:hover {
+    -fx-background-color: #159228;
+}
+
+/* Efeito "pressionado" */
+.boxSidebar:pressed {
+    -fx-background-color: #0f6c1e;
+}
+
+/* Botão Fechar */
+.btnFechar {
+    -fx-cursor: hand;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20px;
+}
+
+.btnFechar:hover {
+    -fx-background-color: rgb(200, 30, 30);
+}
