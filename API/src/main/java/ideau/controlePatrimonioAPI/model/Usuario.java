@@ -1,25 +1,11 @@
-package com.ideau.patp.model;
+package ideau.controlePatrimonioAPI.model;
 
-
-import jakarta.persistence.*;
-
-@Entity
-@Table(name ="test")
 public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
     private String nome;
-
     private String email;
 
-
     /*getters and setters */
-
-    
-
 
     public Long getId() {
         return id;
@@ -29,13 +15,14 @@ public class Usuario {
         this.id = id;
     }
 
-       public String getNome() {
+    public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     } 
+
     public String getEmail() {
         return email;
     }

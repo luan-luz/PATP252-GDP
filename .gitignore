@@ -43,3 +43,6 @@ build/
 .idea/workspace.xml
 .idea/workspace.xml
 /.idea
+/API/src/.idea
+.idea/compiler.xml
+/.idea

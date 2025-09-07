@@ -1,27 +1,22 @@
 CREATE TABLE cidade (
-  id_cidade SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   descricao VARCHAR(100),
   uf CHAR(2),
   codigo_ibge INT,
   ddd CHAR(2)
 );
-CREATE INDEX idx_cidade_id ON cidade(id_cidade);
-CREATE INDEX idx_cidade_id_uf ON cidade(id_cidade, uf);
+CREATE INDEX idx_cidade_id ON cidade(id);
+CREATE INDEX idx_cidade_id_uf ON cidade(id, uf);
 CREATE INDEX idx_cidade_uf ON cidade(uf);
 
 CREATE TABLE logradouro (
-  id_logradouro SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   cep VARCHAR(11) NOT NULL,
   tipo VARCHAR(50),
-  descricao VARCHAR(100) NOT NULL,
+  descricao VARCHAR(100),
   id_cidade INT NOT NULL,
-  uf CHAR(2),
-  complemento VARCHAR(100),
-  descricao_sem_numero VARCHAR(100),
-  descricao_cidade VARCHAR(100),
-  codigo_cidade_ibge INT,
   descricao_bairro VARCHAR(100),
-  FOREIGN KEY (id_cidade) REFERENCES cidade(id_cidade)
+  FOREIGN KEY (id) REFERENCES cidade(id)
 );
 
 CREATE TABLE fornecedores (
@@ -33,7 +28,7 @@ CREATE TABLE fornecedores (
     id_logradouro INT NOT NULL,
     numero VARCHAR(10),
     complemento VARCHAR(30),
-    FOREIGN KEY (id_logradouro) REFERENCES logradouro(id_logradouro)
+    FOREIGN KEY (id) REFERENCES logradouro(id)
 );
 
 CREATE TABLE status_item (

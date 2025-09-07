@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ideau.ControlePatrimonioDesktop</groupId>
-    <artifactId>Desktop</artifactId>
+    <artifactId>ClientDesktop</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
