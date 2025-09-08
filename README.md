@@ -3,7 +3,7 @@ Projeto de Aperfeiçoamento Teórico Prático - Gestão de Patrimônios (Anális
 
 ## 📌 Documentação da API - Controle de Patrimônio
 
-> Collection do Postman: [Clique aqui para acessar](https://www.postman.com/fake-link-collection)
+> Collection do Postman: [Clique aqui para acessar](https://web.postman.co/workspace/My-Workspace~b6675b87-cd40-4eff-8973-bbe06d0d9a3a/collection/44013103-ddc3feb1-3a9b-424d-9bc1-b49f25728417?action=share&source=copy-link&creator=44013103 )
 
 ---
 
