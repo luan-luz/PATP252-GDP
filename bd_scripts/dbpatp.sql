@@ -59,14 +59,21 @@ CREATE TABLE notas_f (
     fornecedor_id INT REFERENCES fornecedores(id)
 );
 
-CREATE TABLE patrimonio (
+CREATE TABLE item (
     id SERIAL PRIMARY KEY,
     nome_item VARCHAR(50) NOT NULL,
     categoria_id INT REFERENCES categorias(id),
     setor_id INT REFERENCES setores(id),
-    status_id INT REFERENCES status_item(id),
-    nota_ref_id INT REFERENCES notas_f(id)
+    status_id INT REFERENCES status_item(id)
 );
+
+CREATE TABLE dadosPatrimonio (
+    idItem INTEGER,
+    numPatr VARCHAR (),
+    nota_ref_id INT REFERENCES notas_f(id),
+    foreign key fk_itens_patr (idItem) REFERENCES item (id)
+);
+
 
 CREATE TABLE acessos (
     id SERIAL PRIMARY KEY,
