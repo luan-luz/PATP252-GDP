@@ -7,3 +7,7 @@
       passwordField.type = type;
       togglePassword.textContent = type === 'password' ? '-' : 'o';
     });
+
+    /*FINAL ICONES DE VISUALIZAR A SENHA*/ 
+
+ 

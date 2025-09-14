@@ -35,6 +35,9 @@
     box-shadow: border-box;
 }
 
+
+
+
 html {
     font-size: 14px;
 }
@@ -50,11 +53,14 @@ body {
 }
 
 .container {
+    
     display: grid;
     width: 96%;
     margin: 0;
     gap: 1.8rem;
-    grid-template-columns: 14rem auto 23rem;
+        grid-template-columns: 14rem auto 23rem;
+        margin-left: -10px;
+    border-radius:  0px 50px 50px 0px;
 }
 
 a {
@@ -130,11 +136,12 @@ aside {
 }
 
 aside .top {
-    background: rgba(0, 0, 0, 0.178);
+    background: rgba(0, 0, 0, 0.758);
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 1.4rem;
+    border-radius: 0px 15px 15px 0px;
 }
 
 aside .logo {
@@ -142,23 +149,54 @@ aside .logo {
     gap: 0.8rem;
 }
 
-aside .logo img {
-    width: 2rem;
-    height: 2rem;
+.logo-text {
+    font-size: 5rem;
+    font-weight: bold;
+    display: inline-block;
+}
+ 
+.text-green {
+    color: #2f6d46;
+    margin-top: 16px;  
+    margin-left: -13px;
+    font-size: 18px;
+    font-weight: 700;
+} 
+ 
+.text-light { 
+    margin-top: 36px;  
+    margin-left: -15px;
+    font-size: 9px;
+}
+ 
+aside .logo img {  
+    margin-left: 20px;
+    height: 50px;
+    object-fit: cover;  
 }
 
 aside .close {
     display: none;
 }
 
-/* Sidebar, menu lateral*/
+/* Sidebar, menu lateral*/ 
+aside .sidebar h3 {
+    font-size: 0.87rem;
+    margin-left: 10px   ;
+}
+ 
 aside .sidebar {
+    
     background: white;
     display: flex;
     flex-direction: column;
-    height: 86vh;
+    height: 80vh;
     position: relative;
     top: 3rem;
+    margin-left: 8px;
+    border-radius: 3px 18px 18px 3px;
+    border: none;
+    cursor: pointer;
 }
 
 aside h3 {
@@ -168,7 +206,7 @@ aside h3 {
 aside .sidebar a {
     display: flex;
     color: var(--color-info-dark);
-    margin-left: 2rem;
+    margin-left: 20px;
     gap: 1rem;
     align-items: center;
     position: relative;
@@ -213,8 +251,51 @@ aside .sidebar a:hover span {
     margin-left: 0.6rem;
 }
 
-main {
-margin-top: 1.4rem;
+#open_btn{
+    position: absolute; 
+    background-color: green;
+        color: white;
+        height: 25px;
+        border-radius: 50%;   
+    margin-top: -665px;  
+    margin-left: 55px;      
+    cursor: pointer;  
+  
+    
+}
+ 
+
+.sair{
+    margin-bottom: -130px;
+}
+
+.item-description  {
+    width: 70px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 10px;
+    
+    /*transition: all 0.3s ease; */ 
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+#sidebar.open-sidebar  {
+    transform: translateX(0);
+    width:180px;
+}
+
+/*main patrimonio(inventario)*/
+
+.Dashboard {  
+    width: 1450px;
+    height: 99,9vh;  
+margin-top: 0px;
+margin-left: -150px;
+}
+
+.escrita{
+    margin-right: 1100px;
 }
 
 
@@ -223,17 +304,19 @@ display: inline-block;
 background: var(--color-light);
 border-radius: var(--border-radius-1);
 margin-top:1rem;
-padding: 0.5rem 1.6rem;
+margin-left: 100px; 
+padding: 20px; 
 }
 main .date input[type="date"]{
 background: transparent;
 color: var(--color-dark);
 }
 
+
+
 main .insights{
 display: grid;
-grid-template-columns:repeat(3, 1fr);
-gap: 1.6rem;
+grid-template-columns:repeat(3, 1fr); 
 }
 
 main .insights > div{
@@ -241,6 +324,7 @@ background: var(--color-white-);
 padding: var(--card-padding);
 border-radius: var(--card-border-radius);
 margin-top: 1rem;
+margin-left: 50px;
 box-shadow: var(--box-shadow);
 transition: all 300ms ease;
 }
@@ -256,6 +340,35 @@ border-radius:50%;
 color: var(--color-white-);
 font-size: 2rem;
 }
+
+/*graficos*/ 
+.charts-container {
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+    width: 700px;
+    margin-left:300px ;
+}
+
+.chart-container {
+    width: 100%;  
+}
+
+canvas {
+    width: 100% !important;  
+    height: auto !important;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+/*relatorio*/
+
 .relatorio-geral{
 margin-top: 2rem;
 }
@@ -280,3 +393,4 @@ main table tbody td{
 height: 2.8rem;
 border-bottom: 1px solid var(--color-light);
 }
+
