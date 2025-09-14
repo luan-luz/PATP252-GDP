@@ -12,10 +12,10 @@ public class ClientDesktop extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/telaLogin.fxml"));
         Scene scene = new Scene(loader.load());
-
+        stage.setResizable(false);
         stage.setTitle("Login");
         try {
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/view/imagens/logo_ideau.png")));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/view/icones-png/logo.png")));
         } catch (Exception e) {
             //adicionar uns logs """mais melhor""", por enquanto vamos de sout :P
             System.out.println("Logo da janela não encontrada! " + e.getMessage()); //se não achar executa normal, apenas avisa que nao achou

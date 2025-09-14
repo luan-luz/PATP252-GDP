@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane  xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1"  stylesheets="@css/styles.css" fx:controller="ideau.ControlePatrimonioDesktop.controller.CadastroController">
+<VBox AnchorPane.topAnchor="0.0"
+   AnchorPane.bottomAnchor="0.0"
+   AnchorPane.leftAnchor="0.0"
+   AnchorPane.rightAnchor="0.0" >
+   <children>
+      <HBox prefHeight="90" styleClass="hBoxCadastro">
+         <children>
+            <VBox spacing="15.0" HBox.hgrow="ALWAYS" prefHeight="90">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="120.0" text="Patrimonios" onMouseClicked="#abrirCadastroPatrimonios" />
+                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="120.0" text="Setores" onMouseClicked="#abrirCadastroSetores"/>
+               </children>
+            </VBox>
+            <VBox spacing="15.0" HBox.hgrow="ALWAYS" prefHeight="90">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="120.0" text="Fornecedores" onMouseClicked="#abrirCadastroFornecedores" />
+                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="120.0" text="Categorias" onMouseClicked="#abrirCadastroCategorias"/>
+               </children>
+            </VBox>
+            <VBox spacing="15.0" HBox.hgrow="ALWAYS" prefHeight="90">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="120.0" text="Itens" onMouseClicked="#abrirCadastroItens"/>
+               </children>
+            </VBox>
+            <VBox spacing="15.0" HBox.hgrow="ALWAYS" prefHeight="90.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="120.0" text="Usuarios" onMouseClicked="#abrirCadastroUsuarios"/>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <VBox alignment="TOP_RIGHT" prefHeight="90.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="66.0" text="Logs" onMouseClicked="#abrirCadastroAuditoria"/>
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <AnchorPane VBox.vgrow="ALWAYS" fx:id="container_cadastro">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="47.0" layoutY="21.0" prefHeight="146.0" prefWidth="200.0">
+               <children>
+                  <ListView fixedCellSize="0.0" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
+</AnchorPane>

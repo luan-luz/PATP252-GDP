@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.ConfiguracaoController">
+   <children>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="90" styleClass="hBoxCadastro">
+               <children>
+                  <VBox prefHeight="90" spacing="15.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#abrirConfiguracaoParametros" prefHeight="33.0" prefWidth="120.0" text="Parametros" />
+                        <Button mnemonicParsing="false" onMouseClicked="#abrirConfiguracaoLogs" prefHeight="33.0" prefWidth="120.0" text="Logs" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="90" spacing="15.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#abrirConfiguracaoAcessos" prefHeight="33.0" prefWidth="120.0" text="Acessos" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="90" spacing="15.0">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#abrirConfiguracaoGrupos" prefHeight="33.0" prefWidth="120.0" text="Grupos" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_RIGHT" prefHeight="90.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#abrirConfiguracaoBkp" prefHeight="24.0" prefWidth="66.0" text="Add" />
+                     </children>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <AnchorPane fx:id="container_configuracao" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" layoutX="47.0" layoutY="21.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Documentação" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

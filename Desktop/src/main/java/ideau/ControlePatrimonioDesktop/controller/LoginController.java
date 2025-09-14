@@ -13,11 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import static ideau.ControlePatrimonioDesktop.utils.ShowMessage.showMessage;
 
 public class LoginController implements Initializable{
@@ -44,9 +42,9 @@ public class LoginController implements Initializable{
                 Parent root = FXMLLoader.load(getClass().getResource("/view/telaPrincipal.fxml"));
 
                 Stage stage = new Stage();
-                stage.setTitle("Controle de Patrimônio");
+                stage.setTitle("Gestor IDEAU");
                 try {
-                    stage.getIcons().add(new Image(getClass().getResourceAsStream("/view/imagens/logo_ideau.png")));
+                    stage.getIcons().add(new Image(getClass().getResourceAsStream("/view/icones-png/logo.png")));
                 } catch (Exception e) {
                     //adicionar uns logs """mais melhor""", por enquanto vamos de sout :P
                     System.out.println("Logo da janela não encontrada! " + e.getMessage()); //se não achar executa normal, apenas avisa que nao achou
