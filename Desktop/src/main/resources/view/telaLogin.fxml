@@ -11,55 +11,39 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.LoginController">
    <children>
-      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #1aa531;" AnchorPane.leftAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="50.0">
          <children>
-            <Label text="IDEAU">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@imagens/logo_ideau.png" />
+                  <Image url="@icones-png/gestor2.png" />
                </image>
-               <VBox.margin>
-                  <Insets bottom="20.0" top="20.0" />
-               </VBox.margin>
             </ImageView>
-            <Label text="Controle de Patrimônios">
+            <Label text="Usuário" textFill="#0e4026">
                <font>
-                  <Font size="30.0" />
+                  <Font name="Candara Bold" size="27.0" />
                </font>
             </Label>
-         </children></VBox>
-      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #81E0B1;" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label text="Usuário">
-               <font>
-                  <Font size="27.0" />
-               </font>
-            </Label>
-            <TextField fx:id="edtUsuario" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="350.0" promptText="Insira o usuário...">
+            <TextField fx:id="edtUsuario" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Insira o usuário...">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Label text="Senha">
+            <Label text="Senha" textFill="#0e4026">
                <font>
-                  <Font size="27.0" />
+                  <Font name="Candara Bold" size="27.0" />
                </font>
             </Label>
-            <PasswordField fx:id="edtSenha" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="350.0" promptText="Insira a senha...">
+            <PasswordField fx:id="edtSenha" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Insira a senha...">
                <font>
                   <Font size="14.0" />
                </font></PasswordField>
             <Button fx:id="btnEntrar" mnemonicParsing="false" onAction="#verificarLogin" text="Entrar">
                <VBox.margin>
-                  <Insets top="40.0" />
+                  <Insets bottom="30.0" top="30.0" />
                </VBox.margin>
                <font>
-                  <Font size="15.0" />
+                  <Font name="Candara Bold" size="15.0" />
                </font>
             </Button>
          </children></VBox>

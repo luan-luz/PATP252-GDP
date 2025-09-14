@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" styleClass="anchorPaneCadastroItens">
+
+   <children>
+      <VBox alignment="TOP_CENTER" prefWidth="300" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" styleClass="vBoxCadastroItens">
+
+         <HBox alignment="TOP_LEFT" spacing="15.0">
+            <TextField HBox.hgrow="ALWAYS"  maxWidth="300"/>
+            <Button text="Button" />
+            <Button text="Button" />
+         </HBox>
+
+         <HBox spacing="15.0" VBox.vgrow="ALWAYS">
+            <ListView HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" maxHeight="450"/>
+
+            <VBox prefWidth="200.0" spacing="10.0">
+               <ComboBox promptText="filtro por categoria" />
+               <Label text="Data inicial" />
+               <DatePicker promptText="filtro por data" />
+               <Label text="Data final" />
+               <DatePicker promptText="filtro por data" />
+               <ComboBox promptText="filtro por setor" />
+               <Button text="Filtrar" />
+            </VBox>
+         </HBox>
+      </VBox>
+   </children>
+</AnchorPane>

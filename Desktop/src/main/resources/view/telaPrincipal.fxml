@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,126 +10,212 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.PrincipalController">
-   <children>
-      <AnchorPane prefHeight="55.0" prefWidth="200.0" style="-fx-background-color: #1aa531;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <ImageView fx:id="btnHamburguer" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#toggleMenu" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
-               <image>
-                  <Image url="@imagens/hamburguer.png" />
-               </image>
-            </ImageView>
-            <StackPane fx:id="btnFechar" layoutX="1270.0" layoutY="13.0" onMouseClicked="#fecharJanela" prefHeight="40.0" prefWidth="40.0" styleClass="btnFechar" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.PrincipalController">
+    <children>
+        <AnchorPane prefHeight="55.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fx:id="btnHamburguer" fitHeight="36.0" fitWidth="36.0" onMouseClicked="#toggleMenu" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+                    <image>
+                        <Image url="@icones-png/icone-menu.png" />
+                    </image>
+                </ImageView>
+                <StackPane layoutX="1270.0" layoutY="13.0" prefHeight="40.0" prefWidth="40.0" styleClass="btnFechar" AnchorPane.rightAnchor="6.0">
+                    <children>
+                        <Button fx:id="btnFechar" onMouseClicked="#fecharJanela" >
+                            <graphic>
+                                <ImageView fitHeight="15.0" fitWidth="15" preserveRatio="true">
+                                    <image>
+                                        <Image url="@icones-png/icone-fechar-preto.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                    <StackPane.margin>
+                        <Insets top="5.0" right="5.0" />
+                    </StackPane.margin>
+                </StackPane>
+            <StackPane  layoutX="1280.0" layoutY="13.0" prefHeight="40.0" prefWidth="40.0" styleClass="btnFechar">
                <children>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
-                     <image>
-                        <Image url="@imagens/fechar.png" />
-                     </image>
-                  </ImageView>
+                   <Button fx:id="btnMinimizar" onMouseClicked="#minimizarJanela" >
+                       <graphic>
+                           <ImageView fitHeight="15.0" fitWidth="15" preserveRatio="true">
+                               <image>
+                                   <Image url="@icones-png/icone-minimizar-preto.png" />
+                               </image>
+                           </ImageView>
+                       </graphic>
+                   </Button>
                </children>
             </StackPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="anchorSidebar" prefHeight="713.0" prefWidth="195.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="55.0">
-         <children>
-            <VBox fx:id="boxSidebar" alignment="TOP_CENTER" layoutX="-25.0" prefHeight="300.0" prefWidth="191.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
-               <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar" stylesheets="@css/styles.css">
-                     <children>
-                        <ImageView fx:id="btnHomeIcon" fitHeight="50.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/home.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="8.0" right="8.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="120.0" text="Home">
+            </children>
+        </AnchorPane>
+
+
+        <AnchorPane fx:id="anchorSidebar" prefHeight="713.0" prefWidth="195.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="55.0">
+            <children>
+                <VBox fx:id="boxSidebar" alignment="TOP_CENTER" layoutX="-25.0" prefHeight="300.0" prefWidth="191.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
+                    <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar" stylesheets="@css/styles.css">
+                            <children>
+                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" onMouseClicked="#abrirHome" prefWidth="120.0" styleClass="btnMenu" text="Dashboard">
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24" preserveRatio="true">
+                                            <image>
+                                                <Image url="@icones-png/icone-dashboard-branco.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
                            <font>
-                              <Font name="System Bold" size="16.0" />
+                              <Font name="Candara Bold" size="12.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets left="7.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="15.0" left="8.0" right="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox fx:id="btnPatrimonios" prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
-                     <children>
-                        <ImageView fx:id="btnPatrIcon" fitHeight="50.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/patrimonios.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="8.0" right="8.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="120.0" text="Patrimônios">
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" left="8.0" right="8.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="btnPatrimonios" prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
+                            <children>
+                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" prefWidth="120.0" styleClass="btnMenu" onMouseClicked="#abrirInventario" fx:id="btnInventario" text="Inventario">
+                                    <graphic>
+                                        <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+                                            <image>
+                                                <Image url="@icones-png/icone-inventario-branco.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
                            <font>
-                              <Font name="System Bold" size="16.0" />
+                              <Font name="Candara Bold" size="12.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets left="7.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="15.0" left="8.0" right="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
-                     <children>
-                        <ImageView fx:id="btnFornecIcon" fitHeight="50.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/fornecedores.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="8.0" right="8.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="120.0" text="Fornecedores">
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" left="8.0" right="8.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
+                            <children>
+                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" prefWidth="120.0" styleClass="btnMenu" text="Relatorios">
+                                <graphic>
+                                    <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+                                        <image>
+                                            <Image url="@icones-png/icone-relatorio-branco.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
                            <font>
-                              <Font name="System Bold" size="16.0" />
+                              <Font name="Candara Bold" size="12.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets left="7.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="15.0" left="8.0" right="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
-                     <children>
-                        <ImageView fx:id="btnNotasIcon" fitHeight="50.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/notas_fiscais.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="8.0" right="8.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="120.0" text="Notas Fiscais">
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" left="8.0" right="8.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
+                            <children>
+                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" prefWidth="120.0" styleClass="btnMenu" text="Notas">
+                                <graphic>
+                                    <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+                                        <image>
+                                            <Image url="@icones-png/icone-notas-branco.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
                            <font>
-                              <Font name="System Bold" size="16.0" />
+                              <Font name="Candara Bold" size="12.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets left="7.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="15.0" left="8.0" right="8.0" />
-                     </VBox.margin>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="container" prefHeight="713.0" prefWidth="1170.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-   </children>
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" left="8.0" right="8.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
+                            <children>
+                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" onMouseClicked="#abrirCadastro" prefWidth="120.0" styleClass="btnMenu" text="Cadastros">
+                                <graphic>
+                                    <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+                                        <image>
+                                            <Image url="@icones-png/icone-cadastros-branco.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                           <font>
+                              <Font name="Candara Bold" size="12.0" />
+                           </font>
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" left="8.0" right="8.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
+                            <children>
+                                <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
+                                    <children>
+                                        <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" prefWidth="120.0" styleClass="btnMenu" text="Conta" onMouseClicked="#abrirConta">
+                                        <graphic>
+                                            <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@icones-png/icone-conta-branco.png" />
+                                                </image>
+                                            </ImageView>
+                                        </graphic>
+                                 <font>
+                                    <Font name="Candara Bold" size="12.0" />
+                                 </font>
+                                        </Button>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets bottom="15.0" left="8.0" right="8.0" />
+                                    </HBox.margin>
+                                </HBox>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
+                            <children>
+                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" prefWidth="120.0" styleClass="btnMenu" text="Config" onMouseClicked="#abrirConfiguracao">
+                                <graphic>
+                                    <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+                                        <image>
+                                            <Image url="@icones-png/icone-config-branco.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                           <font>
+                              <Font name="Candara Bold" size="13.0" />
+                           </font>
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" left="8.0" right="8.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
+                            <children>
+                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" prefWidth="120.0" styleClass="btnMenu" text="Sair">
+                                <graphic>
+                                    <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+                                        <image>
+                                            <Image url="@icones-png/icone-logout-branco.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                           <font>
+                              <Font name="Candara Bold" size="12.0" />
+                           </font>
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" left="8.0" right="8.0" />
+                            </VBox.margin>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="container" prefHeight="713.0" prefWidth="1170.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+    </children>
 </AnchorPane>
