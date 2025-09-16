@@ -1,8 +1,9 @@
 package ideau.controlePatrimonioAPI.controller.implementation;
 
-import ideau.controlePatrimonioAPI.controller.PatrimonioController;
-import ideau.controlePatrimonioAPI.model.Patrimonio;
-import ideau.controlePatrimonioAPI.services.PatrimonioService;
+import ideau.controlePatrimonioAPI.controller.ItemController;
+import ideau.controlePatrimonioAPI.model.Item;
+import ideau.controlePatrimonioAPI.model.ItemDTO;
+import ideau.controlePatrimonioAPI.services.ItemService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/patrimonio")
-public class PatrimonioControllerImpl implements PatrimonioController {
-    private final PatrimonioService svc;
+@RequestMapping("/item")
+public class ItemControllerImpl implements ItemController {
+    private final ItemService svc;
 
-    public PatrimonioControllerImpl(PatrimonioService svc) {
+    public ItemControllerImpl(ItemService svc) {
         this.svc = svc;
     }
 
@@ -25,50 +26,44 @@ public class PatrimonioControllerImpl implements PatrimonioController {
 
     @Override
     @PostMapping
-    public Map<Integer, Patrimonio> cadastroEmLote(@RequestBody Map<Integer, Patrimonio> mapPatrimonios) {
+    public Map<Integer, ItemDTO> cadastroEmLote(@RequestBody Map<Integer, Item> mapPatrimonios) {
         return svc.cadastrarLote(mapPatrimonios);
     }
 
     @Override
     @GetMapping
-    public List<Patrimonio> retornaTodos() {
+    public List<ItemDTO> retornaTodos() {
         return svc.retornarTodos();
     }
 
     @Override
     @GetMapping(params = "id")
-    public Patrimonio retornaPorId(Long id) {
+    public ItemDTO retornaPorId(Long id) {
         return svc.retornaPorId(id);
     }
 
     @Override
     @GetMapping(params = "idCategoria")
-    public List<Patrimonio> retornaPorIdCategoria(@RequestParam Long idCategoria) {
+    public List<ItemDTO> retornaPorIdCategoria(@RequestParam Long idCategoria) {
         return svc.retornarPorIdCategoria(idCategoria);
     }
 
 
     @Override
     @GetMapping(params = "idSetor")
-    public List<Patrimonio> retornaPorIdSetor(@RequestParam Long idSetor) {
+    public List<ItemDTO> retornaPorIdSetor(@RequestParam Long idSetor) {
         return svc.retornarPorIdSetor(idSetor);
     }
 
     @Override
     @GetMapping(params = "idStatus")
-    public List<Patrimonio> retornaPorIdStatus(@RequestParam Long idStatus) {
+    public List<ItemDTO> retornaPorIdStatus(@RequestParam Long idStatus) {
         return svc.retornarPorIdStatus(idStatus);
     }
 
     @Override
-    @GetMapping(params = "idNota")
-    public List<Patrimonio> retornaPorIdNota(@RequestParam Long idNota) {
-        return svc.retornarPorIdNota(idNota);
-    }
-
-    @Override
     @PutMapping
-    public Patrimonio atualiza(@RequestBody Patrimonio obj) {
+    public ItemDTO atualiza(@RequestBody Item obj) {
         System.out.println(obj.toString());
         return svc.atualizar(obj);
     }

@@ -2,14 +2,13 @@ package ideau.controlePatrimonioAPI.services;
 
 import org.springframework.http.ResponseEntity;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-public interface GenericService<T> {
-    Map<Integer, T> cadastrarLote(Map<Integer, T> mapObjetos) throws SQLException;
-    List<T> retornarTodos();
-    T retornaPorId(Long id);
-    T atualizar(T obj);
+public interface GenericService<IN, OUT> {
+    Map<Integer, OUT> cadastrarLote(Map<Integer, IN> mapObjetos);
+    List<OUT> retornarTodos();
+    OUT retornaPorId(Long id);
+    OUT atualizar(IN obj);
     ResponseEntity<Void> deletar(Long id);
 }

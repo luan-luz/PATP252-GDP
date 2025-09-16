@@ -33,11 +33,7 @@ CREATE TABLE fornecedores (
 
 CREATE TABLE status_item (
     id SERIAL PRIMARY KEY,
-    em_uso BOOLEAN DEFAULT FALSE,
-    manutencao BOOLEAN DEFAULT FALSE,
-    transf BOOLEAN DEFAULT FALSE,
-    baixa BOOLEAN DEFAULT FALSE,
-    inativo BOOLEAN DEFAULT FALSE
+    nome VARCHAR (50)
 );
 
 CREATE TABLE categorias (

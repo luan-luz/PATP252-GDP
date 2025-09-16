@@ -1,7 +1,7 @@
 package ideau.controlePatrimonioAPI;
 
-import ideau.controlePatrimonioAPI.repository.implementation.PatrimonioRepositoryImpl;
-import ideau.controlePatrimonioAPI.services.implementation.PatrimonioServiceImpl;
+import ideau.controlePatrimonioAPI.repository.implementation.ItemRepositoryImpl;
+import ideau.controlePatrimonioAPI.services.implementation.ItemServiceImpl;
 import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvBuilder;
 import org.springframework.boot.SpringApplication;
