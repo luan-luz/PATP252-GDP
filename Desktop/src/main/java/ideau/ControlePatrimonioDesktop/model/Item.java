@@ -1,4 +1,4 @@
-package ideau.controlePatrimonioAPI.model;
+package ideau.ControlePatrimonioDesktop.model;
 
 public class Item {
     private Long id;

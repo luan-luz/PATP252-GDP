@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ItemController extends GenericController<Item, ItemDTO> {
     List<ItemDTO> retornaPorIdCategoria(Long idCategoria);
-    List<ItemDTO> retornaPorIdSetor(Long idSetor);
-    List<ItemDTO> retornaPorIdStatus(Long idStatus);
+//    List<ItemDTO> retornaPorIdSetor(Long idSetor);
+//    List<ItemDTO> retornaPorIdStatus(Long idStatus);
 }

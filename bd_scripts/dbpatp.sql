@@ -63,13 +63,14 @@ CREATE TABLE item (
     status_id INT REFERENCES status_item(id)
 );
 
-CREATE TABLE dadosPatrimonio (
+CREATE TABLE Patrimonio (
+    id SERIAL,
     idItem INTEGER,
-    numPatr VARCHAR (),
-    nota_ref_id INT REFERENCES notas_f(id),
-    foreign key fk_itens_patr (idItem) REFERENCES item (id)
+    idNota INTEGER,
+    numPatr VARCHAR (14),
+    CONSTRAINT fk_itens_patr foreign key (idItem) REFERENCES item (id),
+    CONSTRAINT fk_nota_patr  foreign key (idNota) REFERENCES notas_f(id)
 );
-
 
 CREATE TABLE acessos (
     id SERIAL PRIMARY KEY,

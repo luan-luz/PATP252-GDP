@@ -25,14 +25,12 @@ public class ItemRepositoryImpl implements ItemRepository {
     public Long salvar(Item objeto, Connection con) {
         long idRetornado = 0;
         String strSQL = "INSERT INTO " +
-                        "item (nome_item, categoria_id, setor_id, status_id) " +
-                        "VALUES (?, ?, ?, ?)";
+                        "item (nome_item, categoria_id) " +
+                        "VALUES (?, ?)";
 
         try(PreparedStatement stmt = con.prepareStatement(strSQL, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, objeto.getNomeItem());
             stmt.setLong(2, objeto.getIdCategoria());
-            stmt.setLong(3, objeto.getIdSetor());
-            stmt.setLong(4, objeto.getIdStatus());
 
             stmt.executeUpdate();
             try (ResultSet rs = stmt.getGeneratedKeys()) {
@@ -52,16 +50,10 @@ public class ItemRepositoryImpl implements ItemRepository {
         String strSQL = "select " +
                         "i.id as id, " +
                         "i.nome_item as nome, " +
-                        "c.nome as categoria, " +
-                        "se.nome as setor, " +
-                        "st.nome as status " +
+                        "c.nome as categoria " +
                         "from item as i " +
                         "left outer join " +
                         "categorias as c on c.id = i.categoria_id " +
-                        "left outer join " +
-                        "setores as se on se.id = i.setor_id " +
-                        "left outer join " +
-                        "status_item as st on st.id = i.status_id " +
                         "order by " +
                         "i.id;";
         try (Connection con = ds.getConnection();
@@ -72,9 +64,7 @@ public class ItemRepositoryImpl implements ItemRepository {
                     ItemDTO objPatr = new ItemDTO(
                             rs.getLong("id"),
                             rs.getString("nome"),
-                            rs.getString("categoria"),
-                            rs.getString("setor"),
-                            rs.getString("status")
+                            rs.getString("categoria")
                     );
                     arrPatrRetornados.add(objPatr);
                 }
@@ -90,16 +80,10 @@ public class ItemRepositoryImpl implements ItemRepository {
         String strSQL = "select " +
                         "i.id as id, " +
                         "i.nome_item as nome, " +
-                        "c.nome as categoria, " +
-                        "se.nome as setor, " +
-                        "st.nome as status " +
+                        "c.nome as categoria " +
                         "from item as i " +
                         "left outer join " +
                         "categorias as c on c.id = i.categoria_id " +
-                        "left outer join " +
-                        "setores as se on se.id = i.setor_id " +
-                        "left outer join " +
-                        "status_item as st on st.id = i.status_id " +
                         "where i.id = ? " +
                         "order by " +
                         "i.id;";
@@ -111,9 +95,7 @@ public class ItemRepositoryImpl implements ItemRepository {
                     return new ItemDTO(
                             rs.getLong("id"),
                             rs.getString("nome"),
-                            rs.getString("categoria"),
-                            rs.getString("setor"),
-                            rs.getString("status")
+                            rs.getString("categoria")
                     );
                 } else {
                     return null;
@@ -135,10 +117,6 @@ public class ItemRepositoryImpl implements ItemRepository {
                 "from item as i " +
                 "left outer join " +
                 "categorias as c on c.id = i.categoria_id " +
-                "left outer join " +
-                "setores as se on se.id = i.setor_id " +
-                "left outer join " +
-                "status_item as st on st.id = i.status_id " +
                 "where i.categoria_id = ? " +
                 "order by " +
                 "i.id;";
@@ -151,9 +129,7 @@ public class ItemRepositoryImpl implements ItemRepository {
                     ItemDTO objPatr = new ItemDTO(
                             rs.getLong("id"),
                             rs.getString("nome"),
-                            rs.getString("categoria"),
-                            rs.getString("setor"),
-                            rs.getString("status")
+                            rs.getString("categoria")
                     );
                     lstRetorno.add(objPatr);
                 }
@@ -169,17 +145,10 @@ public class ItemRepositoryImpl implements ItemRepository {
         String strSQL = "select " +
                 "i.id as id, " +
                 "i.nome_item as nome, " +
-                "c.nome as categoria, " +
-                "se.nome as setor, " +
-                "st.nome as status " +
+                "c.nome as categoria " +
                 "from item as i " +
                 "left outer join " +
                 "categorias as c on c.id = i.categoria_id " +
-                "left outer join " +
-                "setores as se on se.id = i.setor_id " +
-                "left outer join " +
-                "status_item as st on st.id = i.status_id " +
-                "where i.setor_id = ? " +
                 "order by " +
                 "i.id;";
         List<ItemDTO> lstRetorno = new ArrayList<>();
@@ -191,9 +160,7 @@ public class ItemRepositoryImpl implements ItemRepository {
                     ItemDTO objPatr = new ItemDTO(
                             rs.getLong("id"),
                             rs.getString("nome"),
-                            rs.getString("categoria"),
-                            rs.getString("setor"),
-                            rs.getString("status")
+                            rs.getString("categoria")
                     );
                     lstRetorno.add(objPatr);
                 }
@@ -209,17 +176,10 @@ public class ItemRepositoryImpl implements ItemRepository {
         String strSQL = "select " +
                 "i.id as id, " +
                 "i.nome_item as nome, " +
-                "c.nome as categoria, " +
-                "se.nome as setor, " +
-                "st.nome as status " +
+                "c.nome as categoria " +
                 "from item as i " +
                 "left outer join " +
                 "categorias as c on c.id = i.categoria_id " +
-                "left outer join " +
-                "setores as se on se.id = i.setor_id " +
-                "left outer join " +
-                "status_item as st on st.id = i.status_id " +
-                "where i.status_id = ? " +
                 "order by " +
                 "i.id;";
         List<ItemDTO> lstRetorno = new ArrayList<>();
@@ -231,9 +191,7 @@ public class ItemRepositoryImpl implements ItemRepository {
                     ItemDTO objPatr = new ItemDTO(
                             rs.getLong("id"),
                             rs.getString("nome"),
-                            rs.getString("categoria"),
-                            rs.getString("setor"),
-                            rs.getString("status")
+                            rs.getString("categoria")
                     );
                     lstRetorno.add(objPatr);
                 }
@@ -250,18 +208,14 @@ public class ItemRepositoryImpl implements ItemRepository {
                             "item " +
                         "SET " +
                             "nome_item = ?, " +
-                            "categoria_id = ?, " +
-                            "setor_id = ?, " +
-                            "status_id = ? " +
+                            "categoria_id = ? " +
                         "WHERE " +
                             "id = ?";
         try(Connection con = ds.getConnection();
             PreparedStatement stmt = con.prepareStatement(strSQL)) {
             stmt.setString(1, objPatr.getNomeItem());
             stmt.setLong(2, objPatr.getIdCategoria());
-            stmt.setLong(3, objPatr.getIdSetor());
-            stmt.setLong(4, objPatr.getIdStatus());
-            stmt.setLong(5, objPatr.getId());
+            stmt.setLong(3, objPatr.getId());
             stmt.executeUpdate();
 
             return retornaPorId(objPatr.getId());
