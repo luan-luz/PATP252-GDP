@@ -1,6 +1,8 @@
 package ideau.ControlePatrimonioDesktop.utils;
 
+import ideau.ControlePatrimonioDesktop.controller.CadastroItemController;
 import ideau.ControlePatrimonioDesktop.controller.SelecaoController;
+import ideau.ControlePatrimonioDesktop.model.ItemDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -36,14 +39,25 @@ public class Utils {
         return controller.getSelecionado();
     }
 
-    public static void abrirTelaCadastro(String strNomeTela) throws IOException {
+    @SuppressWarnings("unchecked")
+    public static <T> List<T> abrirTelaCadastro(String strNomeTela) throws IOException {
         FXMLLoader loader = new FXMLLoader(Utils.class.getResource("/view/telaCadastro" + strNomeTela + ".fxml"));
         Stage stage = new Stage();
         stage.setTitle("Cadastrar " + strNomeTela);
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(loader.load()));
-        loader.getController();
+        Object controller = loader.getController();
+
+
         stage.showAndWait();
+        //Todo novo controller de cadastro deve ser colocado aqui.
+        //deve ter o método getLstCadastrados, para retornar a lista de objetos cadastrados e
+        //colocar na tela de seleção
+        if (controller instanceof CadastroItemController cadastroItemController) {
+            return (List<T>) cadastroItemController.getLstCadastrados();
+        }
+
+        return Collections.emptyList();
     }
 }

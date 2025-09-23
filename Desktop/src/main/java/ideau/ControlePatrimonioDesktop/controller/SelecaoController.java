@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -47,7 +48,8 @@ public class SelecaoController<T> implements Initializable {
 
         btnCadastrar.setOnAction(event -> {
             try {
-                abrirTelaCadastro(nomeTela);
+                List<T> lstDadosCadastrados = abrirTelaCadastro(nomeTela);
+                if (lstDadosCadastrados != null) {addDadosListaSelecao(lstDadosCadastrados);}
             } catch (Exception e) {
                 showMessage(Alert.AlertType.ERROR, "Erro ao abrir tela de cadastro: " + e.getMessage());
             }
@@ -94,6 +96,11 @@ public class SelecaoController<T> implements Initializable {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void addDadosListaSelecao(List<T> lstDados) {
+        tblSelecao.getItems().addAll(lstDados);
+        tblSelecao.sort();
     }
 
     public void setDadosLista(ObservableList<T> listaDados, Map<String, String> mapColunas) {

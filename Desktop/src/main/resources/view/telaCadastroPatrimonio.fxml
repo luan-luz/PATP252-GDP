@@ -22,21 +22,40 @@
                   <VBox prefHeight="75.0" prefWidth="1265.0">
                      <children>
                         <Separator prefWidth="200.0" />
-                        <Label text="Número da NF-e">
-                           <VBox.margin>
-                              <Insets left="20.0" top="10.0" />
-                           </VBox.margin></Label>
                         <HBox>
                            <children>
-                              <TextField fx:id="edtNumNota" editable="false" prefHeight="25.0" prefWidth="306.0" promptText="Insira o número da NF-e">
+                              <VBox prefHeight="52.0" prefWidth="766.0">
+                                 <children>
+                                    <Label text="Número da NF-e">
+                                       <VBox.margin>
+                                          <Insets left="20.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox prefHeight="25.0" prefWidth="793.0">
+                                       <children>
+                                          <TextField fx:id="edtNumNota" editable="false" prefHeight="25.0" prefWidth="306.0" promptText="Insira o número da NF-e">
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Button fx:id="btnSelecNota" mnemonicParsing="false" text="Selecionar" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="BOTTOM_LEFT" prefHeight="52.0" prefWidth="377.0">
                                  <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin></TextField>
-                              <Button fx:id="btnSelecNota" mnemonicParsing="false" text="Selecionar">
-                                 <HBox.margin>
-                                    <Insets />
+                                    <Insets right="20.0" />
                                  </HBox.margin>
-                              </Button>
+                                 <children>
+                                    <Label text="Número Patrimônio" />
+                                    <HBox>
+                                       <children>
+                                          <TextField fx:id="edtNumPatr" prefHeight="25.0" prefWidth="469.0" promptText="Insira o número do Patrimônio" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                      </children>
@@ -55,25 +74,33 @@
             <Separator prefWidth="200.0" />
             <HBox alignment="BOTTOM_LEFT">
                <children>
-                  <VBox prefHeight="42.0" prefWidth="467.0">
+                  <VBox prefHeight="42.0" prefWidth="358.0">
                      <children>
                         <Label text="Item" />
-                        <TextField fx:id="edtNomeItem" editable="false" prefHeight="25.0" prefWidth="385.0" promptText="Selecione o Item" />
+                        <TextField fx:id="edtNomeItem" editable="false" prefHeight="25.0" prefWidth="254.0" promptText="Selecione o Item" />
                      </children>
                   </VBox>
-                  <VBox />
-                  <Button fx:id="btnSelecItem" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Selecionar" />
-                  <Region prefHeight="42.0" prefWidth="236.0" />
-                  <VBox />
-                  <VBox>
+                  <Button fx:id="btnSelecItem" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Selecionar" />
+                  <Region prefHeight="0.0" prefWidth="64.0" />
+                  <VBox prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label text="Número Patrimônio" />
-                        <TextField fx:id="edtNumPatr" prefHeight="25.0" prefWidth="411.0" promptText="Insira o número do Patrimônio" />
+                        <Label text="Setor" />
+                        <TextField fx:id="edtNomeItem1" editable="false" prefHeight="25.0" prefWidth="313.0" promptText="Selecione o Item" />
                      </children>
+                  </VBox>
+                  <Button fx:id="btnSelecItem1" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Selecionar" />
+                  <Region prefHeight="0.0" prefWidth="64.0" />
+                  <VBox prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label text="Status" />
+                        <TextField fx:id="edtNomeItem2" editable="false" prefHeight="25.0" prefWidth="385.0" promptText="Selecione o Item" />
+                     </children>
+                  </VBox>
+                  <Button fx:id="btnSelecItem2" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Selecionar">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
-                  </VBox>
+                  </Button>
                </children>
                <padding>
                   <Insets left="20.0" />
