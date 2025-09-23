@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Movimentações de Patrimônio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cadastro de Movimentações de Patrimônio</h1>
+
+        <!-- Formulário para adicionar dados -->
+        <form id="movimentacaoForm">
+            <label for="produto">Produto (Ativo):</label>
+            <input type="text" id="produto" required placeholder="Nome do produto/ativo">
+
+            <label for="nfe">Nº NFe:</label>
+            <input type="text" id="nfe" required>
+
+            <label for="data">Data da Aquisição:</label>
+            <input type="date" id="data" required>
+
+            <label for="fornecedor">Fornecedor:</label>
+            <input type="text" id="fornecedor" required>
+
+            <label for="setor">Setor:</label>
+            <select id="setor" required>
+                <option value="Setor A">Setor A</option>
+                <option value="Setor B">Setor B</option>
+                <option value="Setor C">Setor C</option>
+                <option value="Setor D">Setor D</option>
+                <option value="Setor E">Setor E</option>
+            </select>
+
+            <label for="movimentacao">Tipo de Movimentação:</label>
+            <select id="movimentacao">
+                <option value="Em uso">Em uso</option>
+                <option value="Manutenção">Manutenção</option>
+                <option value="Transferência">Transferência</option>
+                <option value="Baixa (Perda)">Baixa (Perda)</option>
+                <option value="Baixa (Furto)">Baixa (Furto)</option>
+                <option value="Baixa (Descarte)">Baixa (Descarte)</option>
+            </select>
+
+            <label for="descricao">Descrição da Movimentação:</label>
+            <textarea id="descricao" required></textarea>
+
+            <button type="submit">Adicionar Movimentação</button>
+        </form>
+
+        <!-- Filtro de Setor -->
+        <div class="filters">
+            <label for="filtroSetor">Filtrar por Setor:</label>
+            <select id="filtroSetor">
+                <option value="">Todos</option>
+                <option value="Setor A">Setor A</option>
+                <option value="Setor B">Setor B</option>
+                <option value="Setor C">Setor C</option>
+                <option value="Setor D">Setor D</option>
+                <option value="Setor E">Setor E</option>
+            </select>
+            <button id="filtrarRelatorio">Filtrar Relatório</button>
+        </div>
+
+        <!-- Tabela de movimentações -->
+        <table id="movimentacaoTabela">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Nº NFe</th>
+                    <th>Data da Aquisição</th>
+                    <th>Fornecedor</th>
+                    <th>Setor</th>
+                    <th>Tipo de Movimentação</th>
+                    <th>Descrição da Movimentação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas serão adicionadas aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
