@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.PrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.PrincipalController">
     <children>
         <AnchorPane prefHeight="55.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -21,7 +21,7 @@
                 </ImageView>
                 <StackPane layoutX="1270.0" layoutY="13.0" prefHeight="40.0" prefWidth="40.0" styleClass="btnFechar" AnchorPane.rightAnchor="6.0">
                     <children>
-                        <Button fx:id="btnFechar" onMouseClicked="#fecharJanela" >
+                        <Button fx:id="btnFechar" onMouseClicked="#fecharJanela">
                             <graphic>
                                 <ImageView fitHeight="15.0" fitWidth="15" preserveRatio="true">
                                     <image>
@@ -32,12 +32,12 @@
                         </Button>
                     </children>
                     <StackPane.margin>
-                        <Insets top="5.0" right="5.0" />
+                        <Insets right="5.0" top="5.0" />
                     </StackPane.margin>
                 </StackPane>
-            <StackPane  layoutX="1280.0" layoutY="13.0" prefHeight="40.0" prefWidth="40.0" styleClass="btnFechar">
+            <StackPane layoutX="1280.0" layoutY="13.0" prefHeight="40.0" prefWidth="40.0" styleClass="btnFechar">
                <children>
-                   <Button fx:id="btnMinimizar" onMouseClicked="#minimizarJanela" >
+                   <Button fx:id="btnMinimizar" onMouseClicked="#minimizarJanela">
                        <graphic>
                            <ImageView fitHeight="15.0" fitWidth="15" preserveRatio="true">
                                <image>
@@ -75,9 +75,28 @@
                                 <Insets bottom="15.0" left="8.0" right="8.0" />
                             </VBox.margin>
                         </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
+                            <children>
+                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" onMouseClicked="#abrirCadastro" prefWidth="120.0" styleClass="btnMenu" text="Cadastros">
+                                <graphic>
+                                    <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+                                        <image>
+                                            <Image url="@icones-png/icone-cadastros-branco.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                           <font>
+                              <Font name="Candara Bold" size="12.0" />
+                           </font>
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" left="8.0" right="8.0" />
+                            </VBox.margin>
+                        </HBox>
                         <HBox fx:id="btnPatrimonios" prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
                             <children>
-                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" prefWidth="120.0" styleClass="btnMenu" onMouseClicked="#abrirInventario" fx:id="btnInventario" text="Inventario">
+                                <Button fx:id="btnInventario" alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" onMouseClicked="#abrirInventario" prefWidth="120.0" styleClass="btnMenu" text="Inventario">
                                     <graphic>
                                         <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
                                             <image>
@@ -134,28 +153,9 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
                             <children>
-                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" onMouseClicked="#abrirCadastro" prefWidth="120.0" styleClass="btnMenu" text="Cadastros">
-                                <graphic>
-                                    <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
-                                        <image>
-                                            <Image url="@icones-png/icone-cadastros-branco.png" />
-                                        </image>
-                                    </ImageView>
-                                </graphic>
-                           <font>
-                              <Font name="Candara Bold" size="12.0" />
-                           </font>
-                                </Button>
-                            </children>
-                            <VBox.margin>
-                                <Insets bottom="15.0" left="8.0" right="8.0" />
-                            </VBox.margin>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
-                            <children>
                                 <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
                                     <children>
-                                        <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" prefWidth="120.0" styleClass="btnMenu" text="Conta" onMouseClicked="#abrirConta">
+                                        <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" onMouseClicked="#abrirConta" prefWidth="120.0" styleClass="btnMenu" text="Conta">
                                         <graphic>
                                             <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
                                                 <image>
@@ -176,7 +176,7 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
                             <children>
-                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" prefWidth="120.0" styleClass="btnMenu" text="Config" onMouseClicked="#abrirConfiguracao">
+                                <Button alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false" onMouseClicked="#abrirConfiguracao" prefWidth="120.0" styleClass="btnMenu" text="Config">
                                 <graphic>
                                     <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
                                         <image>

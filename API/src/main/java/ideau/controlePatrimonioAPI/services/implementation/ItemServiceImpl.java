@@ -51,12 +51,6 @@ public class ItemServiceImpl implements ItemService {
                 if (objPatr.getIdCategoria() == null) {
                     strErros += "idCategoria; ";
                 }
-                if (objPatr.getIdStatus() == null) {
-                    strErros += "idStatus; ";
-                }
-                if (objPatr.getIdSetor() == null) {
-                    strErros += "idSetor; ";
-                }
 
                 if(!strErros.isBlank()) {
                     strErros += "faltando na requisição!";

@@ -17,14 +17,6 @@ public class Utils {
                 intQtdErros++;
                 mapErros.put(intQtdErros, "idCategoria em branco!");
             }
-            if (objPatr.getIdStatus() == null) {
-                intQtdErros++;
-                mapErros.put(intQtdErros, "idStatus em branco!");
-            }
-            if (objPatr.getIdSetor() == null) {
-                intQtdErros++;
-                mapErros.put(intQtdErros, "idSetor em branco!");
-            }
             return mapErros.isEmpty();
         } catch (Exception e) {
             intQtdErros++;

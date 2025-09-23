@@ -26,7 +26,7 @@ public class ItemControllerImpl implements ItemController {
 
     @Override
     @PostMapping
-    public Map<Integer, ItemDTO> cadastroEmLote(@RequestBody Map<Integer, Item> mapPatrimonios) {
+    public Map<Integer, ItemDTO> cadastra(@RequestBody Map<Integer, Item> mapPatrimonios) {
         return svc.cadastrarLote(mapPatrimonios);
     }
 
@@ -49,17 +49,17 @@ public class ItemControllerImpl implements ItemController {
     }
 
 
-    @Override
-    @GetMapping(params = "idSetor")
-    public List<ItemDTO> retornaPorIdSetor(@RequestParam Long idSetor) {
-        return svc.retornarPorIdSetor(idSetor);
-    }
-
-    @Override
-    @GetMapping(params = "idStatus")
-    public List<ItemDTO> retornaPorIdStatus(@RequestParam Long idStatus) {
-        return svc.retornarPorIdStatus(idStatus);
-    }
+//    @Override
+//    @GetMapping(params = "idSetor")
+//    public List<ItemDTO> retornaPorIdSetor(@RequestParam Long idSetor) {
+//        return svc.retornarPorIdSetor(idSetor);
+//    }
+//
+//    @Override
+//    @GetMapping(params = "idStatus")
+//    public List<ItemDTO> retornaPorIdStatus(@RequestParam Long idStatus) {
+//        return svc.retornarPorIdStatus(idStatus);
+//    }
 
     @Override
     @PutMapping

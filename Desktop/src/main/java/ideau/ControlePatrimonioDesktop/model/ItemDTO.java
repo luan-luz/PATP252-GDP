@@ -1,11 +1,11 @@
-package ideau.controlePatrimonioAPI.model;
+package ideau.ControlePatrimonioDesktop.model;
 
 public class ItemDTO {
     private Long id;
     private String nomeItem;
     private String nomeCategoria;
 
-//    Construtores
+    //    Construtores
     public ItemDTO() {};
 
     public ItemDTO(Long id) {
@@ -24,7 +24,7 @@ public class ItemDTO {
     }
 
 
-//    Getters
+    //    Getters
     public Long getId() {
         return this.id;
     }
@@ -35,7 +35,7 @@ public class ItemDTO {
         return this.nomeCategoria;
     }
 
-//    Setters
+    //    Setters
     public void setId(Long id) {
         this.id = id;
     }
@@ -46,7 +46,7 @@ public class ItemDTO {
         this.nomeCategoria = nomeCategoria;
     }
 
-//    toString
+    //    toString
     @Override
     public String toString() {
         return "id: " + id + "; nomeItem: " + nomeItem + "; nomeCategoria: " + nomeCategoria + ";";

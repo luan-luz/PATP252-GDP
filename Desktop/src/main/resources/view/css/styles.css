@@ -88,3 +88,7 @@
  -background-color:#34495e;
  -fx-height:450px;
 }
+
+.vboxConfig{
+    -fx-paddin:15px;
+}

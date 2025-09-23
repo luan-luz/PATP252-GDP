@@ -6,6 +6,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import static ideau.ControlePatrimonioDesktop.utils.ShowMessage.showMessage;
+import static ideau.ControlePatrimonioDesktop.utils.Utils.abrirTelaSelecao;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,11 +33,11 @@ public class CadastroController {
     @FXML
     void carregarTela(String strNomeTela) throws IOException {
         try {
-            //Não testei essa rotina, mas acho que funciona :P
             Parent novaTela = new FXMLLoader().load(getClass().getResource("/view/"+ strNomeTela +".fxml"));
             container_cadastro.getChildren().clear();
             container_cadastro.getChildren().add(novaTela);
 
+            container_cadastro.setPrefSize(1170, 658);
             AnchorPane.setTopAnchor(novaTela, 0.0);
             AnchorPane.setRightAnchor(novaTela, 0.0);
             AnchorPane.setBottomAnchor(novaTela, 0.0);
