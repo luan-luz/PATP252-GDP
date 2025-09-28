@@ -19,6 +19,7 @@ import java.util.ResourceBundle;
 
 import static ideau.ControlePatrimonioDesktop.utils.ShowMessage.showMessage;
 import static ideau.ControlePatrimonioDesktop.utils.Utils.abrirTelaCadastro;
+import static ideau.ControlePatrimonioDesktop.utils.Utils.abrirTelaEdicao;
 
 public class SelecaoController<T> implements Initializable {
     @FXML
@@ -56,7 +57,17 @@ public class SelecaoController<T> implements Initializable {
         });
 
         btnEditar.setOnAction(event -> {
-            //abrir tela cadastro para editar
+            try {
+                T objEditar = tblSelecao.getSelectionModel().getSelectedItem();
+                int index = tblSelecao.getSelectionModel().getSelectedIndex();
+
+                if (objEditar != null && index >= 0) {
+                    objEditar = abrirTelaEdicao(nomeTela, objEditar);
+                    tblSelecao.getItems().set(index, objEditar);
+                }
+            } catch (Exception e) {
+                showMessage(Alert.AlertType.ERROR, "Erro ao abrir tela de edição: " + e.getMessage());
+            }
         });
 
         tblSelecao.setRowFactory(tv -> {
@@ -104,7 +115,7 @@ public class SelecaoController<T> implements Initializable {
     }
 
     public void setDadosLista(ObservableList<T> listaDados, Map<String, String> mapColunas) {
-        tblSelecao.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_SUBSEQUENT_COLUMNS);
+        tblSelecao.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
         for (Map.Entry<String, String> entry : mapColunas.entrySet()) {
             TableColumn<T, String> col = new TableColumn<>(entry.getKey());
             col.setCellValueFactory((new PropertyValueFactory<>(entry.getValue())));

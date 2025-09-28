@@ -1,6 +1,7 @@
 package ideau.ControlePatrimonioDesktop.utils;
 
 import ideau.ControlePatrimonioDesktop.controller.CadastroItemController;
+import ideau.ControlePatrimonioDesktop.controller.EdicaoItemController;
 import ideau.ControlePatrimonioDesktop.controller.SelecaoController;
 import ideau.ControlePatrimonioDesktop.model.ItemDTO;
 import javafx.collections.FXCollections;
@@ -59,5 +60,32 @@ public class Utils {
         }
 
         return Collections.emptyList();
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T abrirTelaEdicao(String strNomeTela, T obj) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Utils.class.getResource("/view/telaEdicao" + strNomeTela + ".fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Editar " + strNomeTela);
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(new Scene(loader.load()));
+        Object controller = loader.getController();
+
+        //Todo novo controller de edição deve ser colocado aqui. Deve ter o método setObjEdicao, para retornar o
+        // objeto editado e colocar na tabela
+        if(controller instanceof EdicaoItemController edicaoController) {
+            edicaoController.setObjEdicao((ItemDTO) obj);
+        }
+
+        stage.showAndWait();
+
+        //Todo novo controller de edição deve ser colocado aqui. Deve ter o método getEditado, para retornar o
+        // objeto editado e colocar na tabela
+        if(controller instanceof EdicaoItemController edicaoController) {
+            return (T) edicaoController.getEditado();
+        }
+
+        return null;
     }
 }
