@@ -1,5 +1,8 @@
 package ideau.ControlePatrimonioDesktop.model;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 public class Patrimonio {
     private Long id;
     private Long idItem;
@@ -7,14 +10,15 @@ public class Patrimonio {
     private Long idStatus;
     private Long idNota;
     private String numPatr;
+    private BigDecimal valCompra;
+    private BigDecimal aliqDeprecMes;
+    private LocalDate dtAquisicao;
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) {this.id = id;}
 
     public Long getIdItem() {
         return idItem;
@@ -56,19 +60,47 @@ public class Patrimonio {
         this.numPatr = numPatr;
     }
 
-    public Patrimonio(Long id, Long idItem, Long idStatus, Long idSetor, Long idNota, String numPatr) {
+    public BigDecimal getvalCompra() {return this.valCompra;};
+
+    public void setValCompra(BigDecimal valCompra) {this.valCompra = valCompra;};
+
+    public BigDecimal getAliqDeprecMes() {
+        return aliqDeprecMes;
+    }
+
+    public void setAliqDeprecMes(BigDecimal aliqDeprecMes) {
+        this.aliqDeprecMes = aliqDeprecMes;
+    }
+
+    public LocalDate getDtAquisicao() {
+        return dtAquisicao;
+    }
+
+    public void setDtAquisicao(LocalDate dtAquisicao) {
+        this.dtAquisicao = dtAquisicao;
+    }
+
+    public Patrimonio(Long id, Long idItem, Long idStatus, Long idSetor, Long idNota, String numPatr,
+                      BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.id = id;
         this.idItem = idItem;
         this.idStatus = idStatus;
         this.idSetor = idSetor;
         this.idNota = idNota;
         this.numPatr = numPatr;
+        this.valCompra = valCompra;
+        this.aliqDeprecMes = aliqDeprecMes;
+        this.dtAquisicao = dtAquisicao;
     }
-    public Patrimonio(Long idItem, Long idStatus, Long idSetor, Long idNota, String numPatr) {
+    public Patrimonio(Long idItem, Long idStatus, Long idSetor, Long idNota, String numPatr,
+                      BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.idItem = idItem;
         this.idStatus = idStatus;
         this.idSetor = idSetor;
         this.idNota = idNota;
         this.numPatr = numPatr;
+        this.valCompra = valCompra;
+        this.aliqDeprecMes = aliqDeprecMes;
+        this.dtAquisicao = dtAquisicao;
     }
 }

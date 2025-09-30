@@ -6,7 +6,7 @@ import ideau.ControlePatrimonioDesktop.model.*;
 
 import ideau.ControlePatrimonioDesktop.utils.HTTPTransmit;
 import ideau.ControlePatrimonioDesktop.utils.ShowMessage;
-import ideau.controlePatrimonioAPI.model.PatrimonioDTO;
+//import ideau.controlePatrimonioAPI.model.PatrimonioDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -66,37 +66,37 @@ public class CadastroPatrimonioController implements Initializable {
     @FXML
     private TextField edtSerie;
 
-    @FXML
-    private TableView<PatrimonioDTO> tblPatrimonios;
-
-    @FXML
-    private TableColumn<PatrimonioDTO, String> colNomeItem;
-
-    @FXML
-    private TableColumn<PatrimonioDTO, String> colNumNota;
-
-    @FXML
-    private TableColumn<PatrimonioDTO, String> colNumPatr;
-
-    @FXML
-    private TableColumn<PatrimonioDTO, String> colSerieNota;
-
-    @FXML
-    private TableColumn<PatrimonioDTO, String> colSetor;
-
-    @FXML
-    private TableColumn<PatrimonioDTO, String> colStatus;
+//    @FXML
+//    private TableView<PatrimonioDTO> tblPatrimonios;
+//
+//    @FXML
+//    private TableColumn<PatrimonioDTO, String> colNomeItem;
+//
+//    @FXML
+//    private TableColumn<PatrimonioDTO, String> colNumNota;
+//
+//    @FXML
+//    private TableColumn<PatrimonioDTO, String> colNumPatr;
+//
+//    @FXML
+//    private TableColumn<PatrimonioDTO, String> colSerieNota;
+//
+//    @FXML
+//    private TableColumn<PatrimonioDTO, String> colSetor;
+//
+//    @FXML
+//    private TableColumn<PatrimonioDTO, String> colStatus;
 
     public void initialize(URL Location, ResourceBundle resources) {
         HTTPTransmit http = new HTTPTransmit();
         ObjectMapper mapper = new ObjectMapper();
 
-        colNomeItem.setCellValueFactory(new PropertyValueFactory<>("nomeItem"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("nomeStatus"));
-        colSetor.setCellValueFactory(new PropertyValueFactory<>("nomeSetor"));
-        colNumPatr.setCellValueFactory(new PropertyValueFactory<>("numPatr"));
-        colNumNota.setCellValueFactory(new PropertyValueFactory<>("numNota"));
-        colSerieNota.setCellValueFactory(new PropertyValueFactory<>("serieNota"));
+//        colNomeItem.setCellValueFactory(new PropertyValueFactory<>("nomeItem"));
+//        colStatus.setCellValueFactory(new PropertyValueFactory<>("nomeStatus"));
+//        colSetor.setCellValueFactory(new PropertyValueFactory<>("nomeSetor"));
+//        colNumPatr.setCellValueFactory(new PropertyValueFactory<>("numPatr"));
+//        colNumNota.setCellValueFactory(new PropertyValueFactory<>("numNota"));
+//        colSerieNota.setCellValueFactory(new PropertyValueFactory<>("serieNota"));
 
         //Item
         btnSelecItem.setOnAction(evt -> {
@@ -167,12 +167,12 @@ public class CadastroPatrimonioController implements Initializable {
     @FXML
     void AddPatrTbl(ActionEvent event) {
         edtSerie.setText("1");
-        tblPatrimonios.getItems().add(new PatrimonioDTO(edtNomeItem.getText(),
-                                                        edtStatus.getText(),
-                                                        edtSetor.getText(),
-                                                        edtNumNota.getText(),
-                                                        edtSerie.getText(),
-                                                        edtNumPatr.getText()
-        ));
+//        tblPatrimonios.getItems().add(new PatrimonioDTO(edtNomeItem.getText(),
+//                                                        edtStatus.getText(),
+//                                                        edtSetor.getText(),
+//                                                        edtNumNota.getText(),
+//                                                        edtSerie.getText(),
+//                                                        edtNumPatr.getText()
+//        ));
     }
 }

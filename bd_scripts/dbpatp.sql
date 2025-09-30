@@ -58,18 +58,23 @@ CREATE TABLE notas_f (
 CREATE TABLE item (
     id SERIAL PRIMARY KEY,
     nome_item VARCHAR(50) NOT NULL,
-    categoria_id INT REFERENCES categorias(id),
-    setor_id INT REFERENCES setores(id),
-    status_id INT REFERENCES status_item(id)
+    categoria_id INT REFERENCES categorias(id)
 );
 
-CREATE TABLE Patrimonio (
+CREATE TABLE patrimonio (
     id SERIAL,
-    idItem INTEGER,
-    idNota INTEGER,
-    numPatr VARCHAR (14),
-    CONSTRAINT fk_itens_patr foreign key (idItem) REFERENCES item (id),
-    CONSTRAINT fk_nota_patr  foreign key (idNota) REFERENCES notas_f(id)
+    id_item INTEGER,
+    id_setor INTEGER,
+    id_status INTEGER,
+    id_nota INTEGER,
+    num_patr VARCHAR (14),
+    val_compra DECIMAL(10, 2),
+    aliq_deprec_mes DECIMAL(10, 2),
+    dt_aquisicao DATE,
+    CONSTRAINT fk_itens_patr foreign key (id_item) REFERENCES item (id),
+    CONSTRAINT fk_setor_patr  foreign key (id_setor) REFERENCES setores(id),
+    CONSTRAINT fk_status_patr  foreign key (id_status) REFERENCES status_item(id),
+    CONSTRAINT fk_nota_patr  foreign key (id_nota) REFERENCES notas_f(id)
 );
 
 CREATE TABLE acessos (
