@@ -4,6 +4,7 @@ import ideau.controlePatrimonioAPI.model.Patrimonio;
 import ideau.controlePatrimonioAPI.model.PatrimonioDTO;
 import ideau.controlePatrimonioAPI.repository.GenericRepository;
 import ideau.controlePatrimonioAPI.repository.PatrimonioRepository;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -14,7 +15,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Repository
 public class PatrimonioRepositoryImpl implements GenericRepository<Patrimonio, PatrimonioDTO> {
     private final DataSource ds;
 

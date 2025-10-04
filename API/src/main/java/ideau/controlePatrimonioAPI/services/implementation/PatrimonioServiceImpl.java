@@ -10,6 +10,7 @@ import ideau.controlePatrimonioAPI.services.PatrimonioService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -18,7 +19,7 @@ import java.sql.Savepoint;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Service
 public class PatrimonioServiceImpl implements PatrimonioService {
     private final DataSource ds;
     private final PatrimonioRepositoryImpl repo;

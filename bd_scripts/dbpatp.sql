@@ -48,6 +48,7 @@ CREATE TABLE setores (
 
 CREATE TABLE notas_f (
     id SERIAL PRIMARY KEY,
+    chave_acesso VARCHAR(44),
     n_serie VARCHAR(50),
     n_nfe VARCHAR(50),
     dt_aquisicao DATE,
@@ -92,3 +93,16 @@ CREATE TABLE usuarios (
     grupo_id INT REFERENCES acessos(id)
 );
 
+insert into categorias values (1, 'Notebooks');
+insert into categorias values (2, 'Cadeiras');
+insert into categorias values (3, 'Computadores');
+insert into cidade values (1, 'tres de maio', 'rs', 4321808, 54);
+insert into logradouro values (1, 99051310, 'rua', 'rua dos bobos numero 0', 1, 'petropolis');
+insert into fornecedores values (1, 'teste", "teste', 123, 07858433000121, 1, 1, 'casa');
+insert into notas_f values (1, 12345678901234567890123456789012345678904444, 1, 1, current_timestamp, 1, 1);
+insert into setores values (1, 'TI');
+insert into setores values (2, 'Recepção');
+insert into setores values (3, 'Laboratório');
+insert into status_item values (1, 'Ativo');
+insert into status_item values (2, 'Em manutenção');
+insert into status_item values (3, 'Baixado');

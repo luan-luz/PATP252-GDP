@@ -33,6 +33,7 @@ public class CadastroController {
     @FXML
     void carregarTela(String strNomeTela) throws IOException {
         try {
+//            Parent novaTela = new FXMLLoader().load(getClass().getResource("/view/"+ strNomeTela +".fxml"));
             Parent novaTela = new FXMLLoader().load(getClass().getResource("/view/"+ strNomeTela +".fxml"));
             container_cadastro.getChildren().clear();
             container_cadastro.getChildren().add(novaTela);
@@ -52,6 +53,7 @@ public class CadastroController {
         try {
             carregarTela("telaCadastroPatrimonio");
         } catch (IOException e) {
+            e.printStackTrace();
             showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Home: " + e.getMessage());
         }
     }
