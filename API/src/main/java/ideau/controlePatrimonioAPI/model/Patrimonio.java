@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class Patrimonio {
     private Long id;
     private Long idItem;
-    private Long idSetor;
+    private Long idLocal;
     private Long idStatus;
     private Long idNota;
     private String numPatr;
@@ -28,12 +28,12 @@ public class Patrimonio {
         this.idItem = idItem;
     }
 
-    public Long getIdSetor() {
-        return idSetor;
+    public Long getIdLocal() {
+        return idLocal;
     }
 
-    public void setIdSetor(Long idSetor) {
-        this.idSetor = idSetor;
+    public void setIdLocal(Long idLocal) {
+        this.idLocal = idLocal;
     }
 
     public Long getIdStatus() {
@@ -80,23 +80,23 @@ public class Patrimonio {
         this.dtAquisicao = dtAquisicao;
     }
 
-    public Patrimonio(Long id, Long idItem, Long idStatus, Long idSetor, Long idNota, String numPatr,
+    public Patrimonio(Long id, Long idItem, Long idStatus, Long idLocal, Long idNota, String numPatr,
                       BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.id = id;
         this.idItem = idItem;
         this.idStatus = idStatus;
-        this.idSetor = idSetor;
+        this.idLocal = idLocal;
         this.idNota = idNota;
         this.numPatr = numPatr;
         this.valCompra = valCompra;
         this.aliqDeprecMes = aliqDeprecMes;
         this.dtAquisicao = dtAquisicao;
     }
-    public Patrimonio(Long idItem, Long idStatus, Long idSetor, Long idNota, String numPatr,
+    public Patrimonio(Long idItem, Long idStatus, Long idLocal, Long idNota, String numPatr,
                       BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.idItem = idItem;
         this.idStatus = idStatus;
-        this.idSetor = idSetor;
+        this.idLocal = idLocal;
         this.idNota = idNota;
         this.numPatr = numPatr;
         this.valCompra = valCompra;

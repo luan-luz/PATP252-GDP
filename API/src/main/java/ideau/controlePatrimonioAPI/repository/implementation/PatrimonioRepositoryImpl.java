@@ -29,7 +29,7 @@ public class PatrimonioRepositoryImpl implements GenericRepository<Patrimonio, P
         String strSQL = "INSERT INTO " +
                 "patrimonio (" +
                 "  id_item," +
-                "  id_setor," +
+                "  id_local," +
                 "  id_status," +
                 "  id_nota," +
                 "  num_patr," +
@@ -40,7 +40,7 @@ public class PatrimonioRepositoryImpl implements GenericRepository<Patrimonio, P
 
         try(PreparedStatement stmt = con.prepareStatement(strSQL, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setLong(1, objeto.getIdItem());
-            stmt.setLong(2, objeto.getIdSetor());
+            stmt.setLong(2, objeto.getIdLocal());
             stmt.setLong(2, objeto.getIdStatus());
             stmt.setLong(2, objeto.getIdNota());
             stmt.setString(2, objeto.getNumPatr());

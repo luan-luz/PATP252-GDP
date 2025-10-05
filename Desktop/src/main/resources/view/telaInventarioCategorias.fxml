@@ -25,8 +25,8 @@
                                     <Button mnemonicParsing="false" text="Editar" />
                                  </children>
                               </HBox>
-                              <Label text="Setor" />
-                              <ComboBox prefWidth="150.0" promptText="Setor" />
+                              <Label text="Local" />
+                              <ComboBox prefWidth="150.0" promptText="Local" />
                               <HBox>
                                  <children>
                                     <Button mnemonicParsing="false" text="Limpar" />

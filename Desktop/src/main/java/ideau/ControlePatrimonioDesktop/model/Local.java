@@ -1,10 +1,10 @@
 package ideau.ControlePatrimonioDesktop.model;
 
-public class Setor {
+public class Local {
     Long id;
     String nome;
 
-    public Setor(Long id, String nome) {
+    public Local(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }

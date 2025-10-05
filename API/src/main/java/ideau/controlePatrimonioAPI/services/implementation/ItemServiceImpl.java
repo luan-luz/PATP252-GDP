@@ -116,13 +116,13 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemDTO> retornarPorIdSetor(Long idSetor) {
+    public List<ItemDTO> retornarPorIdLocal(Long idLocal) {
         List<ItemDTO> lstRetorno = new ArrayList<>();
-        lstRetorno = repo.retornaPorIdSetor(idSetor);
+        lstRetorno = repo.retornaPorIdLocal(idLocal);
         if (lstRetorno.isEmpty()) {
             throw new SimplesHttpException(
                     HttpStatus.NOT_FOUND,
-                    "Não foram encontrados Patrimônios com idSetor = " + idSetor);
+                    "Não foram encontrados Patrimônios com idLocal = " + idLocal);
         }
         return lstRetorno;
     }

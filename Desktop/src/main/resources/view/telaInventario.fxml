@@ -18,7 +18,7 @@
                   <VBox prefHeight="90" spacing="15.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Button mnemonicParsing="false" onMouseClicked="#abrirInventarioPatrimonios" prefHeight="33.0" prefWidth="120.0" text="Patrimonios" />
-                        <Button mnemonicParsing="false" onMouseClicked="#abrirInventarioSetores" prefHeight="33.0" prefWidth="120.0" text="Setores" />
+                        <Button mnemonicParsing="false" onMouseClicked="#abrirInventarioLocais" prefHeight="33.0" prefWidth="120.0" text="Locais" />
                      </children>
                   </VBox>
                   <VBox prefHeight="90" spacing="15.0" HBox.hgrow="ALWAYS">
@@ -53,8 +53,8 @@
                               <HBox />
                               <Label text="Categoria" />
                               <ComboBox prefWidth="150.0" promptText="Categoria" />
-                              <Label text="Setor" />
-                              <ComboBox prefWidth="150.0" promptText="Setor" />
+                              <Label text="Local" />
+                              <ComboBox prefWidth="150.0" promptText="Local" />
                               <HBox>
                                  <children>
                                     <Button mnemonicParsing="false" text="Limpar" />

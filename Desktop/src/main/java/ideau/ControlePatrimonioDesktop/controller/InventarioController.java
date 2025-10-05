@@ -50,9 +50,9 @@ public class InventarioController {
     }
 
     @FXML
-    private void abrirInventarioSetores(MouseEvent event) {
+    private void abrirInventarioLocais(MouseEvent event) {
         try {
-            carregarTela("telaInventarioSetores");
+            carregarTela("telaInventarioLocais");
         } catch (IOException e) {
             showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Home: " + e.getMessage());
         }

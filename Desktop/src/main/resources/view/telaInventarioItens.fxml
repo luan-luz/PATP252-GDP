@@ -32,8 +32,8 @@
                               <DatePicker />
                               <Label text="Categoria" />
                               <ComboBox prefWidth="150.0" promptText="Categoria" />
-                              <Label text="Setor" />
-                              <ComboBox prefWidth="150.0" promptText="Setor" />
+                              <Label text="Local" />
+                              <ComboBox prefWidth="150.0" promptText="Local" />
                               <Label text="Possui Patr" />
                               <ComboBox prefWidth="150.0" promptText="Possui N Patrimonio" />
                               <HBox>

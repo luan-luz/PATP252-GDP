@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextFormatter;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.function.UnaryOperator;
 
 public class Utils {
 
@@ -87,5 +89,26 @@ public class Utils {
         }
 
         return null;
+    }
+    public static UnaryOperator<TextFormatter.Change> retFiltroCampoValor() {
+        return change -> {
+            String newTxt = change.getControlNewText();
+            if (newTxt.matches("\\d*(\\,\\d{0,2}|\\.\\d{0,2})?")) {
+                return change;
+            }
+            return null;
+        };
+    }
+    public static UnaryOperator<TextFormatter.Change> retFiltroCampoPorcent(String strCasasDecimais) {
+        return change -> {
+            String newTxt = change.getControlNewText();
+            if (newTxt.matches("([0-9]{0,2})([\\.,][0-9]{0,"+ strCasasDecimais +"})?")
+                    || newTxt.equals("100")
+                    || newTxt.equals("100,00")
+                    || newTxt.equals("100.00")) {
+                return change;
+            }
+            return null;
+        };
     }
 }

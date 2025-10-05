@@ -50,9 +50,9 @@ public class ItemControllerImpl implements ItemController {
 
 
 //    @Override
-//    @GetMapping(params = "idSetor")
-//    public List<ItemDTO> retornaPorIdSetor(@RequestParam Long idSetor) {
-//        return svc.retornarPorIdSetor(idSetor);
+//    @GetMapping(params = "idLocal")
+//    public List<ItemDTO> retornaPorIdLocal(@RequestParam Long idLocal) {
+//        return svc.retornarPorIdLocal(idLocal);
 //    }
 //
 //    @Override

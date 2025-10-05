@@ -14,7 +14,7 @@
          <children>
             <HBox>
                <children>
-                  <Button mnemonicParsing="false" text="Cadastrar Novo Setor" />
+                  <Button mnemonicParsing="false" text="Cadastrar Novo Local" />
                   <Button mnemonicParsing="false" text="Editar" />
                </children>
             </HBox>

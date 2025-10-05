@@ -1,18 +1,21 @@
 package ideau.ControlePatrimonioDesktop.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class PatrimonioDTO {
     private Long id;
     private String nomeItem;
-    private String nomeSetor;
+    private String nomeLocal;
     private String nomeStatus;
     private String numNota;
     private String serieNota;
     private String numPatr;
     private BigDecimal valCompra;
     private BigDecimal aliqDeprecMes;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dtAquisicao;
 
     public Long getId() {
@@ -31,12 +34,12 @@ public class PatrimonioDTO {
         this.nomeItem = nomeItem;
     }
 
-    public String getNomeSetor() {
-        return nomeSetor;
+    public String getNomeLocal() {
+        return nomeLocal;
     }
 
-    public void setNomeSetor(String nomeSetor) {
-        this.nomeSetor = nomeSetor;
+    public void setNomeLocal(String nomeLocal) {
+        this.nomeLocal = nomeLocal;
     }
 
     public String getNomeStatus() {
@@ -94,12 +97,12 @@ public class PatrimonioDTO {
         this.dtAquisicao = dtAquisicao;
     }
 
-    public PatrimonioDTO(Long id, String nomeItem, String nomeStatus, String nomeSetor, String numNota, String serieNota,
+    public PatrimonioDTO(Long id, String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNota,
                          String numPatr, BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.id = id;
         this.nomeItem = nomeItem;
         this.nomeStatus = nomeStatus;
-        this.nomeSetor = nomeSetor;
+        this.nomeLocal = nomeLocal;
         this.numNota = numNota;
         this.serieNota = serieNota;
         this.numPatr = numPatr;
@@ -107,11 +110,11 @@ public class PatrimonioDTO {
         this.aliqDeprecMes = aliqDeprecMes;
         this.dtAquisicao = dtAquisicao;
     }
-    public PatrimonioDTO(String nomeItem, String nomeStatus, String nomeSetor, String numNota, String serieNota,
+    public PatrimonioDTO(String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNota,
                          String numPatr, BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.nomeItem = nomeItem;
         this.nomeStatus = nomeStatus;
-        this.nomeSetor = nomeSetor;
+        this.nomeLocal = nomeLocal;
         this.numNota = numNota;
         this.serieNota = serieNota;
         this.numPatr = numPatr;

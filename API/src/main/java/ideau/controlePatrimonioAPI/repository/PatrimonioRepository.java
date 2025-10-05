@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface PatrimonioRepository extends GenericRepository<Patrimonio, PatrimonioDTO> {
     List<PatrimonioDTO> retornaPorIdStatus(Long idStatus);
-    List<PatrimonioDTO> retornaPorIdSetor(Long idSetor);
+    List<PatrimonioDTO> retornaPorIdLocal(Long idLocal);
     List<PatrimonioDTO> retornaPorIdNota(Long idNota);
 }

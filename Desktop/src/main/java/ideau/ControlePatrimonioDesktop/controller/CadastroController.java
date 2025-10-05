@@ -70,9 +70,9 @@ public class CadastroController {
 
 
     @FXML
-    private void abrirCadastroSetores(MouseEvent event) {
+    private void abrirCadastroLocales(MouseEvent event) {
         try {
-            carregarTela("telaCadastroSetores");
+            carregarTela("telaCadastroLocais");
         } catch (IOException e) {
             showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Home: " + e.getMessage());
         }

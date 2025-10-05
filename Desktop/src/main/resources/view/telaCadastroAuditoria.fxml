@@ -25,7 +25,7 @@
                         <DatePicker />
                      </children>
                   </VBox>
-                  <ComboBox promptText="filtro por setor" />
+                  <ComboBox promptText="filtro por local" />
                   <ComboBox promptText="filtro por categoria" />
                   <Button mnemonicParsing="false" text="Filtrar" />
                </children>

@@ -41,7 +41,7 @@ CREATE TABLE categorias (
     nome VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE setores (
+CREATE TABLE locais (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL
 );
@@ -65,7 +65,7 @@ CREATE TABLE item (
 CREATE TABLE patrimonio (
     id SERIAL,
     id_item INTEGER,
-    id_setor INTEGER,
+    id_local INTEGER,
     id_status INTEGER,
     id_nota INTEGER,
     num_patr VARCHAR (14),
@@ -73,7 +73,7 @@ CREATE TABLE patrimonio (
     aliq_deprec_mes DECIMAL(10, 2),
     dt_aquisicao DATE,
     CONSTRAINT fk_itens_patr foreign key (id_item) REFERENCES item (id),
-    CONSTRAINT fk_setor_patr  foreign key (id_setor) REFERENCES setores(id),
+    CONSTRAINT fk_local_patr  foreign key (id_local) REFERENCES locais(id),
     CONSTRAINT fk_status_patr  foreign key (id_status) REFERENCES status_item(id),
     CONSTRAINT fk_nota_patr  foreign key (id_nota) REFERENCES notas_f(id)
 );
@@ -100,9 +100,9 @@ insert into cidade values (1, 'tres de maio', 'rs', 4321808, 54);
 insert into logradouro values (1, 99051310, 'rua', 'rua dos bobos numero 0', 1, 'petropolis');
 insert into fornecedores values (1, 'teste", "teste', 123, 07858433000121, 1, 1, 'casa');
 insert into notas_f values (1, 12345678901234567890123456789012345678904444, 1, 1, current_timestamp, 1, 1);
-insert into setores values (1, 'TI');
-insert into setores values (2, 'Recepção');
-insert into setores values (3, 'Laboratório');
+insert into locais values (1, 'TI');
+insert into locais values (2, 'Recepção');
+insert into locais values (3, 'Laboratório');
 insert into status_item values (1, 'Ativo');
 insert into status_item values (2, 'Em manutenção');
 insert into status_item values (3, 'Baixado');

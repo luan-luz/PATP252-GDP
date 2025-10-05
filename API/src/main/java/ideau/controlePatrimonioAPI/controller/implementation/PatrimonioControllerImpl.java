@@ -24,7 +24,7 @@ public class PatrimonioControllerImpl implements PatrimonioController {
     }
 
     @Override
-    public List<PatrimonioDTO> retornaPorIdSetor(Long idSetor) {
+    public List<PatrimonioDTO> retornaPorIdLocal(Long idLocal) {
         return List.of();
     }
 

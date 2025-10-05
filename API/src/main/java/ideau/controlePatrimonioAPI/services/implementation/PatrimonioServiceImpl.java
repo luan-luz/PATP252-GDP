@@ -35,7 +35,7 @@ public class PatrimonioServiceImpl implements PatrimonioService {
     }
 
     @Override
-    public List<PatrimonioDTO> retornarPorIdSetor(Long idSetor) {
+    public List<PatrimonioDTO> retornarPorIdLocal(Long idLocal) {
         return List.of();
     }
 
@@ -61,8 +61,8 @@ public class PatrimonioServiceImpl implements PatrimonioService {
                 if (objPatr.getIdItem() == null) {
                     strErros += "idItem; ";
                 }
-                if (objPatr.getIdSetor() == null) {
-                    strErros += "idSetor; ";
+                if (objPatr.getIdLocal() == null) {
+                    strErros += "idLocal; ";
                 }
 
                 if(!strErros.isBlank()) {

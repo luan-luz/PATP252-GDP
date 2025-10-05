@@ -88,3 +88,9 @@
  -background-color:#34495e;
  -fx-height:450px;
 }
+
+.error {
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+    -fx-border-radius: 3px;
+}

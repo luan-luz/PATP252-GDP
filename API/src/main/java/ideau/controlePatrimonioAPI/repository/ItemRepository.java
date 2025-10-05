@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ItemRepository extends GenericRepository<Item, ItemDTO> {
     List<ItemDTO> retornaPorIdCategoria(Long idCategoria);
-    List<ItemDTO> retornaPorIdSetor(Long idSetor);
+    List<ItemDTO> retornaPorIdLocal(Long idLocal);
     List<ItemDTO> retornaPorIdStatus(Long idStatus);
 }

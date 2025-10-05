@@ -112,7 +112,7 @@ public class ItemRepositoryImpl implements ItemRepository {
                 "i.id as id, " +
                 "i.nome_item as nome, " +
                 "c.nome as categoria, " +
-                "se.nome as setor, " +
+                "l.nome as local, " +
                 "st.nome as status " +
                 "from item as i " +
                 "left outer join " +
@@ -141,7 +141,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     }
 
     @Override
-    public List<ItemDTO> retornaPorIdSetor(Long idSetor) {
+    public List<ItemDTO> retornaPorIdLocal(Long idLocal) {
         String strSQL = "select " +
                 "i.id as id, " +
                 "i.nome_item as nome, " +
@@ -154,7 +154,7 @@ public class ItemRepositoryImpl implements ItemRepository {
         List<ItemDTO> lstRetorno = new ArrayList<>();
         try (Connection con = ds.getConnection();
              PreparedStatement stmt = con.prepareStatement(strSQL)) {
-            stmt.setLong(1, idSetor);
+            stmt.setLong(1, idLocal);
             try(ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     ItemDTO objPatr = new ItemDTO(
