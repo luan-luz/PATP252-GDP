@@ -99,7 +99,7 @@
                               <Region prefHeight="200.0" prefWidth="65.0" />
                               <VBox prefHeight="52.0" prefWidth="127.0">
                                  <children>
-                                    <Label text="Alíq. de deprec. mensal">
+                                    <Label text="Alíq. deprec. mês">
                                        <VBox.margin>
                                           <Insets top="10.0" />
                                        </VBox.margin>

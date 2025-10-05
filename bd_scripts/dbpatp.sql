@@ -53,21 +53,21 @@ CREATE TABLE notas_f (
     n_nfe VARCHAR(50),
     dt_aquisicao DATE,
     vlr_total NUMERIC(12,2),
-    fornecedor_id INT REFERENCES fornecedores(id)
+    fornecedor_id BIGINT REFERENCES fornecedores(id)
 );
 
 CREATE TABLE item (
     id SERIAL PRIMARY KEY,
     nome_item VARCHAR(50) NOT NULL,
-    categoria_id INT REFERENCES categorias(id)
+    categoria_id BIGINT REFERENCES categorias(id)
 );
 
 CREATE TABLE patrimonio (
     id SERIAL,
-    id_item INTEGER,
-    id_local INTEGER,
-    id_status INTEGER,
-    id_nota INTEGER,
+    id_item BIGINT,
+    id_local BIGINT,
+    id_status BIGINT,
+    id_nota BIGINT,
     num_patr VARCHAR (14),
     val_compra DECIMAL(10, 2),
     aliq_deprec_mes DECIMAL(10, 2),
@@ -90,7 +90,7 @@ CREATE TABLE usuarios (
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL,
     senha VARCHAR(60) NOT NULL,
-    grupo_id INT REFERENCES acessos(id)
+    grupo_id BIGINT REFERENCES acessos(id)
 );
 
 insert into categorias values (1, 'Notebooks');
@@ -106,3 +106,7 @@ insert into locais values (3, 'Laboratório');
 insert into status_item values (1, 'Ativo');
 insert into status_item values (2, 'Em manutenção');
 insert into status_item values (3, 'Baixado');
+insert into item values (default, 'Notebook Acer Nitro 5 AN517', 1);
+insert into item values (default, 'Cadeira de escritório Cavaletti', 2);
+insert into patrimonio values (default, 1, 1, 1, 1, 000001, 1200.05, 2.0934, '10/08/2002');
+insert into patrimonio values (default, 2, 2, 2, 1, 000002, 200.75, 1.512, '10/08/2025');

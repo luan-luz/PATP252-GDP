@@ -83,6 +83,8 @@ public class Patrimonio {
         this.dtAquisicao = dtAquisicao;
     }
 
+    public Patrimonio() {};
+
     public Patrimonio(Long id, Long idItem, Long idStatus, Long idLocal, Long idNota, String numPatr,
                       BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.id = id;

@@ -4,13 +4,15 @@ import ideau.controlePatrimonioAPI.controller.PatrimonioController;
 import ideau.controlePatrimonioAPI.model.Patrimonio;
 import ideau.controlePatrimonioAPI.model.PatrimonioDTO;
 import ideau.controlePatrimonioAPI.services.implementation.PatrimonioServiceImpl;
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/patrimonio")
 public class PatrimonioControllerImpl implements PatrimonioController {
     private final PatrimonioServiceImpl svc;
 
@@ -34,18 +36,21 @@ public class PatrimonioControllerImpl implements PatrimonioController {
     }
 
     @Override
-    public Map<Integer, PatrimonioDTO> cadastra(Map<Integer, Patrimonio> mapObjs) {
+    @PostMapping
+    public Map<Integer, PatrimonioDTO> cadastra(@RequestBody Map<Integer, Patrimonio> mapObjs) {
         return svc.cadastrarLote(mapObjs);
     }
 
     @Override
+    @GetMapping
     public List<PatrimonioDTO> retornaTodos() {
-        return List.of();
+        return svc.retornarTodos();
     }
 
     @Override
-    public PatrimonioDTO retornaPorId(Long id) {
-        return null;
+    @GetMapping(params = "id")
+    public PatrimonioDTO retornaPorId(@RequestParam Long id) {
+        return svc.retornaPorId(id);
     }
 
     @Override

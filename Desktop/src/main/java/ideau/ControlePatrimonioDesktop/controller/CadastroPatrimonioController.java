@@ -140,9 +140,9 @@ public class CadastroPatrimonioController implements Initializable {
         this.mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         this.dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        lstItens = new ArrayList<>();
-        lstLocal = new ArrayList<>();
-        lstStatus = new ArrayList<>();
+        this.lstItens = new ArrayList<>();
+        this.lstLocal = new ArrayList<>();
+        this.lstStatus = new ArrayList<>();
         //Setando ValueFactorys nas colunas da tabela
         colNomeItem.setCellValueFactory(new PropertyValueFactory<>("nomeItem"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("nomeStatus"));
@@ -206,6 +206,7 @@ public class CadastroPatrimonioController implements Initializable {
 
         //Só visível se algum item selecionado
         btnEditarPatr.setVisible(false);
+        btnRemoverPatr.setVisible(false);
         btnConfirmarEdicao.setVisible(false);
         btnCancelarEdicao.setVisible(false);
     }
@@ -245,17 +246,15 @@ public class CadastroPatrimonioController implements Initializable {
             }
             //Serializando para JSON
             String body = mapper.writeValueAsString(mapPatr);
+            mapPatr.clear();
             //Mandando a request para a API e pegando a resposta
             RespostaHTTP resp = http.post("http://localhost:8080/patrimonio", body);
 
             if (resp.getHttpStatus() < 206) { //206 para baixo são retornos válidos
-                Map<Integer, Patrimonio> dto = mapper.readValue(resp.getBody(), new TypeReference<Map<Integer, Patrimonio>>() {});
+                Map<Integer, PatrimonioDTO> dto = mapper.readValue(resp.getBody(), new TypeReference<Map<Integer, PatrimonioDTO>>() {});
                 showMessage(Alert.AlertType.INFORMATION, "Itens Cadastrados com Sucesso!");
                 tblPatrimonios.getItems().clear();
-                mapPatr.clear();
-                lstItens.clear();
-                lstLocal.clear();
-                lstStatus.clear();
+                edtNumNota.clear();
             } else {
                 throw new Exception("Status" + resp.getBody() + " Erro: " + resp.getBody());
             }
@@ -308,7 +307,7 @@ public class CadastroPatrimonioController implements Initializable {
             booPodeProsseguir = false;
         }
         if (!edtLocal.getText().isBlank()) {
-            tblPatrimonios.getSelectionModel().getSelectedItem().setNomeStatus(edtLocal.getText());
+            tblPatrimonios.getSelectionModel().getSelectedItem().setNomeLocal(edtLocal.getText());
         } else {
             if (!edtLocal.getStyleClass().contains("error")) {
                 edtLocal.getStyleClass().add("error");
@@ -317,7 +316,7 @@ public class CadastroPatrimonioController implements Initializable {
 
         }
         if (!edtStatus.getText().isBlank()) {
-            tblPatrimonios.getSelectionModel().getSelectedItem().setNomeLocal(edtStatus.getText());
+            tblPatrimonios.getSelectionModel().getSelectedItem().setNomeStatus((edtStatus.getText()));
         } else {
             if (!edtStatus.getStyleClass().contains("error")) {
                 edtStatus.getStyleClass().add("error");
@@ -358,15 +357,14 @@ public class CadastroPatrimonioController implements Initializable {
                 showMessage(Alert.AlertType.ERROR, "Erro ao contatar o servidor! Entre em contato com o setor de TI.");
             } else if (resp.getHttpStatus() < 206) { //Status menores que 206 são retornos válidos
 
-                List<ItemDTO> itens = mapper.readValue(resp.getBody(), new TypeReference<List<ItemDTO>>() {});
+                this.lstItens = mapper.readValue(resp.getBody(), new TypeReference<List<ItemDTO>>() {});
                 Map<String, String> colunas = new LinkedHashMap<>();
                 colunas.put("ID", "id");
                 colunas.put("Nome Do Item", "nomeItem");
                 colunas.put("Categoria", "nomeCategoria");
-                ItemDTO selecionado = abrirTelaSelecao(itens, colunas, "Itens");
+                ItemDTO selecionado = abrirTelaSelecao(lstItens, colunas, "Itens");
                 if (selecionado != null) {
                     edtNomeItem.setText(selecionado.getNomeItem());
-                    lstItens.add(selecionado);
                 }
             } else {
                 throw new RuntimeException("Status" + resp.getBody() + " Erro: " + resp.getBody());
@@ -381,7 +379,7 @@ public class CadastroPatrimonioController implements Initializable {
     }
     @FXML
     void AbrirTelaSelecLocal(ActionEvent event) {
-        List<Local> lstLocal = Arrays.asList(
+        this.lstLocal = Arrays.asList(
                 new Local(1L, "TI"),
                 new Local(1L, "Laboratório"),
                 new Local(1L, "Atendimento")
@@ -390,10 +388,9 @@ public class CadastroPatrimonioController implements Initializable {
         colunas.put("ID", "id");
         colunas.put("Nome Do Local", "nome");
         try {
-            Local objLocal = abrirTelaSelecao(lstLocal, colunas,"Locales");
+            Local objLocal = abrirTelaSelecao(lstLocal, colunas,"Locais");
             if (objLocal != null) {
                 edtLocal.setText(objLocal.getNome());
-                lstLocal.add(objLocal);
             }
         } catch (Exception e) {
             showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Locais!");
@@ -402,7 +399,7 @@ public class CadastroPatrimonioController implements Initializable {
 
     @FXML
     void AbrirTelaSelecStatus(ActionEvent event) {
-        List<Status> lstStatus = Arrays.asList(
+        this.lstStatus = Arrays.asList(
                 new Status(1L, "Ativo"),
                 new Status(1L, "Em uso"),
                 new Status(1L, "Em manutenção")
@@ -414,7 +411,6 @@ public class CadastroPatrimonioController implements Initializable {
             Status objStatus = abrirTelaSelecao(lstStatus, colunas,"Status");
             if (objStatus != null) {
                 edtStatus.setText(objStatus.getNome());
-                lstStatus.add(objStatus);
             }
         } catch (Exception e) {
             showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Status!");

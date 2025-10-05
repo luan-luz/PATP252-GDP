@@ -2,6 +2,7 @@ package ideau.controlePatrimonioAPI.exception;
 
 import ideau.controlePatrimonioAPI.model.RespostaGenericaHTTP;
 import ideau.controlePatrimonioAPI.model.RespostaListaErrosHttp;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -24,5 +25,12 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity
                 .status(e.getHttpStatus())
                 .body(new RespostaGenericaHTTP(e.getMessage()));
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<RespostaGenericaHTTP> runtimeExceptionHandler(RuntimeException e) {
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new RespostaGenericaHTTP("Erro inesperado: " + e.getMessage()));
     }
 }

@@ -96,7 +96,7 @@ public class PatrimonioDTO {
     public void setDtAquisicao(LocalDate dtAquisicao) {
         this.dtAquisicao = dtAquisicao;
     }
-
+    public PatrimonioDTO() {};
     public PatrimonioDTO(Long id, String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNota,
                          String numPatr, BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.id = id;

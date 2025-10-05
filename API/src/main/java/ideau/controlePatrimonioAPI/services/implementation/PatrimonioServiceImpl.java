@@ -1,5 +1,6 @@
 package ideau.controlePatrimonioAPI.services.implementation;
 
+import ideau.controlePatrimonioAPI.exception.SimplesHttpException;
 import ideau.controlePatrimonioAPI.exception.ValidacaoException;
 import ideau.controlePatrimonioAPI.model.Item;
 import ideau.controlePatrimonioAPI.model.ItemDTO;
@@ -50,7 +51,7 @@ public class PatrimonioServiceImpl implements PatrimonioService {
         Map<Integer, PatrimonioDTO> mapRetorno = new HashMap<>();
         String strErros;
         Integer intAtual = 0;
-
+        System.out.println(mapObjetos);
         try (Connection con = ds.getConnection()) {
             con.setAutoCommit(false);
 
@@ -64,9 +65,12 @@ public class PatrimonioServiceImpl implements PatrimonioService {
                 if (objPatr.getIdLocal() == null) {
                     strErros += "idLocal; ";
                 }
+                if (objPatr.getIdStatus() == null) {
+                    strErros += "idSetor; ";
+                }
 
                 if(!strErros.isBlank()) {
-                    strErros += "faltando na requisição!";
+                    strErros += "são dados obrigatórios faltando na requisição!";
                     mapErros.put(intAtual, strErros);
                 } else {
                     Savepoint savepoint = con.setSavepoint();
@@ -95,12 +99,17 @@ public class PatrimonioServiceImpl implements PatrimonioService {
 
     @Override
     public List<PatrimonioDTO> retornarTodos() {
-        return List.of();
+        return repo.retornaTodos();
     }
 
     @Override
     public PatrimonioDTO retornaPorId(Long id) {
-        return null;
+        PatrimonioDTO dto = repo.retornaPorId(id);
+        if (dto != null) {
+            return dto;
+        } else {
+            throw new SimplesHttpException(HttpStatus.NOT_FOUND, "Nenhum Patrimônio encontrado com id: " + id);
+        }
     }
 
     @Override

@@ -79,7 +79,7 @@ public class Patrimonio {
     public void setDtAquisicao(LocalDate dtAquisicao) {
         this.dtAquisicao = dtAquisicao;
     }
-
+    public Patrimonio() {};
     public Patrimonio(Long id, Long idItem, Long idStatus, Long idLocal, Long idNota, String numPatr,
                       BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.id = id;
@@ -96,7 +96,7 @@ public class Patrimonio {
                       BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.idItem = idItem;
         this.idStatus = idStatus;
-        this.idLocal = idLocal;
+        this.idLocal = idLocal  ;
         this.idNota = idNota;
         this.numPatr = numPatr;
         this.valCompra = valCompra;
