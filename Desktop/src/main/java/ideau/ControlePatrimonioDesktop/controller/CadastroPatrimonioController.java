@@ -49,6 +49,33 @@ public class CadastroPatrimonioController implements Initializable {
     private Button btnSelecStatus;
 
     @FXML
+    private TableColumn<PatrimonioDTO, String> colAliquota;
+
+    @FXML
+    private TableColumn<PatrimonioDTO, String> colDataAquisicao;
+
+    @FXML
+    private TableColumn<PatrimonioDTO, String> colNomeItem;
+
+    @FXML
+    private TableColumn<PatrimonioDTO, String> colNumPatr;
+
+    @FXML
+    private TableColumn<PatrimonioDTO, String> colSetor;
+
+    @FXML
+    private TableColumn<PatrimonioDTO, String> colStatus;
+
+    @FXML
+    private TableColumn<PatrimonioDTO, String> colValCompra;
+
+    @FXML
+    private DatePicker dtpDtAquisicao;
+
+    @FXML
+    private TextField edtAliquota;
+
+    @FXML
     private TextField edtNomeItem;
 
     @FXML
@@ -58,45 +85,36 @@ public class CadastroPatrimonioController implements Initializable {
     private TextField edtNumPatr;
 
     @FXML
+    private TextField edtSerie;
+
+    @FXML
     private TextField edtSetor;
 
     @FXML
     private TextField edtStatus;
 
     @FXML
-    private TextField edtSerie;
+    private TextField edtValCompra;
 
-//    @FXML
-//    private TableView<PatrimonioDTO> tblPatrimonios;
-//
-//    @FXML
-//    private TableColumn<PatrimonioDTO, String> colNomeItem;
-//
-//    @FXML
-//    private TableColumn<PatrimonioDTO, String> colNumNota;
-//
-//    @FXML
-//    private TableColumn<PatrimonioDTO, String> colNumPatr;
-//
-//    @FXML
-//    private TableColumn<PatrimonioDTO, String> colSerieNota;
-//
-//    @FXML
-//    private TableColumn<PatrimonioDTO, String> colSetor;
-//
-//    @FXML
-//    private TableColumn<PatrimonioDTO, String> colStatus;
+    @FXML
+    private Spinner<Integer> spnQuantidade;
+
+    @FXML
+    private TableView<PatrimonioDTO> tblPatrimonios;
+
 
     public void initialize(URL Location, ResourceBundle resources) {
         HTTPTransmit http = new HTTPTransmit();
         ObjectMapper mapper = new ObjectMapper();
 
-//        colNomeItem.setCellValueFactory(new PropertyValueFactory<>("nomeItem"));
-//        colStatus.setCellValueFactory(new PropertyValueFactory<>("nomeStatus"));
-//        colSetor.setCellValueFactory(new PropertyValueFactory<>("nomeSetor"));
-//        colNumPatr.setCellValueFactory(new PropertyValueFactory<>("numPatr"));
-//        colNumNota.setCellValueFactory(new PropertyValueFactory<>("numNota"));
-//        colSerieNota.setCellValueFactory(new PropertyValueFactory<>("serieNota"));
+        colNomeItem.setCellValueFactory(new PropertyValueFactory<>("nomeItem"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("nomeStatus"));
+        colSetor.setCellValueFactory(new PropertyValueFactory<>("nomeSetor"));
+        colNumPatr.setCellValueFactory(new PropertyValueFactory<>("numPatr"));
+        colValCompra.setCellValueFactory(new PropertyValueFactory<>("valCompra"));
+        colAliquota.setCellValueFactory(new PropertyValueFactory<>("aliqDeprecMes"));
+        colDataAquisicao.setCellValueFactory(new PropertyValueFactory<>("dtAquisicao"));
+        spnQuantidade.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100,1));
 
         //Item
         btnSelecItem.setOnAction(evt -> {

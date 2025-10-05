@@ -41,7 +41,7 @@
                                                 <Insets left="20.0" />
                                              </HBox.margin>
                                           </TextField>
-                                          <Button fx:id="btnSelecNota" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Selecionar" />
+                                          <Button fx:id="btnSelecNota" minWidth="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Selecionar" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -83,10 +83,10 @@
                                  </children>
                               </VBox>
                               <Region prefHeight="200.0" prefWidth="65.0" />
-                              <VBox prefHeight="42.0" prefWidth="95.0">
+                              <VBox prefHeight="42.0" prefWidth="110.0">
                                  <children>
                                     <Label text="Data de aquisição" />
-                                    <DatePicker fx:id="dtpDtAquisicao" prefHeight="25.0" prefWidth="93.0" />
+                                    <DatePicker fx:id="dtpDtAquisicao" prefHeight="25.0" prefWidth="120.0" />
                                  </children>
                                  <HBox.margin>
                                     <Insets top="10.0" />
@@ -100,7 +100,7 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="edtNomeItem1" editable="false" minWidth="103.0" prefHeight="25.0" prefWidth="103.0" promptText="Informe o valor de compra" />
+                                    <TextField fx:id="edtValCompra" editable="false" minWidth="103.0" prefHeight="25.0" prefWidth="103.0" promptText="Informe o valor de compra" />
                                  </children>
                               </VBox>
                               <Region prefHeight="200.0" prefWidth="65.0" />
@@ -111,7 +111,7 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="edtSetor1" editable="false" prefHeight="25.0" prefWidth="133.0" promptText="Informe a alíquota" />
+                                    <TextField fx:id="edtAliquota" editable="false" prefHeight="25.0" prefWidth="133.0" promptText="Informe a alíquota" />
                                  </children>
                                  <HBox.margin>
                                     <Insets right="20.0" />
@@ -180,7 +180,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <Spinner editable="true" prefHeight="25.0" prefWidth="70.0" />
+                  <Spinner fx:id="spnQuantidade" editable="true" prefHeight="25.0" prefWidth="70.0" />
                   <Region prefHeight="25.0" prefWidth="210.0" />
                   <Button fx:id="btnAdicionar" alignment="CENTER" mnemonicParsing="false" onAction="#AddPatrTbl" text="Adicionar" />
                </children>
@@ -200,9 +200,9 @@
                         <TableColumn fx:id="colStatus" prefWidth="125.0" text="Status" />
                         <TableColumn fx:id="colSetor" prefWidth="219.0" text="Setor" />
                         <TableColumn fx:id="colNumPatr" prefWidth="195.0" text="Número do Patr." />
-                        <TableColumn fx:id="colNumNota" prefWidth="122.0" text="Val. Compra" />
-                        <TableColumn fx:id="colSerieNota" prefWidth="86.0" text="Alíq. Deprec" />
-                        <TableColumn fx:id="colSerieNota1" prefWidth="86.0" text="Data Aquis." />
+                        <TableColumn fx:id="colValCompra" prefWidth="122.0" text="Val. Compra" />
+                        <TableColumn fx:id="colAliquota" prefWidth="86.0" text="Alíq. Deprec" />
+                        <TableColumn fx:id="colDataAquisicao" prefWidth="86.0" text="Data Aquis." />
                      </columns>
                   </TableView>
                   <VBox alignment="CENTER" spacing="15.0">
