@@ -24,7 +24,8 @@ public class PrincipalController implements Initializable {
 
     @FXML
     private Button btnInventario;
-
+    @FXML
+    private Button btnRelatorio;
     @FXML
     private Button btnFechar;
     @FXML
@@ -117,7 +118,7 @@ public class PrincipalController implements Initializable {
         try {
             carregarTela("telaCadastro");
         } catch (IOException e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Home: " + e.getMessage());
+            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Cadastro: " + e.getMessage());
         }
     }
 
@@ -126,7 +127,7 @@ public class PrincipalController implements Initializable {
         try {
             carregarTela("telaInventario");
         } catch (IOException e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Home: " + e.getMessage());
+            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Inventario: " + e.getMessage());
         }
     }
 
@@ -135,7 +136,7 @@ public class PrincipalController implements Initializable {
         try {
             carregarTela("telaConfiguracao");
         } catch (IOException e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Home: " + e.getMessage());
+            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Configuração: " + e.getMessage());
         }
     }
 
@@ -145,7 +146,7 @@ public class PrincipalController implements Initializable {
         try {
             carregarTela("telaConta");
         } catch (IOException e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Home: " + e.getMessage());
+            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Conta: " + e.getMessage());
         }
     }
 
@@ -157,5 +158,17 @@ public class PrincipalController implements Initializable {
             showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Home: " + e.getMessage());
         }
     }
+
+    @FXML
+    private void abrirRelatorios(){
+        try {
+            carregarTela("telaRelatorios");
+        } catch (IOException e){
+            showMessage(Alert.AlertType.ERROR, "Erro ao carregar a tela Relatórios");
+        }
+
+    }
+
+
 
 }

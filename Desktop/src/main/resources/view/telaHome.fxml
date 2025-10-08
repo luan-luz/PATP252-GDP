@@ -11,30 +11,30 @@
 
 
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns="http://javafx.com/javafx/20.0.2" AnchorPane.topAnchor="0.0"
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.topAnchor="0.0"
             AnchorPane.bottomAnchor="0.0"
             AnchorPane.leftAnchor="0.0"
-            AnchorPane.rightAnchor="0.0">
+            AnchorPane.rightAnchor="0.0" fx:controller="ideau.ControlePatrimonioDesktop.controller.DashboardController" style="@css/styles.css">
 <VBox>
    <children>
       <HBox spacing="30.0">
          <children>
             <VBox maxHeight="Infinity" maxWidth="Infinity" VBox.vgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Button" />
-                  <Label text="Label" />
+                  <Button fx:id="btnQtdItens" mnemonicParsing="false" prefHeight="75.0" prefWidth="300.0" text="Button" styleClass="btnDashboard" />
+                  <Label fx:id="lblQtdItens" text="Label"/>
                </children>
             </VBox>
             <VBox maxHeight="Infinity" maxWidth="Infinity" VBox.vgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Button" />
-                  <Label text="Label"/>
+                  <Button fx:id="btnQtdCategorias" mnemonicParsing="false" prefHeight="75.0" prefWidth="300.0" text="Button" styleClass="btnDashboard"/>
+                  <Label fx:id="lblQtdCategorias" text="Label" />
                </children>
             </VBox>
             <VBox maxHeight="Infinity" maxWidth="Infinity" VBox.vgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Button" />
-                  <Label text="Label" />
+                  <Button fx:id="btnValorTotal" mnemonicParsing="false" prefHeight="75.0" prefWidth="300.0" text="Button" styleClass="btnDashboard"/>
+                  <Label fx:id="lblValorTotal" text="Label" />
                </children>
             </VBox>
          </children>
@@ -45,15 +45,15 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="450.0" prefWidth="900.0">
          <children>
-            <LineChart>
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
+            <LineChart fx:id="lineChart" prefHeight="450.0" prefWidth="900.0">
+               <xAxis>
+                  <CategoryAxis fx:id="xAxisDepreciacao" label="Ano" side="BOTTOM"/>
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="yAxisDepreciacao" label="Valor (R$)" side="LEFT" />
+               </yAxis>
             </LineChart>
          </children>
       </HBox>
