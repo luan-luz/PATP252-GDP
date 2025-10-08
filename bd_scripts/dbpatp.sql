@@ -51,7 +51,7 @@ CREATE TABLE notas_f (
     chave_acesso VARCHAR(44),
     n_serie VARCHAR(50),
     n_nfe VARCHAR(50),
-    dt_aquisicao DATE,
+    dt_emissao DATE,
     vlr_total NUMERIC(12,2),
     fornecedor_id BIGINT REFERENCES fornecedores(id)
 );

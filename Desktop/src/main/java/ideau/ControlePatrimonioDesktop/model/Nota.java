@@ -1,19 +1,30 @@
 package ideau.ControlePatrimonioDesktop.model;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Nota {
     private Long id;
-    private String serie;
-    private String numNota;
     private String chaveNota;
-    private LocalDateTime dtEmissao;
-    private Double vlrTotal;
+    private String serieNota;
+    private String numNota;
+    private LocalDate dtEmissao;
+    private BigDecimal vlrTotal;
     private Long idFornecedor;
 
-    public Nota(Long id, String serie, String numNota, String chaveNota, LocalDateTime dtEmissao, Double vlrTotal, Long idFornecedor) {
+    public Nota() {};
+
+    public Nota(Long id, String numNota, String serieNota, String chaveNota, BigDecimal vlrTotal, LocalDate dtEmissao, Long idFornecedor) {
         this.id = id;
-        this.serie = serie;
+        this.serieNota = serieNota;
+        this.numNota = numNota;
+        this.chaveNota = chaveNota;
+        this.dtEmissao = dtEmissao;
+        this.vlrTotal = vlrTotal;
+        this.idFornecedor = idFornecedor;
+    }
+    public Nota(String numNota, String serieNota, String chaveNota, BigDecimal vlrTotal, LocalDate dtEmissao, Long idFornecedor) {
+        this.serieNota = serieNota;
         this.numNota = numNota;
         this.chaveNota = chaveNota;
         this.dtEmissao = dtEmissao;
@@ -29,12 +40,12 @@ public class Nota {
         this.id = id;
     }
 
-    public String getSerie() {
-        return serie;
+    public String getSerieNota() {
+        return serieNota;
     }
 
-    public void setSerie(String serie) {
-        this.serie = serie;
+    public void setSerie(String serieNota) {
+        this.serieNota = serieNota;
     }
 
     public String getNumNota() {
@@ -53,19 +64,19 @@ public class Nota {
         this.chaveNota = chaveNota;
     }
 
-    public LocalDateTime getDtEmissao() {
+    public LocalDate getDtEmissao() {
         return dtEmissao;
     }
 
-    public void setDtEmissao(LocalDateTime dtEmissao) {
+    public void setDtEmissao(LocalDate dtEmissao) {
         this.dtEmissao = dtEmissao;
     }
 
-    public Double getVlrTotal() {
+    public BigDecimal getVlrTotal() {
         return vlrTotal;
     }
 
-    public void setVlrTotal(Double vlrTotal) {
+    public void setVlrTotal(BigDecimal vlrTotal) {
         this.vlrTotal = vlrTotal;
     }
 
@@ -77,4 +88,3 @@ public class Nota {
         this.idFornecedor = idFornecedor;
     }
 }
-//falar com diretor

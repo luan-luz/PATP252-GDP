@@ -418,7 +418,12 @@ public class CadastroPatrimonioController implements Initializable {
     }
     @FXML
     void abrirTelaSelecNota(ActionEvent event) {
-        edtNumNota.setText("1");
+
+        try {
+//            abrirTelaSelecao()
+        } catch (Exception e) {
+            showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Notas: " + e.getMessage());
+        }
     }
 
 

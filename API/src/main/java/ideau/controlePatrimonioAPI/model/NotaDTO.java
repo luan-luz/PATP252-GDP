@@ -3,33 +3,36 @@ package ideau.controlePatrimonioAPI.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Nota {
+public class NotaDTO {
     private Long id;
     private String chaveNota;
     private String serieNota;
     private String numNota;
     private LocalDate dtEmissao;
     private BigDecimal vlrTotal;
-    private Long idFornecedor;
+    private String nomeFornecedor;
 
-    public Nota() {};
+    public NotaDTO() {};
 
-    public Nota(Long id, String numNota, String serieNota, String chaveNota, BigDecimal vlrTotal, LocalDate dtEmissao, Long idFornecedor) {
+    public NotaDTO(Long id) {this.id = id;};
+
+    public NotaDTO(Long id, String numNota, String serieNota, String chaveNota, BigDecimal vlrTotal, LocalDate dtEmissao, String nomeFornecedor) {
         this.id = id;
         this.serieNota = serieNota;
         this.numNota = numNota;
         this.chaveNota = chaveNota;
         this.dtEmissao = dtEmissao;
         this.vlrTotal = vlrTotal;
-        this.idFornecedor = idFornecedor;
+        this.nomeFornecedor = nomeFornecedor;
+
     }
-    public Nota(String numNota, String serieNota, String chaveNota, BigDecimal vlrTotal, LocalDate dtEmissao, Long idFornecedor) {
+    public NotaDTO(String numNota, String serieNota, String chaveNota, BigDecimal vlrTotal, LocalDate dtEmissao, String nomeFornecedor) {
         this.serieNota = serieNota;
         this.numNota = numNota;
         this.chaveNota = chaveNota;
         this.dtEmissao = dtEmissao;
         this.vlrTotal = vlrTotal;
-        this.idFornecedor = idFornecedor;
+        this.nomeFornecedor = nomeFornecedor;
     }
 
     public Long getId() {
@@ -40,7 +43,7 @@ public class Nota {
         this.id = id;
     }
 
-    public String getSerieNota() {
+    public String getSerie() {
         return serieNota;
     }
 
@@ -80,11 +83,11 @@ public class Nota {
         this.vlrTotal = vlrTotal;
     }
 
-    public Long getIdFornecedor() {
-        return idFornecedor;
+    public String getNomeFornecedor() {
+        return this.nomeFornecedor;
     }
 
-    public void setIdFornecedor(Long idFornecedor) {
-        this.idFornecedor = idFornecedor;
+    public void setNomeFornecedor(String nomeFornecedor) {
+        this.nomeFornecedor = nomeFornecedor;
     }
 }

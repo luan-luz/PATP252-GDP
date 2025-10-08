@@ -9,7 +9,7 @@ public class PatrimonioDTO {
     private String nomeLocal;
     private String nomeStatus;
     private String numNota;
-    private String serieNota;
+    private String serieNotaNota;
     private String numPatr;
     private BigDecimal valCompra;
     private BigDecimal aliqDeprecMes;
@@ -48,11 +48,11 @@ public class PatrimonioDTO {
     }
 
     public String getSerieNota() {
-        return serieNota;
+        return serieNotaNota;
     }
 
-    public void setSerieNota(String serieNota) {
-        this.serieNota = serieNota;
+    public void setSerieNota(String serieNotaNota) {
+        this.serieNotaNota = serieNotaNota;
     }
 
     public String getNumNota() {
@@ -94,26 +94,26 @@ public class PatrimonioDTO {
         this.dtAquisicao = dtAquisicao;
     }
 
-    public PatrimonioDTO(Long id, String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNota,
+    public PatrimonioDTO(Long id, String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNotaNota,
                          String numPatr, BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.id = id;
         this.nomeItem = nomeItem;
         this.nomeStatus = nomeStatus;
         this.nomeLocal = nomeLocal;
         this.numNota = numNota;
-        this.serieNota = serieNota;
+        this.serieNotaNota = serieNotaNota;
         this.numPatr = numPatr;
         this.valCompra = valCompra;
         this.aliqDeprecMes = aliqDeprecMes;
         this.dtAquisicao = dtAquisicao;
     }
-    public PatrimonioDTO(String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNota,
+    public PatrimonioDTO(String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNotaNota,
                          String numPatr, BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.nomeItem = nomeItem;
         this.nomeStatus = nomeStatus;
         this.nomeLocal = nomeLocal;
         this.numNota = numNota;
-        this.serieNota = serieNota;
+        this.serieNotaNota = serieNotaNota;
         this.numPatr = numPatr;
         this.valCompra = valCompra;
         this.aliqDeprecMes = aliqDeprecMes;
