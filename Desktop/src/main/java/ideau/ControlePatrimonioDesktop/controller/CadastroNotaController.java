@@ -4,17 +4,22 @@ import ideau.ControlePatrimonioDesktop.model.Nota;
 import ideau.ControlePatrimonioDesktop.model.NotaDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
 
 import java.math.BigDecimal;
+import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import static ideau.ControlePatrimonioDesktop.utils.ShowMessage.showMessage;
 import static ideau.ControlePatrimonioDesktop.utils.Utils.*;
 
-public class CadastroNotaController {
+public class CadastroNotaController implements Initializable {
 
     @FXML
     private Button btnAdicionar;
@@ -44,23 +49,22 @@ public class CadastroNotaController {
     private Button btnSelecFornec;
 
     @FXML
-    private TableColumn<Nota, BigDecimal> colAliquota;
+    private TableColumn<NotaDTO, String> colChAcessoNfe;
 
     @FXML
-    private TableColumn<Nota, String> colLocal;
+    private TableColumn<NotaDTO, LocalDate> colDtEmissao;
 
     @FXML
-    private TableColumn<Nota, String> colNomeItem;
+    private TableColumn<NotaDTO, String> colFornecedor;
 
     @FXML
-    private TableColumn<Nota, String> colNumPatr;
+    private TableColumn<NotaDTO, String> colNumNfe;
 
     @FXML
-    private TableColumn<Nota, String> colStatus;
+    private TableColumn<NotaDTO, String> colSerieNfe;
 
     @FXML
-    private TableColumn<Nota, String> colValCompra;
-
+    private TableColumn<NotaDTO, BigDecimal> colValTot;
     @FXML
     private DatePicker dtpDtAquisicao;
 
@@ -86,7 +90,17 @@ public class CadastroNotaController {
     private Region regEsquerdo;
 
     @FXML
-    private TableView<Nota> tblNotas;
+    private TableView<NotaDTO> tblNotas;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        colNumNfe.setCellValueFactory(new PropertyValueFactory<>("numNota"));
+        colSerieNfe.setCellValueFactory(new PropertyValueFactory<>("serieNota"));
+        colChAcessoNfe.setCellValueFactory(new PropertyValueFactory<>("chaveNota"));
+        colDtEmissao.setCellValueFactory(new PropertyValueFactory<>("dtEmissao"));
+        colValTot.setCellValueFactory(new PropertyValueFactory<>("vltTotal"));
+        colFornecedor.setCellValueFactory(new PropertyValueFactory<>("nomeFornecedor"));
+    }
 
     @FXML
     void AbrirTelaSelecFornec(ActionEvent event) {
@@ -99,15 +113,16 @@ public class CadastroNotaController {
     }
 
     @FXML
-    void AddNotaTbl(ActionEvent event) {
+    void AddNotaTbl() {
         NotaDTO dto = new NotaDTO(
                 edtNumNfe.getText(),
                 edtSerieNfe.getText(),
                 edtChAcesso.getText(),
-                BigDecimal.valueOf(edtValTot.getText()),
+                new BigDecimal(edtValTot.getText()),
                 dtpDtAquisicao.getValue(),
                 edtFornecedor.getText()
         );
+        tblNotas.getItems().add(dto);
     }
 
     @FXML
@@ -131,8 +146,12 @@ public class CadastroNotaController {
     }
 
     @FXML
-    void limparCampos(ActionEvent event) {
-
+    void limparCampos() {
+        edtNumNfe.clear();
+        edtSerieNfe.clear();
+        edtChAcesso.clear();
+        edtValTot.clear();
+        edtFornecedor.clear();
     }
 
     @FXML

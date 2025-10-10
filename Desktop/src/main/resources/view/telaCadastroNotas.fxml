@@ -150,12 +150,12 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                      <columns>
-                        <TableColumn fx:id="colNomeItem" prefWidth="82.0" text="Núm. NF-e" />
-                        <TableColumn fx:id="colStatus" prefWidth="78.0" text="Série NF-e" />
-                        <TableColumn fx:id="colLocal" prefWidth="287.0" text="Ch. Acesso" />
-                        <TableColumn fx:id="colNumPatr" prefWidth="141.0" text="Val. Total" />
-                        <TableColumn fx:id="colValCompra" prefWidth="160.0" text="Dt. Aquisição" />
-                        <TableColumn fx:id="colAliquota" prefWidth="279.0" text="Fornecedor" />
+                        <TableColumn fx:id="colNumNfe" prefWidth="82.0" text="Núm. NF-e" />
+                        <TableColumn fx:id="colSerieNfe" prefWidth="78.0" text="Série NF-e" />
+                        <TableColumn fx:id="colChAcessoNfe" prefWidth="287.0" text="Ch. Acesso" />
+                        <TableColumn fx:id="colValTot" prefWidth="141.0" text="Val. Total" />
+                        <TableColumn fx:id="colDtEmissao" prefWidth="160.0" text="Dt. Emissão" />
+                        <TableColumn fx:id="colFornecedor" prefWidth="279.0" text="Fornecedor" />
                      </columns>
                   </TableView>
                   <VBox alignment="CENTER" spacing="15.0">
