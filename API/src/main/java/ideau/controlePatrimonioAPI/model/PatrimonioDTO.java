@@ -1,5 +1,7 @@
 package ideau.controlePatrimonioAPI.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -9,10 +11,11 @@ public class PatrimonioDTO {
     private String nomeLocal;
     private String nomeStatus;
     private String numNota;
-    private String serieNotaNota;
+    private String serieNota;
     private String numPatr;
     private BigDecimal valCompra;
     private BigDecimal aliqDeprecMes;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dtAquisicao;
 
     public Long getId() {
@@ -48,11 +51,11 @@ public class PatrimonioDTO {
     }
 
     public String getSerieNota() {
-        return serieNotaNota;
+        return serieNota;
     }
 
-    public void setSerieNota(String serieNotaNota) {
-        this.serieNotaNota = serieNotaNota;
+    public void setSerieNota(String serieNota) {
+        this.serieNota = serieNota;
     }
 
     public String getNumNota() {
@@ -94,26 +97,26 @@ public class PatrimonioDTO {
         this.dtAquisicao = dtAquisicao;
     }
 
-    public PatrimonioDTO(Long id, String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNotaNota,
+    public PatrimonioDTO(Long id, String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNota,
                          String numPatr, BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.id = id;
         this.nomeItem = nomeItem;
         this.nomeStatus = nomeStatus;
         this.nomeLocal = nomeLocal;
         this.numNota = numNota;
-        this.serieNotaNota = serieNotaNota;
+        this.serieNota = serieNota;
         this.numPatr = numPatr;
         this.valCompra = valCompra;
         this.aliqDeprecMes = aliqDeprecMes;
         this.dtAquisicao = dtAquisicao;
     }
-    public PatrimonioDTO(String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNotaNota,
+    public PatrimonioDTO(String nomeItem, String nomeStatus, String nomeLocal, String numNota, String serieNota,
                          String numPatr, BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.nomeItem = nomeItem;
         this.nomeStatus = nomeStatus;
         this.nomeLocal = nomeLocal;
         this.numNota = numNota;
-        this.serieNotaNota = serieNotaNota;
+        this.serieNota = serieNota;
         this.numPatr = numPatr;
         this.valCompra = valCompra;
         this.aliqDeprecMes = aliqDeprecMes;

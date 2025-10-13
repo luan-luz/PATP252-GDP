@@ -1,5 +1,7 @@
 package ideau.controlePatrimonioAPI.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -8,6 +10,7 @@ public class NotaDTO {
     private String chaveNota;
     private String serieNota;
     private String numNota;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dtEmissao;
     private BigDecimal vlrTotal;
     private String nomeFornecedor;
@@ -43,11 +46,11 @@ public class NotaDTO {
         this.id = id;
     }
 
-    public String getSerie() {
+    public String getSerieNota() {
         return serieNota;
     }
 
-    public void setSerie(String serieNota) {
+    public void setSerieNota(String serieNota) {
         this.serieNota = serieNota;
     }
 

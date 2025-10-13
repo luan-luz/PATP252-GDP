@@ -1,34 +1,34 @@
 package ideau.ControlePatrimonioDesktop.model;
 
-public class Fornecedor {
+public class FornecedorDTO {
     private Long id;
     private String razaoSocial;
     private String nomeFantasia;
     private String CNPJ;
     private String IE;
-    private Long idLogradouro;
+    private String nomeLogradouro;
     private String numero;
     private String complemento;
 
-    public Fornecedor() {};
+    public FornecedorDTO() {};
 
-    public Fornecedor(String razaoSocial, String nomeFantasia, String CNPJ, String IE, Long idLogradouro, String numero, String complemento) {
+    public FornecedorDTO(String razaoSocial, String nomeFantasia, String CNPJ, String IE, String nomeLogradouro, String numero, String complemento) {
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
         this.CNPJ = CNPJ;
         this.IE = IE;
-        this.idLogradouro = idLogradouro;
+        this.nomeLogradouro = nomeLogradouro;
         this.numero = numero;
         this.complemento = complemento;
     }
 
-    public Fornecedor(Long id, String razaoSocial, String nomeFantasia, String CNPJ, String IE, Long idLogradouro, String numero, String complemento) {
+    public FornecedorDTO(Long id, String razaoSocial, String nomeFantasia, String CNPJ, String IE, String nomeLogradouro, String numero, String complemento) {
         this.id = id;
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
         this.CNPJ = CNPJ;
         this.IE = IE;
-        this.idLogradouro = idLogradouro;
+        this.nomeLogradouro = nomeLogradouro;
         this.numero = numero;
         this.complemento = complemento;
     }
@@ -73,12 +73,12 @@ public class Fornecedor {
         this.IE = IE;
     }
 
-    public Long getIdLogradouro() {
-        return idLogradouro;
+    public String getNomeLogradouro() {
+        return nomeLogradouro;
     }
 
-    public void setIdLogradouro(Long idLogradouro) {
-        this.idLogradouro = idLogradouro;
+    public void setNomeLogradouro(String nomeLogradouro) {
+        this.nomeLogradouro = nomeLogradouro;
     }
 
     public String getNumero() {

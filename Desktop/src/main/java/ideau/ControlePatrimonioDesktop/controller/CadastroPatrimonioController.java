@@ -134,6 +134,7 @@ public class CadastroPatrimonioController implements Initializable {
     List<ItemDTO> lstItens;
     List<Local> lstLocal;
     List<Status> lstStatus;
+    List<NotaDTO> lstNota;
 
     public void initialize(URL Location, ResourceBundle resources) {
         this.http = new HTTPTransmit();
@@ -218,9 +219,18 @@ public class CadastroPatrimonioController implements Initializable {
             Long idItem;
             Long idLocal;
             Long idStatus;
-            Long idNota;
+            Long idNota = null;
             List<PatrimonioDTO> patrTbl = tblPatrimonios.getItems();
             for (PatrimonioDTO dto : patrTbl) {
+                if (idNota == null) {
+                    idNota = lstNota
+                            .stream()
+                            .filter(entry -> entry.getNumNota().equals(dto.getNumNota()) &&
+                                                      entry.getSerieNota().equals(dto.getSerieNota()))
+                            .map(NotaDTO::getId)
+                            .findFirst()
+                            .orElse(null);
+                }
                 idItem = lstItens
                         .stream()
                         .filter(entry -> entry.getNomeItem().equals(dto.getNomeItem()))
@@ -239,20 +249,20 @@ public class CadastroPatrimonioController implements Initializable {
                         .map(Status::getId)
                         .findFirst()
                         .orElse(null);
-                idNota = 1L;//ajustar
                 mapPatr.put(cont, new Patrimonio(idItem, idStatus, idLocal, idNota, dto.getNumPatr(), dto.getValCompra(),
                         dto.getAliqDeprecMes(), dto.getDtAquisicao()));
                 cont++;
             }
             //Serializando para JSON
             String body = mapper.writeValueAsString(mapPatr);
+            System.out.println(body);
             mapPatr.clear();
             //Mandando a request para a API e pegando a resposta
             RespostaHTTP resp = http.post("http://localhost:8080/patrimonio", body);
 
             if (resp.getHttpStatus() < 206) { //206 para baixo são retornos válidos
                 Map<Integer, PatrimonioDTO> dto = mapper.readValue(resp.getBody(), new TypeReference<Map<Integer, PatrimonioDTO>>() {});
-                showMessage(Alert.AlertType.INFORMATION, "Itens Cadastrados com Sucesso!");
+                showMessage(Alert.AlertType.INFORMATION, "Patrimônios Cadastrados com Sucesso!");
                 tblPatrimonios.getItems().clear();
                 edtNumNota.clear();
             } else {
@@ -418,9 +428,24 @@ public class CadastroPatrimonioController implements Initializable {
     }
     @FXML
     void abrirTelaSelecNota(ActionEvent event) {
-
+        Map<String, String> mapColunas = new LinkedHashMap<>();
+        mapColunas.put("ID", "id");
+        mapColunas.put("Ch. de Acesso", "chaveNota");
+        mapColunas.put("Série", "serieNota");
+        mapColunas.put("Número", "numNota");
+        mapColunas.put("Dt. Emissão", "dtEmissao");
+        mapColunas.put("Val. Tot.", "vlrTotal");
+        mapColunas.put("Fornecedor", "nomeFornecedor");
         try {
-//            abrirTelaSelecao()
+            RespostaHTTP resp = http.get("http://localhost:8080/nota");
+            if (resp.getHttpStatus() <= 206) {
+                System.out.println(resp.getBody());
+                lstNota = mapper.readValue(resp.getBody(), new TypeReference<List<NotaDTO>>() {});
+                NotaDTO notaSelec = abrirTelaSelecao(lstNota, mapColunas, "Notas");
+                if (notaSelec != null) {edtNumNota.setText(notaSelec.getNumNota() + "/" + notaSelec.getSerieNota());}
+            } else {
+                throw new RuntimeException("Status: " + resp.getHttpStatus() + " Erro: " + resp.getBody());
+            }
         } catch (Exception e) {
             showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Notas: " + e.getMessage());
         }
@@ -487,14 +512,14 @@ public class CadastroPatrimonioController implements Initializable {
                 showMessage(Alert.AlertType.ERROR, "O valor: " + edtAliquota.getText() + " não é válido!");
             }
         }
-
+        String[] numSerieNota = edtNumNota.getText().split("/");
         if (booPodeProsseguir) {
             for (int i = 1; i <= qtd; i++) {
                 tblPatrimonios.getItems().add(new PatrimonioDTO(edtNomeItem.getText(),
                                                                 edtStatus.getText(),
                                                                 edtLocal.getText(),
-                                                                edtNumNota.getText(),
-                                                                "1", //ajustar
+                                                                numSerieNota[0],
+                                                                numSerieNota[1],
                                                                 edtNumPatr.getText(),
                                                                 valCompra,
                                                                 aliquota,

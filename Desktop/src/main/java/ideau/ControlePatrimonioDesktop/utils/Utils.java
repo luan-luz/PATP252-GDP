@@ -74,8 +74,7 @@ public class Utils {
         stage.setScene(new Scene(loader.load()));
         Object controller = loader.getController();
 
-        //Todo novo controller de edição deve ser colocado aqui. Deve ter o método setObjEdicao, para retornar o
-        // objeto editado e colocar na tabela
+        //Todo novo controller de edição deve ser colocado aqui. Deve ter o método setObjEdicao
         if(controller instanceof EdicaoItemController edicaoController) {
             edicaoController.setObjEdicao((ItemDTO) obj);
         }

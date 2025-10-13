@@ -1,5 +1,7 @@
 package ideau.controlePatrimonioAPI.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -12,6 +14,7 @@ public class Patrimonio {
     private String numPatr;
     private BigDecimal valCompra;
     private BigDecimal aliqDeprecMes;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dtAquisicao;
 
     public Long getId() {

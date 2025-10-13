@@ -72,7 +72,7 @@ public class PatrimonioRepositoryImpl implements GenericRepository<Patrimonio, P
                 "  s.nome as nomeStatus," +
                 "  l.nome as nomeLocal," +
                 "  n.n_nfe as numNota," +
-                "  n.n_serieNota as serieNotaNota," +
+                "  n.n_serie as serieNota," +
                 "  p.num_patr as numPatr," +
                 "  p.val_compra as valCompra," +
                 "  p.aliq_deprec_mes as aliquota," +
@@ -99,7 +99,7 @@ public class PatrimonioRepositoryImpl implements GenericRepository<Patrimonio, P
                             rs.getString("nomeStatus"),
                             rs.getString("nomeLocal"),
                             rs.getString("numNota"),
-                            rs.getString("serieNotaNota"),
+                            rs.getString("serieNota"),
                             rs.getString("numPatr"),
                             rs.getBigDecimal("valCompra"),
                             rs.getBigDecimal("aliquota"),
@@ -122,7 +122,7 @@ public class PatrimonioRepositoryImpl implements GenericRepository<Patrimonio, P
                 "  s.nome as nomeStatus," +
                 "  l.nome as nomeLocal," +
                 "  n.n_nfe as numNota," +
-                "  n.n_serieNota as serieNotaNota," +
+                "  n.n_serie as serieNota," +
                 "  p.num_patr as numPatr," +
                 "  p.val_compra as valCompra," +
                 "  p.aliq_deprec_mes as aliquota," +
@@ -151,7 +151,7 @@ public class PatrimonioRepositoryImpl implements GenericRepository<Patrimonio, P
                             rs.getString("nomeStatus"),
                             rs.getString("nomeLocal"),
                             rs.getString("numNota"),
-                            rs.getString("serieNotaNota"),
+                            rs.getString("serieNota"),
                             rs.getString("numPatr"),
                             rs.getBigDecimal("valCompra"),
                             rs.getBigDecimal("aliquota"),

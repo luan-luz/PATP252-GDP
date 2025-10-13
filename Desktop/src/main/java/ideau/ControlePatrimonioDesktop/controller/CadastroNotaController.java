@@ -1,5 +1,6 @@
 package ideau.ControlePatrimonioDesktop.controller;
 
+import ideau.ControlePatrimonioDesktop.model.FornecedorDTO;
 import ideau.ControlePatrimonioDesktop.model.Nota;
 import ideau.ControlePatrimonioDesktop.model.NotaDTO;
 import javafx.event.ActionEvent;
@@ -12,9 +13,7 @@ import javafx.scene.layout.Region;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static ideau.ControlePatrimonioDesktop.utils.ShowMessage.showMessage;
 import static ideau.ControlePatrimonioDesktop.utils.Utils.*;
@@ -105,8 +104,21 @@ public class CadastroNotaController implements Initializable {
     @FXML
     void AbrirTelaSelecFornec(ActionEvent event) {
         try {
-            List<NotaDTO> dados = List.of();
-//            abrirTelaSelecao(dados,);
+            Map<String, String> mapColunas = new LinkedHashMap<>();
+            List<FornecedorDTO> dados = List.of(
+                    new FornecedorDTO(1L, "Faculdades IDEAU", "IDEAU", "1234567890123", "123456", "Avenida Rui Barbosa", "123", "Prédio"),
+                    new FornecedorDTO(1L, "Alfasig Comércio de Hardware e Serviços", "Alfasig", "07858433000121", "221100", "Rua Coronel Chicuta", "436", "Prédio"),
+                    new FornecedorDTO(1L, "Quiosque das Frutas LTDA", "Quiosque das Frutas", "12345432100012", "123031", "Rua Senador Salgado Filho", "840", "Casa")
+            );
+            mapColunas.put("ID", "id");
+            mapColunas.put("Razão Social", "razaoSocial");
+            mapColunas.put("Nome Fantasia", "nomeFantasia");
+            mapColunas.put("CNPJ", "CNPJ");
+            mapColunas.put("Insc. Estad.", "IE");
+            mapColunas.put("Logradouro", "nomeLogradouro");
+            mapColunas.put("Número", "numero");
+            mapColunas.put("Complemento", "complemento");
+            abrirTelaSelecao(dados, mapColunas, "Fornecedores");
         } catch (Exception e) {
             showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Fornecedores: " + e.getMessage());
         }
