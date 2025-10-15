@@ -76,7 +76,7 @@ public class EdicaoNotasController implements Initializable {
 //                throw new RuntimeException("Status: " + resp.getHttpStatus() + "Mensagem: " + resp.getBody());
 //            }
 
-            List<FornecedorDTO> fornecedores = List.of(new FornecedorDTO("Papelita Ind e Com de Papeis LTDA", "Papelita", "12345678901234", "2316555", "Rua General Osório", "5620", "Sala 1"));
+            List<FornecedorDTO> fornecedores = List.of(new FornecedorDTO(1L,"Papelita Ind e Com de Papeis LTDA", "Papelita", "12345678901234", "2316555", "Rua General Osório", "5620", "Sala 1"));
             FornecedorDTO fornecSelec = abrirTelaSelecao(fornecedores,
                     Map.of("ID", "id",
                             "Razão Social", "razaoSocial"),

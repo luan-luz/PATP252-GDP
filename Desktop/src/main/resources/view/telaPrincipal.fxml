@@ -96,7 +96,7 @@
                         </HBox>
                         <HBox fx:id="btnPatrimonios" prefHeight="100.0" prefWidth="200.0" styleClass="boxSidebar">
                             <children>
-                                <Button fx:id="btnInventario" alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false"  onMouseClicked="#abrirInventario" prefWidth="120.0" styleClass="btnMenu" text="Inventario">
+                                <Button fx:id="btnVisualizar" alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="10" mnemonicParsing="false"  onMouseClicked="#abrirVisualizar" prefWidth="120.0" styleClass="btnMenu" text="Visualizar">
                                     <graphic>
                                         <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
                                             <image>

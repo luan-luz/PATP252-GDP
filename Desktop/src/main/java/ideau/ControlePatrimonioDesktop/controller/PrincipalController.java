@@ -123,11 +123,11 @@ public class PrincipalController implements Initializable {
     }
 
     @FXML
-    private void abrirInventario(MouseEvent event) {
+    private void abrirVisualizar(MouseEvent event) {
         try {
-            carregarTela("telaInventario");
+            carregarTela("telaVisualizar");
         } catch (IOException e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Inventario: " + e.getMessage());
+            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela de visualização: " + e.getMessage());
         }
     }
 
