@@ -91,8 +91,8 @@ public class PatrimonioRepositoryImpl implements GenericRepository<Patrimonio, P
         try (Connection con = ds.getConnection();
              PreparedStatement stmt = con.prepareStatement(sql)) {
             try (ResultSet rs = stmt.executeQuery()) {
-                LocalDate dtAquisicao = (rs.getDate("dtAquisicao") == null) ? null : rs.getDate("dtAquisicao").toLocalDate();
                 while (rs.next()) {
+                    LocalDate dtAquisicao = (rs.getDate("dtAquisicao") == null) ? null : rs.getDate("dtAquisicao").toLocalDate();
                     lstRetorno.add(new PatrimonioDTO(
                             rs.getLong("id"),
                             rs.getString("nomeItem"),

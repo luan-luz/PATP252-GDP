@@ -68,7 +68,7 @@ CREATE TABLE patrimonio (
     id_local BIGINT,
     id_status BIGINT,
     id_nota BIGINT,
-    num_patr VARCHAR (14),
+    num_patr VARCHAR (14) DEFAULT '',
     val_compra DECIMAL(10, 2),
     aliq_deprec_mes DECIMAL(10, 2),
     dt_aquisicao DATE,
