@@ -5,67 +5,69 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.RelatorioController">
    <children>
       <VBox alignment="TOP_CENTER" prefWidth="1050.0" spacing="15.0">
          <children>
-            <HBox spacing="30.0" VBox.vgrow="ALWAYS">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Label text="Label" />
+            <VBox prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="btnRlt" text="Button" />
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="btnRlt" text="Button" />
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="btnRlt" text="Button" />
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="btnRlt" text="Button" />
-               </children>
-            </HBox>
-            <HBox spacing="15.0">
-               <children>
-                  <VBox spacing="3.0" HBox.hgrow="ALWAYS">
+                  <HBox prefHeight="30.0" prefWidth="200.0">
                      <children>
-                        <ListView VBox.vgrow="ALWAYS">
-                           <VBox.margin>
-                              <Insets bottom="15.0" />
-                           </VBox.margin>
-                        </ListView>
+                        <Label text="icon " />
+                        <Label text="Relatório de Patrimônios: " />
                      </children>
-                  </VBox>
-                  <VBox spacing="9.0" HBox.hgrow="ALWAYS">
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="150.0" spacing="30.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <HBox spacing="15.0" VBox.vgrow="ALWAYS">
+                        <VBox spacing="3.0">
                            <children>
-                              <VBox spacing="15.0">
-                                 <children>
-                                    <Label text="Busca" />
-                                    <TextField />
-                                    <Label text="Data inicial" />
-                                    <DatePicker />
-                                    <Button mnemonicParsing="false" text="Filtrar" />
-                                 </children>
-                              </VBox>
-                              <VBox spacing="15.0">
-                                 <children>
-                                    <Label text="Categoria" />
-                                    <ComboBox prefWidth="150.0" />
-                                    <Label text="Data final" />
-                                    <DatePicker />
-                                 </children>
-                              </VBox>
+                              <Label text="Cadastro de:" />
+                              <DatePicker />
+                              <Label text="Setores" />
+                              <ComboBox prefWidth="150.0" promptText="Todos" />
                            </children>
-                        </HBox>
-                        <Button mnemonicParsing="false" text="Button" />
-                        <ListView minWidth="300.0" prefHeight="306.0" VBox.vgrow="ALWAYS" />
+                        </VBox>
+                        <VBox spacing="3.0">
+                           <children>
+                              <Label text="Até" />
+                              <DatePicker />
+                              <Label text="Imprimir Valores" />
+                              <ComboBox prefWidth="150.0" promptText="Sim" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="3.0">
+                           <children>
+                              <Label text="Categoria" />
+                              <ComboBox prefWidth="150.0" promptText="Todas" />
+                              <Label text="Excel ou PDF" />
+                              <ComboBox prefWidth="150.0" promptText="Excel" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="3.0">
+                           <children>
+                              <Label text="Situação" />
+                              <ComboBox prefWidth="150.0" promptText="Todas" />
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Gerar">
+                                 <VBox.margin>
+                                    <Insets left="45.0" top="18.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
                      </children>
                      <padding>
-                        <Insets bottom="15.0" />
+                        <Insets top="21.0" />
                      </padding>
-                  </VBox>
+                  </HBox>
                </children>
-            </HBox>
+            </VBox>
          </children>
          <padding>
             <Insets left="30.0" right="30.0" />

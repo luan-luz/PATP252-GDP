@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import static ideau.ControlePatrimonioDesktop.utils.ShowMessage.showMessage;
 
+
 public class LoginController implements Initializable{
 
     @FXML

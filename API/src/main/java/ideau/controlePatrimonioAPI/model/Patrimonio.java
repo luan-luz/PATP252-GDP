@@ -95,6 +95,7 @@ public class Patrimonio {
         this.aliqDeprecMes = aliqDeprecMes;
         this.dtAquisicao = dtAquisicao;
     }
+
     public Patrimonio(Long idItem, Long idStatus, Long idLocal, Long idNota, String numPatr,
                       BigDecimal valCompra, BigDecimal aliqDeprecMes, LocalDate dtAquisicao) {
         this.idItem = idItem;

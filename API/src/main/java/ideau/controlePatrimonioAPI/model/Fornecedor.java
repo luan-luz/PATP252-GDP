@@ -25,7 +25,6 @@ public class Fornecedor {
     private String nomeLogradouro;
     private String numero;
     private String complemento;
-
     public Fornecedor(Long id) {
         this.id = id;
     }
