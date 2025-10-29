@@ -9,4 +9,5 @@ public interface PatrimonioService extends GenericService<Patrimonio, Patrimonio
     List<PatrimonioDTO> retornarPorIdStatus(Long idStatus);
     List<PatrimonioDTO> retornarPorIdLocal(Long idLocal);
     List<PatrimonioDTO> retornarPorIdNota(Long idNota);
+    boolean verificaExistenciaNumPatr(String numPatr);
 }

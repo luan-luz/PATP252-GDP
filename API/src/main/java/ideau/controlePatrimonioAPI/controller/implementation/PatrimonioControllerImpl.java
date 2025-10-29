@@ -36,6 +36,12 @@ public class PatrimonioControllerImpl implements PatrimonioController {
     }
 
     @Override
+    @GetMapping(params = "numPatr")
+    public boolean verificaExistenciaNumPatr(@RequestParam String numPatr) {
+        return svc.verificaExistenciaNumPatr(numPatr);
+    }
+
+    @Override
     @PostMapping
     public Map<Integer, PatrimonioDTO> cadastra(@RequestBody Map<Integer, Patrimonio> mapObjs) {
         return svc.cadastrarLote(mapObjs);
@@ -54,12 +60,14 @@ public class PatrimonioControllerImpl implements PatrimonioController {
     }
 
     @Override
-    public PatrimonioDTO atualiza(Patrimonio obj) {
-        return null;
+    @PutMapping
+    public PatrimonioDTO atualiza(@RequestBody Patrimonio obj) {
+        return svc.atualizar(obj);
     }
 
     @Override
+    @DeleteMapping
     public ResponseEntity<Void> deleta(Long id) {
-        return null;
+        return svc.deletar(id);
     }
 }

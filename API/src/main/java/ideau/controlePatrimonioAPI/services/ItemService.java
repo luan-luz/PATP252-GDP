@@ -8,6 +8,4 @@ import java.util.Map;
 
 public interface ItemService extends GenericService<Item, ItemDTO> {
     List<ItemDTO> retornarPorIdCategoria(Long idCategoria);
-    List<ItemDTO> retornarPorIdLocal(Long idLocal);
-    List<ItemDTO> retornarPorIdStatus(Long idStatus);
 }

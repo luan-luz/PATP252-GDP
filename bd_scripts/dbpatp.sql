@@ -25,7 +25,7 @@ CREATE TABLE fornecedores (
     nome_fantasia VARCHAR(150),
     cnpj CHAR(14) NOT NULL UNIQUE,
     ie VARCHAR(20),
-    id_logradouro INT NOT NULL,
+    logradouro VARCHAR(100) NOT NULL,
     numero VARCHAR(10),
     complemento VARCHAR(30),
     FOREIGN KEY (id) REFERENCES logradouro(id)
@@ -64,9 +64,9 @@ CREATE TABLE item (
 
 CREATE TABLE patrimonio (
     id SERIAL,
-    id_item BIGINT,
-    id_local BIGINT,
-    id_status BIGINT,
+    id_item BIGINT NOT NULL,
+    id_local BIGINT NOT NULL,
+    id_status BIGINT NOT NULL,
     id_nota BIGINT,
     num_patr VARCHAR (14) DEFAULT '',
     val_compra DECIMAL(10, 2),
