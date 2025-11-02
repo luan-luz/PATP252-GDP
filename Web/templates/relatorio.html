@@ -7,32 +7,123 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=chevron_right" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="boots">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css"> 
 
+    <style>
+        body {
+            background: rgb(202, 201, 201);
+            font-family: poppins, san-serif;
+             
+
+        }
+
+        .telarelat {
+            background-color: white;
+            width: 1300px;
+            height: 700px;
+            margin-left: -100px;
+            border-radius:0px 0px 10px 10px;
+
+            
+        }
+
+        .card-summary {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card-summary:hover {
+            transform: scale(1.03);
+        }
+
+        .card-summary h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .card-summary h2 {
+            margin: 5px 0 0;
+            font-weight: bold;
+        }
+
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+    .table-container {
+        margin-top: -350px;
+        margin-left: 20px;
+        width:750px;
+         height: 300px;  
+        overflow-y: auto;  
+    }
+
+    #relatorioTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #relatorioTable th, #relatorioTable td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    #relatorioTable th {
+        background-color: #198754;
+        color: white;
+    }
+
+     h5 {
+        margin-top: -80px;
+    }
+
+    #relatorioTable tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    #relatorioTable tr:hover {
+        background-color: #f1f1f1;
+    }
     
-    
-   <link rel="icon" href="../img/logo.png" type="image/x-icon">
+
+        .chart-container {
+            margin-left: 850px;
+            width: 400px;
+            height: 400px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        
+    </style>
+
+    <link rel="icon" href="../img/logo.png" type="image/x-icon">
     <title>Gestor</title>
 </head>
 <body>
-    <div  class="container">
+    <div class="container">
         <aside id="sidebar" class="item-description">
             <div class="top">
-                
- 
-            <div class="logo ">
-                <img src="../img/logo.png" alt="logo">
-                <span class="text-green">ESTOR</span>
-                <span class="text-light">IDEAU</span>
+                <div class="logo">
+                    <img src="../img/logo.png" alt="logo">
+                    <span class="text-green">ESTOR</span>
+                    <span class="text-light">IDEAU</span>
+                </div>
             </div>
- 
 
-
-
-            </div> 
-
-            <div  class="sidebar" >
+            <div class="sidebar">
                 <a href="home.html">
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>Dashboard</h3>
@@ -59,24 +150,128 @@
                 </a>
 
                 <div class="sair">
-                    <a   href="#">
+                    <a href="#">
                         <span class="material-icons-sharp">settings</span>
                         <h3>Sair</h3>
                     </a>
                 </div> 
+            </div>
         </aside>
 
         <div class="telarelat">
+            <main> 
 
+                <div class="filters mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Data Inicial</label>
+                            <input type="date" class="form-control" id="dataInicio">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Data Final</label>
+                            <input type="date" class="form-control" id="dataFim">
+                        </div>  
+                        <div class="col-md-3">
+                            <label class="form-label">Tipo de Movimentação</label>
+                            <select id="tipoMov" class="form-select">
+                                <option value="">Todos</option>
+                                <option>Em uso</option>
+                                <option>Manutenção</option>
+                                <option>Transferência</option>
+                                <option>Baixa</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 d-flex align-items-end">
+                            <button class="btn btn-success w-100" id="btnFiltrar">Filtrar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-center mb-4">
+                    <div class="col-md-4">
+                        <div class="card-summary">
+                            <h3>Total de Patrimônios</h3>
+                            <h2 id="totalPatrimonio">128</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-summary">
+                            <h3>Ativos</h3>
+                            <h2 id="ativos">96</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-summary">
+                            <h3>Em Manutenção</h3>
+                            <h2 id="manutencao">12</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="graficoRelatorio"></canvas>
+                </div>
+
+<div class="mt-4 bg-white p-3 rounded shadow-sm">   
+    <div class="table-container">
+        <table class="table table-striped" id="relatorioTable">
+            <thead>
+                <tr>
+                    <th>Nº NFe</th>
+                    <th>Data</th>
+                    <th>Fornecedor</th>
+                    <th>Tipo</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>12345</td><td>2025-02-14</td><td>ABC Equipamentos</td><td>Em uso</td><td>Instalado no setor de TI</td></tr>
+                <tr><td>23456</td><td>2025-03-02</td><td>TechParts Ltda</td><td>Manutenção</td><td>Reparo em impressora</td></tr>
+                <tr><td>34567</td><td>2025-04-20</td><td>Oficina Pro</td><td>Transferência</td><td>Movido para filial B</td></tr>
+                <tr><td>45678</td><td>2025-05-10</td><td>LogiTec</td><td>Baixa</td><td>Descarte por obsolescência</td></tr>
+                <tr><td>12345</td><td>2025-02-14</td><td>ABC Equipamentos</td><td>Em uso</td><td>Instalado no setor de TI</td></tr>
+                <tr><td>23456</td><td>2025-03-02</td><td>TechParts Ltda</td><td>Manutenção</td><td>Reparo em impressora</td></tr>
+                <tr><td>34567</td><td>2025-04-20</td><td>Oficina Pro</td><td>Transferência</td><td>Movido para filial B</td></tr>
+                <tr><td>45678</td><td>2025-05-10</td><td>LogiTec</td><td>Baixa</td><td>Descarte por obsolescência</td></tr>
+                <tr><td>12345</td><td>2025-02-14</td><td>ABC Equipamentos</td><td>Em uso</td><td>Instalado no setor de TI</td></tr>
+                <tr><td>23456</td><td>2025-03-02</td><td>TechParts Ltda</td><td>Manutenção</td><td>Reparo em impressora</td></tr>
+                <tr><td>34567</td><td>2025-04-20</td><td>Oficina Pro</td><td>Transferência</td><td>Movido para filial B</td></tr>
+                <tr><td>45678</td><td>2025-05-10</td><td>LogiTec</td><td>Baixa</td><td>Descarte por obsolescência</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+            </main>
         </div>
+    </div>
 
-       <button id="open_btn">
-        <i  class="material-symbols-sharp">chevron_right</i>
+    <button id="open_btn">
+        <i class="material-symbols-sharp">chevron_right</i>
     </button> 
-     
-<script src="../js/script.js" defer></script>  
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('graficoRelatorio');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Em uso', 'Manutenção', 'Transferência', 'Baixa'],
+                datasets: [{
+                    data: [84, 12, 20, 12],
+                    backgroundColor: ['#28a745', '#ffc107', '#0d6efd', '#dc3545']
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' },
+                    title: { display: true, text: 'Distribuição de Patrimônios' }
+                }
+            }
+        });
+
+        document.getElementById('btnFiltrar').addEventListener('click', () => {
+            alert('Filtro.');
+        });
+    </script>
 </body>
-
 </html>
