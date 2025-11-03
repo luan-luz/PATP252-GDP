@@ -1,104 +1,158 @@
 package ideau.ControlePatrimonioDesktop.controller;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import ideau.ControlePatrimonioDesktop.model.DashboardDTO;
-import ideau.ControlePatrimonioDesktop.model.DepreciacaoDashboardDTO;
-import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.Axis;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.text.NumberFormat;
-import java.util.List;
-import java.util.Locale;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import java.sql.*;
 
 public class DashboardController {
 
-    @FXML private Button btnQtdItens;
-    @FXML private Button btnQtdCategorias;
-    @FXML private Button btnValorTotal;
-    @FXML private Label lblQtdItens;
-    @FXML private Label lblQtdCategorias;
-    @FXML private Label lblValorTotal;
-    @FXML private LineChart<String, Number> lineChart;
+    @FXML
+    private Button btnValorTotal;
 
-    @FXML private CategoryAxis xAxisDepreciacao;
+    @FXML
+    private Button btnQtdItens;
 
-    @FXML private NumberAxis yAxisDepreciacao;
+    @FXML
+    private Button btnQtdSetores;
+
+    @FXML
+    private Button btnQtdPatrimonio;
+
+    @FXML
+    private Label lblQtdItens;
+
+    @FXML
+    private Label lblQtdPatirmonio;
+
+    @FXML
+    private Label lblValorTotal;
+
+    @FXML
+    private TableView<ItemPrecoMedio> tablePrecoMedio;
+
+    @FXML
+    private TableColumn<ItemPrecoMedio, String> colCategoria;
+
+    @FXML
+    private TableColumn<ItemPrecoMedio, String> colItem;
+
+    @FXML
+    private TableColumn<ItemPrecoMedio, Double> colPrecoMedio;
+
+    @FXML
+    private ListView<String> ListCategorias;
+
+    @FXML
+    private ListView<String> ListStatus;
 
 
-    private static final String API_URL = "http://localhost:8080/api/dashboard";
+    private static final String URL = "jdbc:postgresql://localhost:5432/patp";
+    private static final String USER = "postgres";
+    private static final String PASSWORD = "admin";
 
     @FXML
     public void initialize() {
-        carregarDadosDashboard();
+        carregarDashboard();
+        colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        colItem.setCellValueFactory(new PropertyValueFactory<>("item"));
+        colPrecoMedio.setCellValueFactory(new PropertyValueFactory<>("precoMedio"));
+
+        carregarTabelaPrecoMedio();
     }
 
-    private void carregarDadosDashboard() {
-        new Thread(() -> {
-            try {
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(API_URL))
-                        .GET()
-                        .build();
+    private void carregarDashboard() {
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement stmt = conn.createStatement()) {
 
-                HttpResponse<String> response = HttpClient.newHttpClient()
-                        .send(request, HttpResponse.BodyHandlers.ofString());
-
-                ObjectMapper mapper = new ObjectMapper();
-                DashboardDTO dashboard = mapper.readValue(response.body(), new TypeReference<>() {});
-
-                Platform.runLater(() -> {
-                    atualizarTela(dashboard);
-                    preencherGrafico(dashboard.getDepreciacoes());
-                });
-
-            } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
+            ResultSet rsItens = stmt.executeQuery("SELECT COUNT(*) FROM item");
+            if (rsItens.next()) {
+                btnQtdItens.setText(String.valueOf(rsItens.getInt(1)));
             }
-        }).start();
-    }
 
-    private void atualizarTela(DashboardDTO dashboard) {
-        NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+            ResultSet rsPatr = stmt.executeQuery("SELECT COUNT(*) FROM patrimonio");
+            if (rsPatr.next()) {
+                btnQtdPatrimonio.setText(String.valueOf(rsPatr.getInt(1)));
+            }
 
-        btnQtdItens.setText(String.valueOf(dashboard.getTotalItens()));
-        lblQtdItens.setText("Itens cadastrados");
+            ResultSet rsValor = stmt.executeQuery("SELECT COALESCE(SUM(val_compra), 0) FROM patrimonio");
+            if (rsValor.next()) {
+                btnValorTotal.setText("R$ " + String.format("%.2f", rsValor.getDouble(1)));
+            }
 
-        btnQtdCategorias.setText(String.valueOf(dashboard.getTotalCategorias()));
-        lblQtdCategorias.setText("Categorias");
+            ResultSet rsListaCat = stmt.executeQuery("SELECT nome FROM categorias ORDER BY nome");
+            while (rsListaCat.next()) {
+                ListCategorias.getItems().add(rsListaCat.getString("nome"));
+            }
 
-        btnValorTotal.setText(nf.format(dashboard.getValorTotal()));
-        lblValorTotal.setText("Valor total");
-    }
+            String sqlStatus = """
+                    SELECT s.nome AS status, COUNT(p.id_item) AS qtd
+                    FROM patrimonio p
+                    JOIN status_item s ON s.id = p.id_status
+                    GROUP BY s.nome
+                    ORDER BY s.nome;
+                    """;
+            ResultSet rsStatus = stmt.executeQuery(sqlStatus);
+            while (rsStatus.next()) {
+                String linha = rsStatus.getString("status") + " - " + rsStatus.getInt("qtd") + " itens";
+                ListStatus.getItems().add(linha);
+            }
 
-
-    private void preencherGrafico(List<DepreciacaoDashboardDTO> depreciacoes) {
-        lineChart.getData().clear();
-        XYChart.Series<String, Number> serieCompra = new XYChart.Series<>();
-        serieCompra.setName("Valor de Compra");
-
-        CategoryAxis xAxis = (CategoryAxis) lineChart.getXAxis();
-        xAxis.setGapStartAndEnd(true); // adiciona espaço antes e depois das categorias
-
-        XYChart.Series<String, Number> serieDepreciado = new XYChart.Series<>();
-        serieDepreciado.setName("Valor Após Depreciação");
-        xAxisDepreciacao.setAutoRanging(true);      // deixa JavaFX distribuir automaticamente
-        for (DepreciacaoDashboardDTO dep : depreciacoes) {
-            serieCompra.getData().add(new XYChart.Data<>(String.valueOf(dep.getAno()), dep.getTotalCompra()));
-            serieDepreciado.getData().add(new XYChart.Data<>(String.valueOf(dep.getAno()), dep.getValorDepreciado()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Erro ao carregar dados do dashboard: " + e.getMessage());
         }
-        lineChart.getData().addAll(serieCompra, serieDepreciado);
+
+    }
+    private void carregarTabelaPrecoMedio() {
+        String sql = """
+            SELECT c.nome AS categoria,
+                   i.nome_item AS item,
+                   ROUND(AVG(p.val_compra)::numeric, 2) AS preco_medio
+            FROM patrimonio p
+            JOIN item i ON p.id_item = i.id
+            JOIN categorias c ON i.categoria_id = c.id
+            GROUP BY c.nome, i.nome_item
+            ORDER BY c.nome, i.nome_item;
+        """;
+
+        ObservableList<ItemPrecoMedio> dados = FXCollections.observableArrayList();
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String categoria = rs.getString("categoria");
+                String item = rs.getString("item");
+                double precoMedio = rs.getDouble("preco_medio");
+
+                dados.add(new ItemPrecoMedio(categoria, item, precoMedio));
+            }
+
+            tablePrecoMedio.setItems(dados);
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao carregar tabela de preço médio: " + e.getMessage());
+        }
+    }
+
+    // Classe modelo para TableView
+    public static class ItemPrecoMedio {
+        private final String categoria;
+        private final String item;
+        private final Double precoMedio;
+
+        public ItemPrecoMedio(String categoria, String item, Double precoMedio) {
+            this.categoria = categoria;
+            this.item = item;
+            this.precoMedio = precoMedio;
+        }
+
+        public String getCategoria() { return categoria; }
+        public String getItem() { return item; }
+        public Double getPrecoMedio() { return precoMedio; }
     }
 }
+
