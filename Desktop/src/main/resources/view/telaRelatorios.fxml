@@ -9,52 +9,74 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.RelatorioController">
    <children>
-      <VBox alignment="TOP_CENTER" prefWidth="1050.0" spacing="15.0">
+      <VBox alignment="CENTER" spacing="15.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-            <Label text="Label" />
-            <VBox prefWidth="100.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Relatório de Patrimônios" />
+            <Label text="Filtros:" />
+            <VBox alignment="CENTER" prefHeight="210.0" prefWidth="900.0" styleClass="HeaderBoxRelatorio">
                <children>
-                  <HBox prefHeight="30.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                      <children>
-                        <Label text="icon " />
-                        <Label text="Relatório de Patrimônios: " />
+                        <Label>
+                           <graphic>
+                              <ImageView fitHeight="36.0" fitWidth="36" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icones-png/icone-relatorio-preto.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="36.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Relatório de Patrimônios: ">
+                           <HBox.margin>
+                              <Insets left="36.0" />
+                           </HBox.margin>
+                        </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="150.0" spacing="30.0" VBox.vgrow="ALWAYS">
+
+                  <HBox alignment="CENTER" prefHeight="150.0" prefWidth="690.0" spacing="15.0" styleClass="FiltroBoxRelatorio">
                      <children>
+                        <!-- Coluna 1 -->
                         <VBox spacing="3.0">
                            <children>
                               <Label text="Cadastro de:" />
-                              <DatePicker />
+                              <DatePicker fx:id="dateCadastroDe" />
                               <Label text="Setores" />
-                              <ComboBox prefWidth="150.0" promptText="Todos" />
+                              <ComboBox fx:id="comboSetor" prefWidth="150.0" promptText="Todos" />
                            </children>
                         </VBox>
+                        <!-- Coluna 2 -->
                         <VBox spacing="3.0">
                            <children>
                               <Label text="Até" />
-                              <DatePicker />
+                              <DatePicker fx:id="dateCadastroAte" />
                               <Label text="Imprimir Valores" />
-                              <ComboBox prefWidth="150.0" promptText="Sim" />
+                              <ComboBox fx:id="comboImprimirValores" prefWidth="150.0" promptText="Sim" />
                            </children>
                         </VBox>
+                        <!-- Coluna 3 -->
                         <VBox spacing="3.0">
                            <children>
                               <Label text="Categoria" />
-                              <ComboBox prefWidth="150.0" promptText="Todas" />
+                              <ComboBox fx:id="comboCategoria" prefWidth="150.0" promptText="Todas" />
                               <Label text="Excel ou PDF" />
-                              <ComboBox prefWidth="150.0" promptText="Excel" />
+                              <ComboBox fx:id="comboExportar" prefWidth="150.0" promptText="Excel" />
                            </children>
                         </VBox>
+                        <!-- Coluna 4 -->
                         <VBox spacing="3.0">
                            <children>
                               <Label text="Situação" />
-                              <ComboBox prefWidth="150.0" promptText="Todas" />
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Gerar">
+                              <ComboBox fx:id="comboSituacao" prefWidth="150.0" promptText="Todas" />
+                              <Button fx:id="btnGerar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Gerar" onAction="#gerarRelatorio">
                                  <VBox.margin>
                                     <Insets left="45.0" top="18.0" />
                                  </VBox.margin>
@@ -62,15 +84,15 @@
                            </children>
                         </VBox>
                      </children>
-                     <padding>
-                        <Insets top="21.0" />
-                     </padding>
                   </HBox>
                </children>
+               <padding>
+                  <Insets bottom="36.0" left="36.0" right="36.0" top="12.0" />
+               </padding>
             </VBox>
          </children>
          <padding>
-            <Insets left="30.0" right="30.0" />
+            <Insets bottom="45.0" left="30.0" right="30.0" top="45.0" />
          </padding>
       </VBox>
    </children>

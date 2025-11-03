@@ -81,8 +81,22 @@
             <artifactId>lombok</artifactId>
             <version>1.18.40</version>
         </dependency>
+		<!-- Apache POI para Excel -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.2.3</version>
+		</dependency>
 
-    </dependencies>
+		<!-- iText para PDF -->
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itext7-core</artifactId>
+			<version>7.2.6</version>
+		</dependency>
+
+
+	</dependencies>
 
 	<build>
 		<plugins>
