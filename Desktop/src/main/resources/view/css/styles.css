@@ -154,3 +154,13 @@
         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.60), 3, 0, 0, 1);
 
 }
+
+.HeaderBoxRelatorio{
+   -fx-border-radius: 30;
+   -fx-border-color:#2c3e50;
+
+}
+.FiltroBoxRelatorio{
+    -fx-border-radius: 30;
+    -fx-border-color:#2c3e50;
+}

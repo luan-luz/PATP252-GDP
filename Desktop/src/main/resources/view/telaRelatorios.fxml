@@ -10,11 +10,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<<<<<<< HEAD
+=======
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+>>>>>>> relatorios-branch
 
 <AnchorPane prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="TOP_CENTER" prefWidth="1050.0" spacing="15.0">
+      <VBox alignment="CENTER" spacing="15.0">
          <children>
+<<<<<<< HEAD
             <HBox spacing="30.0" VBox.vgrow="ALWAYS">
                <children>
                   <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="btnRlt" text="Button" />
@@ -66,9 +73,85 @@
                   </VBox>
                </children>
             </HBox>
+=======
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Relatório de Patrimônios" />
+            <Label text="Filtros:" />
+            <VBox alignment="CENTER" prefHeight="210.0" prefWidth="900.0" styleClass="HeaderBoxRelatorio">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                     <children>
+                        <Label>
+                           <graphic>
+                              <ImageView fitHeight="36.0" fitWidth="36" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icones-png/icone-relatorio-preto.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="36.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Relatório de Patrimônios: ">
+                           <HBox.margin>
+                              <Insets left="36.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+
+                  <HBox alignment="CENTER" prefHeight="150.0" prefWidth="690.0" spacing="15.0" styleClass="FiltroBoxRelatorio">
+                     <children>
+                        <!-- Coluna 1 -->
+                        <VBox spacing="3.0">
+                           <children>
+                              <Label text="Cadastro de:" />
+                              <DatePicker fx:id="dateCadastroDe" />
+                              <Label text="Setores" />
+                              <ComboBox fx:id="comboSetor" prefWidth="150.0" promptText="Todos" />
+                           </children>
+                        </VBox>
+                        <!-- Coluna 2 -->
+                        <VBox spacing="3.0">
+                           <children>
+                              <Label text="Até" />
+                              <DatePicker fx:id="dateCadastroAte" />
+                              <Label text="Imprimir Valores" />
+                              <ComboBox fx:id="comboImprimirValores" prefWidth="150.0" promptText="Sim" />
+                           </children>
+                        </VBox>
+                        <!-- Coluna 3 -->
+                        <VBox spacing="3.0">
+                           <children>
+                              <Label text="Categoria" />
+                              <ComboBox fx:id="comboCategoria" prefWidth="150.0" promptText="Todas" />
+                              <Label text="Excel ou PDF" />
+                              <ComboBox fx:id="comboExportar" prefWidth="150.0" promptText="Excel" />
+                           </children>
+                        </VBox>
+                        <!-- Coluna 4 -->
+                        <VBox spacing="3.0">
+                           <children>
+                              <Label text="Situação" />
+                              <ComboBox fx:id="comboSituacao" prefWidth="150.0" promptText="Todas" />
+                              <Button fx:id="btnGerar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Gerar" onAction="#gerarRelatorio">
+                                 <VBox.margin>
+                                    <Insets left="45.0" top="18.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="36.0" left="36.0" right="36.0" top="12.0" />
+               </padding>
+            </VBox>
+>>>>>>> relatorios-branch
          </children>
          <padding>
-            <Insets left="30.0" right="30.0" />
+            <Insets bottom="45.0" left="30.0" right="30.0" top="45.0" />
          </padding>
       </VBox>
    </children>
