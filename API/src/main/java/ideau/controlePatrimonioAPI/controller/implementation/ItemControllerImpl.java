@@ -19,11 +19,6 @@ public class ItemControllerImpl implements ItemController {
         this.svc = svc;
     }
 
-    @GetMapping("/teste")
-    public String getTeste() {
-        return "API funcionando!";
-    }
-
     @Override
     @PostMapping
     public Map<Integer, ItemDTO> cadastra(@RequestBody Map<Integer, Item> mapPatrimonios) {
@@ -47,19 +42,6 @@ public class ItemControllerImpl implements ItemController {
     public List<ItemDTO> retornaPorIdCategoria(@RequestParam Long idCategoria) {
         return svc.retornarPorIdCategoria(idCategoria);
     }
-
-
-//    @Override
-//    @GetMapping(params = "idLocal")
-//    public List<ItemDTO> retornaPorIdLocal(@RequestParam Long idLocal) {
-//        return svc.retornarPorIdLocal(idLocal);
-//    }
-//
-//    @Override
-//    @GetMapping(params = "idStatus")
-//    public List<ItemDTO> retornaPorIdStatus(@RequestParam Long idStatus) {
-//        return svc.retornarPorIdStatus(idStatus);
-//    }
 
     @Override
     @PutMapping

@@ -9,4 +9,5 @@ public interface PatrimonioRepository extends GenericRepository<Patrimonio, Patr
     List<PatrimonioDTO> retornaPorIdStatus(Long idStatus);
     List<PatrimonioDTO> retornaPorIdLocal(Long idLocal);
     List<PatrimonioDTO> retornaPorIdNota(Long idNota);
+    boolean patrJaExiste(String numPatr);
 }

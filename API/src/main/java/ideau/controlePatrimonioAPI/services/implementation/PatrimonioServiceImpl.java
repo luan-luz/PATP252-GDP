@@ -46,6 +46,11 @@ public class PatrimonioServiceImpl implements PatrimonioService {
     }
 
     @Override
+    public boolean verificaExistenciaNumPatr(String numPatr) {
+        return repo.patrJaExiste(numPatr);
+    }
+
+    @Override
     public Map<Integer, PatrimonioDTO> cadastrarLote(Map<Integer, Patrimonio> mapObjetos) {
         Map<Integer, String> mapErros = new HashMap<>();
         Map<Integer, PatrimonioDTO> mapRetorno = new HashMap<>();
@@ -59,18 +64,21 @@ public class PatrimonioServiceImpl implements PatrimonioService {
                 intAtual = entry.getKey();
                 Patrimonio objPatr = entry.getValue();
                 strErros = "";
+
+                if (repo.patrJaExiste(objPatr.getNumPatr())) {
+                    strErros += " Número patrimônio já em uso! Escolha outro.";
+                }
                 if (objPatr.getIdItem() == null) {
-                    strErros += "idItem; ";
+                    strErros += "idItem faltando na requisição!; ";
                 }
                 if (objPatr.getIdLocal() == null) {
-                    strErros += "idLocal; ";
+                    strErros += "idLocal faltando na requisição!; ";
                 }
                 if (objPatr.getIdStatus() == null) {
-                    strErros += "idSetor; ";
+                    strErros += "idSetor faltando na requisição!; ";
                 }
 
                 if(!strErros.isBlank()) {
-                    strErros += "são dados obrigatórios faltando na requisição!";
                     mapErros.put(intAtual, strErros);
                 } else {
                     Savepoint savepoint = con.setSavepoint();
@@ -114,11 +122,21 @@ public class PatrimonioServiceImpl implements PatrimonioService {
 
     @Override
     public PatrimonioDTO atualizar(Patrimonio obj) {
-        return null;
+        if (obj.getId() == null) {
+            throw new SimplesHttpException(HttpStatus.BAD_REQUEST, "Informe o id do Patrimônio que deseja atualizar!");
+        }
+        if (repo.patrJaExiste(obj.getNumPatr())) {
+            throw new SimplesHttpException(HttpStatus.CONFLICT, "Número do Patrimônio já em uso! Escolha outro.");
+        }
+        return repo.atualizar(obj);
     }
 
     @Override
     public ResponseEntity<Void> deletar(Long id) {
+        if (repo.retornaPorId(id) == null) {
+            throw new SimplesHttpException(HttpStatus.NOT_FOUND, "Não encontrado patrimônio com id: " + id);
+        }
+        repo.deletar(id);
         return null;
     }
 }

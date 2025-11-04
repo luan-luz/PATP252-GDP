@@ -9,4 +9,5 @@ public interface PatrimonioController extends GenericController<Patrimonio, Patr
     List<PatrimonioDTO> retornaPorIdStatus(Long idStatus);
     List<PatrimonioDTO> retornaPorIdLocal(Long idLocal);
     List<PatrimonioDTO> retornaPorIdNota(Long idNota);
+    boolean verificaExistenciaNumPatr(String numPatr);
 }
