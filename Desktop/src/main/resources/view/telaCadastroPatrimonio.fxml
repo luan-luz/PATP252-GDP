@@ -144,7 +144,7 @@
                               <TextField fx:id="edtLocal" editable="false" prefHeight="25.0" prefWidth="313.0" promptText="Selecione o Local" />
                            </children>
                         </VBox>
-                        <Button fx:id="btnSelecLocal" minWidth="75.0" mnemonicParsing="false" onAction="#AbrirTelaSelecLocal" prefHeight="25.0" prefWidth="75.0" text="Selecionar" />
+                        <Button fx:id="btnSelecLocal" minWidth="75.0" mnemonicParsing="false" onAction="#abrirTelaSelecLocal" prefHeight="25.0" prefWidth="75.0" text="Selecionar" />
                         <Region prefHeight="0.0" prefWidth="64.0" />
                         <VBox prefHeight="42.0" prefWidth="250.0">
                            <children>
@@ -152,7 +152,7 @@
                               <TextField fx:id="edtStatus" editable="false" prefHeight="25.0" prefWidth="385.0" promptText="Selecione o Status" />
                            </children>
                         </VBox>
-                        <Button fx:id="btnSelecStatus" minWidth="75.0" mnemonicParsing="false" onAction="#AbrirTelaSelecStatus" prefHeight="25.0" prefWidth="75.0" text="Selecionar">
+                        <Button fx:id="btnSelecStatus" minWidth="75.0" mnemonicParsing="false" onAction="#abrirTelaSelecStatus" prefHeight="25.0" prefWidth="75.0" text="Selecionar">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>

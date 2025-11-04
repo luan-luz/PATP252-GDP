@@ -7,6 +7,7 @@ import ideau.ControlePatrimonioDesktop.model.*;
 
 import ideau.ControlePatrimonioDesktop.utils.HTTPTransmit;
 
+import ideau.ControlePatrimonioDesktop.utils.ShowMessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -388,12 +389,19 @@ public class CadastroPatrimonioController implements Initializable {
         }
     }
     @FXML
-    void AbrirTelaSelecLocal(ActionEvent event) {
-        this.lstLocal = Arrays.asList(
-                new Local(1L, "TI"),
-                new Local(1L, "Laboratório"),
-                new Local(1L, "Atendimento")
-        );
+    void abrirTelaSelecLocal() {
+        try {
+            RespostaHTTP resp = http.get("http://localhost:8080/patrimonio");
+            if (resp.getHttpStatus() < 206) {
+                showMessage(Alert.AlertType.ERROR, "Status: " + resp.getHttpStatus() + "Erro: " + resp.getBody());
+            } else if (resp.getHttpStatus() == null) {
+                showMessage(Alert.AlertType.ERROR, "Erro ao contatar o servidor! Entre em contato com o setor de TI.");
+            } else {
+                this.lstLocal = mapper.readValue(resp.getBody(), new TypeReference<List<Local>>() {});
+            }
+        } catch (Exception e) {
+            showMessage(Alert.AlertType.ERROR, "Erro de comunicação com a API: " + e.getMessage());
+        }
         Map<String, String> colunas = new LinkedHashMap<>();
         colunas.put("ID", "id");
         colunas.put("Nome Do Local", "nome");
@@ -403,12 +411,12 @@ public class CadastroPatrimonioController implements Initializable {
                 edtLocal.setText(objLocal.getNome());
             }
         } catch (Exception e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Locais!");
+            showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Locais!" + e.getMessage());
         }
     }
 
     @FXML
-    void AbrirTelaSelecStatus(ActionEvent event) {
+    void abrirTelaSelecStatus() {
         this.lstStatus = Arrays.asList(
                 new Status(1L, "Ativo"),
                 new Status(1L, "Em uso"),
@@ -427,7 +435,7 @@ public class CadastroPatrimonioController implements Initializable {
         }
     }
     @FXML
-    void abrirTelaSelecNota(ActionEvent event) {
+    void abrirTelaSelecNota() {
         Map<String, String> mapColunas = new LinkedHashMap<>();
         mapColunas.put("ID", "id");
         mapColunas.put("Ch. de Acesso", "chaveNota");

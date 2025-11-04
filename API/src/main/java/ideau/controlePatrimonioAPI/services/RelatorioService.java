@@ -3,6 +3,7 @@ package ideau.controlePatrimonioAPI.services;
 import com.itextpdf.layout.element.Table;
 import ideau.controlePatrimonioAPI.model.PatrimonioDTO;
 import ideau.controlePatrimonioAPI.repository.implementation.PatrimonioRepositoryImpl;
+
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.itextpdf.kernel.pdf.*;
@@ -90,11 +91,13 @@ public class RelatorioService {
         if (situacao == null || situacao.isEmpty()) {
             return patrimonioRepository.retornaTodos();
         }
-        Long idStatus = Long.valueOf(situacao);
-        return patrimonioRepository.retornaTodos()
-                .stream()
-                .filter(p -> p.getIdStatus().equals(idStatus))
-                .collect(Collectors.toList());
+//        List<Status> lstStatus =
+//        Long idStatusParam = Long.valueOf(situacao);
+//        return patrimonioRepository.retornaTodos()
+//                .stream()
+//                .filter(p -> p.getIdStatus().equals(idStatus))
+//                .collect(Collectors.toList());
+        return null;
     }
 
     private byte[] gerarPdf(List<PatrimonioDTO> patrimonios, String imprimirValores) throws Exception {

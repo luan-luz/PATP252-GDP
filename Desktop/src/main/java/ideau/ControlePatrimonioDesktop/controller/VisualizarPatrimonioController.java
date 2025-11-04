@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import ideau.ControlePatrimonioDesktop.model.PatrimonioDTO;
 import ideau.ControlePatrimonioDesktop.model.RespostaHTTP;
 import ideau.ControlePatrimonioDesktop.utils.HTTPTransmit;
+import ideau.ControlePatrimonioDesktop.utils.ShowMessage;
 import ideau.ControlePatrimonioDesktop.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -158,17 +159,37 @@ public class VisualizarPatrimonioController implements Initializable {
     }
 
     @FXML
-    void editarPatr(ActionEvent event) {
+    void editarPatr() {
+        try {
+            PatrimonioDTO selec = tblPatrimonios.getSelectionModel().getSelectedItem();
+            if (selec != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/telaEdicaoPatrimonio.fxml"));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(loader.load()));
+
+                EdicaoPatrimonioController controller = loader.getController();
+                controller.setPatrimonioDTO(selec);
+
+                stage.showAndWait();
+                PatrimonioDTO dto = controller.getPatrimonioDTO();
+
+                if (dto != null) {
+                    tblPatrimonios.getItems().add(dto);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showMessage(Alert.AlertType.ERROR, "Erro ao abrir tela de edição: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    void mudarLocal() {
 
     }
 
     @FXML
-    void mudarLocal(ActionEvent event) {
-
-    }
-
-    @FXML
-    void mudarStatus(ActionEvent event) {
+    void mudarStatus() {
 
     }
 

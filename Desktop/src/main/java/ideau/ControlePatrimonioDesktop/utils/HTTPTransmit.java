@@ -32,4 +32,16 @@ public class HTTPTransmit {
             return new RespostaHTTP(response.statusCode(), response.body());
         }
     }
+
+    public RespostaHTTP put(String url, String body) throws Exception {
+        try(HttpClient client   = HttpClient.newHttpClient()) {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI(url))
+                    .header("Content-Type", "application/json")
+                    .PUT(HttpRequest.BodyPublishers.ofString(body))
+                    .build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return new RespostaHTTP(response.statusCode(), response.body());
+        }
+    }
 }

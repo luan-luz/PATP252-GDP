@@ -38,6 +38,10 @@ public class NotaDTO {
         this.nomeFornecedor = nomeFornecedor;
     }
 
+    public String getNumSerieNota() {
+        return this.numNota + "/" + this.serieNota;
+    };
+
     public Long getId() {
         return id;
     }

@@ -8,7 +8,7 @@ public class Local {
         this.id = id;
         this.nome = nome;
     }
-
+    public Local() {};
     public void setId(Long id) {
         this.id = id;
     }

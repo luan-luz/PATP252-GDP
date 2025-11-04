@@ -9,6 +9,8 @@ public class Status {
         this.nome = nome;
     }
 
+    public Status() {};
+
     public void setId(Long id) {
         this.id = id;
     }
