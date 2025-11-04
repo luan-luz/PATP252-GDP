@@ -167,11 +167,64 @@ public class PatrimonioRepositoryImpl implements GenericRepository<Patrimonio, P
 
     @Override
     public PatrimonioDTO atualizar(Patrimonio objeto) {
-        return null;
+        String sql = "UPDATE" +
+                " patrimonio" +
+                " SET" +
+                " id_local = ?," +
+                " id_status = ?," +
+                " id_nota = ?," +
+                " num_patr = ?," +
+                " val_compra = ?," +
+                " aliq_deprec_mes = ?," +
+                " dt_aquisicao = ?" +
+                " WHERE" +
+                " id = ?;";
+        try (Connection con = ds.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setLong(1, objeto.getIdLocal());
+            stmt.setLong(2, objeto.getIdStatus());
+            stmt.setLong(3, objeto.getIdNota());
+            stmt.setString(4, objeto.getNumPatr());
+            stmt.setBigDecimal(5, objeto.getvalCompra());
+            stmt.setBigDecimal(6, objeto.getAliqDeprecMes());
+            if (objeto.getDtAquisicao() != null) {
+                stmt.setDate(7, java.sql.Date.valueOf(objeto.getDtAquisicao()));
+            } else {
+                stmt.setNull(7, java.sql.Types.DATE);
+            }
+            stmt.setLong(8, objeto.getId());
+
+            stmt.executeUpdate();
+
+            return retornaPorId(objeto.getId());
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     @Override
     public void deletar(Long id) {
+        String sql = "DELETE FROM " +
+                "patrimonio " +
+                "WHERE " +
+                "id = ?";
+        try (PreparedStatement stmt = ds.getConnection().prepareStatement(sql)) {
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
+    public boolean patrJaExiste(String numPatr) {
+        String sql = "SELECT num_patr FROM patrimonio WHERE num_patr = ? and num_patr <> ''";
+        try (Connection con = ds.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, numPatr);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
