@@ -93,7 +93,7 @@ public class RelatorioService {
         Long idStatus = Long.valueOf(situacao);
         return patrimonioRepository.retornaTodos()
                 .stream()
-                .filter(p -> p.getIdStatus().equals(idStatus))
+                .filter(p -> p.getNomeStatus().equals(idStatus))
                 .collect(Collectors.toList());
     }
 

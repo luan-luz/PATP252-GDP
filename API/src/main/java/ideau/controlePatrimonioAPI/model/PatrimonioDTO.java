@@ -17,9 +17,6 @@ public class PatrimonioDTO {
     private BigDecimal aliqDeprecMes;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dtAquisicao;
-    private Long idStatus;
-
-    public Long getIdStatus() { return idStatus; }
 
     public Long getId() {
         return id;

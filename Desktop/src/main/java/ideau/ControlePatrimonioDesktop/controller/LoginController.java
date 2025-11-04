@@ -13,13 +13,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
+
 import static ideau.ControlePatrimonioDesktop.utils.ShowMessage.showMessage;
 
-
-public class LoginController implements Initializable{
+public class LoginController implements Initializable {
 
     @FXML
     private Button btnEntrar;
@@ -32,42 +38,64 @@ public class LoginController implements Initializable{
 
     @FXML
     public void verificarLogin(ActionEvent event) throws IOException {
-        String strUsuarioDigitado, strSenhaDigitada;
+        String usuario = edtUsuario.getText().trim();
+        String senha = edtSenha.getText().trim();
+
+        if (usuario.isEmpty() || senha.isEmpty()) {
+            showMessage(Alert.AlertType.WARNING, "Preencha usuário e senha.");
+            return;
+        }
+
         try {
-            strUsuarioDigitado = edtUsuario.getText();
-            strSenhaDigitada   = edtSenha.getText();
-            Stage telaLogin = (Stage) btnEntrar.getScene().getWindow();
+            // JSON do login
+            String json = String.format("{\"usuario\":\"%s\",\"senha\":\"%s\"}", usuario, senha);
 
-            //Provisório para testar
-            if (strUsuarioDigitado == "" && strSenhaDigitada == "") {
-                Parent root = FXMLLoader.load(getClass().getResource("/view/telaPrincipal.fxml"));
+            // Cria e envia requisição HTTP para a API
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("http://localhost:8080/api/auth/login")) // URL da sua API
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json, StandardCharsets.UTF_8))
+                    .build();
 
-                Stage stage = new Stage();
-                stage.setTitle("Gestor IDEAU");
-                try {
-                    stage.getIcons().add(new Image(getClass().getResourceAsStream("/view/icones-png/logo.png")));
-                } catch (Exception e) {
-                    //adicionar uns logs """mais melhor""", por enquanto vamos de sout :P
-                    System.out.println("Logo da janela não encontrada! " + e.getMessage()); //se não achar executa normal, apenas avisa que nao achou
-                }
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.setScene(new Scene(root));
-                stage.show();
+            HttpClient client = HttpClient.newHttpClient();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-                telaLogin.close();
-            } else {
+            // Valida resposta da API
+            if (response.statusCode() == 200) {
+                abrirTelaPrincipal();
+            } else if (response.statusCode() == 401) {
                 edtSenha.setText("");
                 showMessage(Alert.AlertType.WARNING, "Usuário ou senha inválidos!");
+            } else {
+                showMessage(Alert.AlertType.ERROR, "Erro inesperado: " + response.statusCode() + "\n" + response.body());
             }
 
         } catch (Exception e) {
-            showMessage(Alert.AlertType.ERROR, "Erro no login! Erro: " + e.getMessage());
+            showMessage(Alert.AlertType.ERROR, "Erro ao conectar com o servidor: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    private void abrirTelaPrincipal() throws IOException {
+        Stage telaLogin = (Stage) btnEntrar.getScene().getWindow();
 
+        Parent root = FXMLLoader.load(getClass().getResource("/view/telaPrincipal.fxml"));
+
+        Stage stage = new Stage();
+        stage.setTitle("Gestor IDEAU");
+        try {
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/view/icones-png/logo.png")));
+        } catch (Exception e) {
+            System.out.println("Logo da janela não encontrada! " + e.getMessage());
+        }
+
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(new Scene(root));
+        stage.show();
+
+        telaLogin.close();
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
 }

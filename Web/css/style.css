@@ -11,7 +11,7 @@
     --color-info-dark: black;
     --color-info-light: gray;
     --color-dark: black;
-    --color-light: rgb(80, 78, 78);
+    --color-light: rgb(203, 203, 203);
     --color-primary-variant: blue;
     --color-dark-variant: gray;
     --color-background: gray;
@@ -21,7 +21,7 @@
     --border-radius-3: 1.2rem;
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
-    --box-shadow: 0 2rem 3rem var(--color-light);
+    --box-shadow: 0 0.3rem 1.2rem var(--color-light);
 }
 
 * {
@@ -297,8 +297,8 @@ aside .sidebar a:hover span {
 .Dashboard {  
     width: 1450px;
     height: 99,9vh;  
-margin-top: 0px;
-margin-left: -150px;
+    margin-top: 0px;
+    margin-left: -150px;
 }
 
 .escrita  { 
@@ -410,4 +410,9 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
+}
+
+.container_mid{
+    margin: 30px;
+
 }
