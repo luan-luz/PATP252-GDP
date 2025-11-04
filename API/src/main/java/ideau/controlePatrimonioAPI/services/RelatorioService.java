@@ -91,13 +91,11 @@ public class RelatorioService {
         if (situacao == null || situacao.isEmpty()) {
             return patrimonioRepository.retornaTodos();
         }
-//        List<Status> lstStatus =
-//        Long idStatusParam = Long.valueOf(situacao);
-//        return patrimonioRepository.retornaTodos()
-//                .stream()
-//                .filter(p -> p.getIdStatus().equals(idStatus))
-//                .collect(Collectors.toList());
-        return null;
+        Long idStatus = Long.valueOf(situacao);
+        return patrimonioRepository.retornaTodos()
+                .stream()
+                .filter(p -> p.getNomeStatus().equals(idStatus))
+                .collect(Collectors.toList());
     }
 
     private byte[] gerarPdf(List<PatrimonioDTO> patrimonios, String imprimirValores) throws Exception {
