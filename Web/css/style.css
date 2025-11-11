@@ -163,11 +163,11 @@ aside .logo {
     font-weight: 700;
 } 
  
-.text-light { 
-    margin-top: 36px;  
-    margin-left: -15px;
-    font-size: 9px;
-}
+    .text-light { 
+        margin-top: 36px;  
+        margin-left: -15px;
+        font-size: 9px;
+    }
  
 aside .logo img {  
     margin-left: 20px;
@@ -257,9 +257,9 @@ aside .sidebar a:hover span {
     background-color: green;
         color: white;
         height: 25px;
-        border-radius: 50%;   
-    margin-top: -665px;  
-    margin-left: 55px;      
+        border-radius: 50%;    
+        margin-top: -96vh;  
+        margin-left: 7vh;
     cursor: pointer;  
   
     
@@ -285,6 +285,18 @@ aside .sidebar a:hover span {
     transform: translateX(0);
     width:180px;
 }
+
+    .footer-content {
+        margin-top: 65px;
+        background-color: #427070;
+        color: white;
+        text-align: center;
+        padding: 10px 0; 
+        bottom: 0;
+        width: 100%;
+        height: 6vh;
+    }
+
 
 /*main patrimonio(inventario)*/
 .faixa{

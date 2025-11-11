@@ -12,7 +12,7 @@
 
     <style>
         body {
-            background: rgb(202, 201, 201);
+            background: white;;
             font-family: poppins, san-serif;
              
 
@@ -20,25 +20,33 @@
 
         .telarelat {
             background-color: white;
-            width: 1300px;
-            height: 700px;
-            margin-left: -100px;
+            min-width: 1500px;  
+            height: 100vh;
+            margin-left: -150px;
             border-radius:0px 0px 10px 10px;
 
             
         }
 
+        .faixa{
+            height: 40px;
+        }
+        
+
+
         .card-summary {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border-radius: 10px; 
             padding: 20px;
             text-align: center;
+            max-height: 90px;
+            max-width: 200px;
             transition: transform 0.2s; 
-            margin-left: 100px;
+            margin-left: 90px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
         }
  
-
+         
         .card-summary h3 {
             margin: 0;
             font-size: 1.1rem;
@@ -56,13 +64,12 @@
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
             margin-bottom: 20px;
-        }
-
+        } 
     .table-container {
-        margin-top: -350px;
+        margin-top: -300px;
         margin-left: 20px;
-        width:750px;
-         height: 300px;  
+        width:90vh;
+         height: 45vh;  
         overflow-y: auto;  
     }
 
@@ -83,7 +90,7 @@
     }
 
      h5 {
-        margin-top: -80px;
+        margin-top: -90px;
     }
 
     #relatorioTable tr:nth-child(even) {
@@ -94,21 +101,47 @@
         background-color: #f1f1f1;
     }
     
+ 
+ 
+ 
+.filters .col-md-3 {
+    padding-left: 90px;   
+}
+ 
+ 
+ 
 
-        .chart-container {
-            margin-top: -30px;
-            margin-left: 850px;
-            width: 400px;
-            height: 400px;
+
+        .chart-container { 
+            margin-top: -5vh;
+            margin-left: 900px;
+            width: 40vh;
+            height: 45vh;
             background: white;
-            border-radius: 10px;
-            padding: 20px; 
+            border-radius: 10px; 
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
         
    #btnFiltrar{
         background: #427070;
     }
+
+    .footer-content {
+        margin-top: 65px;
+        background-color: #427070;
+        color: white;
+        text-align: center;
+        padding: 10px 0; 
+        bottom: 0;
+        width: 100%;
+        height: 6vh;
+    }
+
+            @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }}
 
     </style>
 
@@ -162,10 +195,11 @@
         </aside>
 
         <div class="telarelat">
+            <div class="faixa"> </div>
             <main> 
 
-                <div class="filters mb-4">
-                    <div class="row g-3">
+                <div class="filters mb-3">
+                    <div class="row g-4">
                         <div class="col-md-3">
                             <label class="form-label">Data Inicial</label>
                             <input type="date" class="form-control" id="dataInicio">
@@ -175,7 +209,7 @@
                             <input type="date" class="form-control" id="dataFim">
                         </div>  
                         <div class="col-md-3">
-                            <label class="form-label">Tipo de Movimentação</label>
+                            <label class="form-label">  Movimentação</label>
                             <select id="tipoMov" class="form-select">
                                 <option value="">Todos</option>
                                 <option>Em uso</option>
@@ -192,13 +226,13 @@
                 </div>
                 
                 <div style="display: flex; justify-content: space-between; text-align: center; margin-bottom: 20px;">
-    <div style="flex: 1; padding: 0 10px;">
+    <div style="flex: 1; padding: 0 10px; margin-left: -30px;">
         <div class="card-summary">
             <h3>Total de Patrimônios</h3>
             <h2 id="totalPatrimonio">128</h2>
         </div>
     </div>
-    <div style="flex: 1; padding: 0 10px;">
+    <div style="flex: 1; padding: 0 50px;">
         <div class="card-summary">
             <h3>Ativos</h3>
             <h2 id="ativos">96</h2>
@@ -215,16 +249,16 @@
 <div class="mov" style="text-align: left; margin-top: 35px;">
     <h5 class="mt-4 bg-white p-3 rounded shadow-sm">Movimentações Recentes</h5>
 </div>
-
-                
-
-                <div class="chart-container">
-                    <canvas id="graficoRelatorio"></canvas>
-                </div>
-
-                
+ 
+             
 <div>   
      
+ <div class="chart-container">
+     <canvas id="graficoRelatorio"></canvas>
+ </div>
+
+
+
     <div class="table-container">
         <table class="table table-striped" id="relatorioTable">
             <thead>
@@ -253,38 +287,72 @@
         </table>
     </div>
 </div>
+        <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 GestorIDEAU. Todos os direitos reservados.</p>
+        </div>
+    </footer>
             </main>
         </div>
+
+        
     </div>
+
+ 
 
     <button id="open_btn">
         <i class="material-symbols-sharp">chevron_right</i>
     </button> 
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../js/script.js" defer></script>  
-    <script>
-        const ctx = document.getElementById('graficoRelatorio');
-        new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Em uso', 'Manutenção', 'Transferência', 'Baixa'],
-                datasets: [{
-                    data: [84, 12, 20, 12],
-                    backgroundColor: ['#28a745', '#ffc107', '#0d6efd', '#dc3545']
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: { position: 'bottom' },
-                    title: { display: true, text: 'Distribuição de Patrimônios' }
+ 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('graficoRelatorio');
+            const chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Em uso', 'Manutenção', 'Transferência', 'Baixa'],
+                    datasets: [{
+                        data: [84, 12, 20, 12],
+                        backgroundColor: ['#28a745', '#ffc107', '#0d6efd', '#dc3545']
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        title: { display: true, text: 'Distribuição de Patrimônios' }
+                    }
                 }
-            }
-        });
+            });
 
-        document.getElementById('btnFiltrar').addEventListener('click', () => {
-            alert('Filtro.');
-        });
-    </script>
+            document.getElementById('btnFiltrar').addEventListener('click', function () {
+                const dataInicio = document.getElementById('dataInicio').value;
+                const dataFim = document.getElementById('dataFim').value;
+                const tipoMov = document.getElementById('tipoMov').value;
+
+                const rows = document.querySelectorAll("#relatorioTable tbody tr");
+                rows.forEach(row => {
+                    const data = row.cells[1].textContent;
+                    const tipo = row.cells[3].textContent;
+
+                    let showRow = true;
+
+                    if (dataInicio && new Date(data) < new Date(dataInicio)) {
+                        showRow = false;
+                    }
+                    if (dataFim && new Date(data) > new Date(dataFim)) {
+                        showRow = false;
+                    }
+                    if (tipoMov && tipo !== tipoMov && tipoMov !== "Todos") {
+                        showRow = false;
+                    }
+
+                    row.style.display = showRow ? "" : "none";
+                });
+
+                chart.data.datasets[0].data = [100, 10, 25, 5];
+                chart.update();
+            });
+        </script>
 </body>
 </html>

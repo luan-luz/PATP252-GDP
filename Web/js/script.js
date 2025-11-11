@@ -19,11 +19,9 @@ document.getElementById('open_btn').addEventListener('click', function () {
         }
     });
 
+ 
 
-//
-
-window.onload = function() {
-    // Gráfico de Pizza
+window.onload = function() { 
     var ctxPie = document.getElementById('pieChart').getContext('2d');
     var pieChart = new Chart(ctxPie, {
         type: 'pie', // Tipo do gráfico (pizza)
