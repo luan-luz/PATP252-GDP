@@ -99,7 +99,7 @@
                         <Region maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="260.0" />
                         <VBox alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="188.0">
                            <children>
-                              <Label prefHeight="17.0" prefWidth="103.0" text="Data de aquisição" />
+                              <Label prefHeight="17.0" prefWidth="103.0" text="Data de emissão" />
                               <DatePicker fx:id="dtpDtAquisicao" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="175.0" />
                            </children>
                         </VBox>

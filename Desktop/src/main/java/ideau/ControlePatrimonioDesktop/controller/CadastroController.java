@@ -35,7 +35,8 @@ public class CadastroController {
     @FXML
     void carregarTela(String strNomeTela) throws IOException {
         try {
-            Parent novaTela = new FXMLLoader().load(getClass().getResource("/view/"+ strNomeTela +".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/"+ strNomeTela +".fxml"));
+            Parent novaTela = loader.load();
             container_cadastro.getChildren().clear();
             container_cadastro.getChildren().add(novaTela);
 
@@ -62,18 +63,20 @@ public class CadastroController {
     @FXML
     void abrirCadastroNotas() {
         try {
-            Utils.abrirTelaCadastro("Notas");
+            carregarTela("telaCadastroNotas");
         } catch (IOException e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao abrir cadastro de Notas: " + e.getMessage());
+            e.printStackTrace();
+            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela de cadastro de Notas: " + e.getMessage());
         }
     }
 
     @FXML
     private void abrirCadastroFornecedores() {
         try {
-            Utils.abrirTelaCadastro("Fornecedores");
+            carregarTela("telaCadastroFornecedores");
         } catch (IOException e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao abrir cadastro de Fornecedores: " + e.getMessage());
+            e.printStackTrace();
+            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela de cadastro de Fornecedores: " + e.getMessage());
         }
     }
     @FXML

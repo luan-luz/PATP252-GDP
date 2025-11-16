@@ -145,9 +145,7 @@ public class CadastroNotaController implements Initializable {
                     Map<Integer, NotaDTO> dto = mapper.readValue(resp.getBody(), new TypeReference<Map<Integer, NotaDTO>>() {
                     });
                     showMessage(Alert.AlertType.INFORMATION, "Nota Cadastrada com Sucesso!");
-                    Node source = (Node) event.getSource();
-                    Stage stage = (Stage) source.getScene().getWindow();
-                    stage.close();
+                    limparCampos();
                 } else {
                     throw new Exception("Status" + resp.getBody() + " Erro: " + resp.getBody());
                 }

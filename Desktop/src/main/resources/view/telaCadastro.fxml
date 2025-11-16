@@ -24,7 +24,7 @@
             </VBox>
             <VBox prefHeight="90.0" spacing="15.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" onAction="#abrirCadastroNotas" onMouseClicked="#abrirCadastroUsuarios" prefHeight="40.0" prefWidth="150.0" text="Notas Fiscais">
+                  <Button mnemonicParsing="false" onAction="#abrirCadastroNotas" prefHeight="40.0" prefWidth="150.0" text="Notas Fiscais">
                         <font>
                            <Font size="14.0" />
                         </font>

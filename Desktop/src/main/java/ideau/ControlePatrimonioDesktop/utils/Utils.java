@@ -8,6 +8,7 @@ import ideau.ControlePatrimonioDesktop.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -49,12 +50,20 @@ public class Utils {
     @SuppressWarnings("unchecked")
     public static <T> List<T> abrirTelaCadastro(String strNomeTela) throws IOException {
         FXMLLoader loader = new FXMLLoader(Utils.class.getResource("/view/telaCadastro" + strNomeTela + ".fxml"));
+
+        Parent root = loader.load();
+
+        Object controller = loader.getController();
+
         Stage stage = new Stage();
         stage.setTitle("Cadastrar " + strNomeTela);
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(new Scene(loader.load()));
-        Object controller = loader.getController();
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(Utils.class.getResource("/view/css/styles.css").toExternalForm());
+
+        stage.setScene(scene);
 
 
         stage.showAndWait();
