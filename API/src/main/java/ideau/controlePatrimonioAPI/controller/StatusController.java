@@ -1,9 +1,7 @@
-package ideau.controlePatrimonioAPI.controller.implementation;
+package ideau.controlePatrimonioAPI.controller;
 
-import ideau.controlePatrimonioAPI.controller.GenericController;
-import ideau.controlePatrimonioAPI.model.Local;
+import ideau.controlePatrimonioAPI.model.ItemDTO;
 import ideau.controlePatrimonioAPI.model.Status;
-import ideau.controlePatrimonioAPI.services.implementation.LocalServiceImpl;
 import ideau.controlePatrimonioAPI.services.implementation.StatusServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

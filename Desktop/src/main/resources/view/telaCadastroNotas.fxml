@@ -5,8 +5,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -15,9 +13,9 @@
 
 <!-- maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" !-->
 
-<AnchorPane prefHeight="610.0" prefWidth="1250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.CadastroNotaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="1250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ideau.ControlePatrimonioDesktop.controller.CadastroNotaController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="610.0" prefWidth="1254.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" prefHeight="295.0" prefWidth="1250.0" spacing="15.0" AnchorPane.bottomAnchor="315.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="42.0" prefWidth="1250.0" spacing="15.0">
                <children>
@@ -35,7 +33,7 @@
                                     </Label>
                                     <HBox prefHeight="25.0" prefWidth="203.0">
                                        <children>
-                                          <TextField fx:id="edtNumNfe" editable="false" minWidth="104.0" prefHeight="25.0" prefWidth="197.0" promptText="Insira o número da NF-e">
+                                          <TextField fx:id="edtNumNfe" minWidth="104.0" prefHeight="25.0" prefWidth="197.0" promptText="Insira o número da NF-e">
                                              <HBox.margin>
                                                 <Insets left="20.0" />
                                              </HBox.margin>
@@ -95,7 +93,7 @@
                         <VBox alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="188.0">
                            <children>
                               <Label text="Valor Total" />
-                              <TextField fx:id="edtValTot" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="197.0" promptText="Insira o Valor Total da NF-e" />
+                              <TextField fx:id="edtValTot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="197.0" promptText="Insira o Valor Total da NF-e" />
                            </children>
                         </VBox>
                         <Region maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="260.0" />
@@ -131,68 +129,20 @@
             <HBox alignment="CENTER_LEFT" prefHeight="16.0" prefWidth="1250.0">
                <children>
                   <Region fx:id="regEsquerdo" prefHeight="25.0" prefWidth="211.0" />
-                  <Region prefHeight="25.0" prefWidth="363.0" />
-                  <Button fx:id="btnAdicionar" alignment="CENTER" mnemonicParsing="false" onAction="#AddNotaTbl" text="Adicionar" />
-                  <Button fx:id="btnConfirmarEdicao" alignment="CENTER" mnemonicParsing="false" onAction="#confirmarEdicao" text="Confirmar edição" />
-                  <Region prefHeight="200.0" prefWidth="200.0" />
+                  <Region prefHeight="25.0" prefWidth="298.0" />
+                  <Button fx:id="btnAdicionar" alignment="CENTER" mnemonicParsing="false" onAction="#cadastrarAPI" text="Cadastrar" />
+                  <Region prefHeight="25.0" prefWidth="422.0" />
                   <Button fx:id="btnLimparCampos" alignment="CENTER" mnemonicParsing="false" onAction="#limparCampos" text="Limpar Campos" />
-                  <Button fx:id="btnCancelarEdicao" alignment="CENTER" mnemonicParsing="false" onAction="#cancelarEdicao" text="Cancelar edição" />
                </children>
                <padding>
                   <Insets left="20.0" />
                </padding>
             </HBox>
             <Separator prefWidth="200.0" />
-            <HBox prefHeight="288.0" prefWidth="1230.0">
-               <children>
-                  <TableView fx:id="tblNotas" prefHeight="302.0" prefWidth="1070.0">
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                     <columns>
-                        <TableColumn fx:id="colNumNfe" prefWidth="82.0" text="Núm. NF-e" />
-                        <TableColumn fx:id="colSerieNfe" prefWidth="78.0" text="Série NF-e" />
-                        <TableColumn fx:id="colChAcessoNfe" prefWidth="287.0" text="Ch. Acesso" />
-                        <TableColumn fx:id="colValTot" prefWidth="141.0" text="Val. Total" />
-                        <TableColumn fx:id="colDtEmissao" prefWidth="160.0" text="Dt. Emissão" />
-                        <TableColumn fx:id="colFornecedor" prefWidth="279.0" text="Fornecedor" />
-                     </columns>
-                  </TableView>
-                  <VBox alignment="CENTER" spacing="15.0">
-                     <children>
-                        <Button fx:id="btnEditarPatr" mnemonicParsing="false" onAction="#editar" text="Editar">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Button>
-                        <Region prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id="btnRemoverPatr" mnemonicParsing="false" onAction="#remover" text="Remover">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Button>
-                     </children>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </VBox>
-               </children>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </HBox>
             <HBox>
                <children>
                   <Region prefHeight="25.0" prefWidth="132.0" />
-                  <Button fx:id="btnLimpar" mnemonicParsing="false" onAction="#limparTabela" text="Limpar">
-                     <HBox.margin>
-                        <Insets bottom="10.0" />
-                     </HBox.margin></Button>
                   <Region prefHeight="25.0" prefWidth="701.0" />
-                  <Button fx:id="btnCadastrar" mnemonicParsing="false" onAction="#cadastrarAPI" text="Cadastrar">
-                     <HBox.margin>
-                        <Insets bottom="10.0" />
-                     </HBox.margin></Button>
                </children>
                <VBox.margin>
                   <Insets left="20.0" />

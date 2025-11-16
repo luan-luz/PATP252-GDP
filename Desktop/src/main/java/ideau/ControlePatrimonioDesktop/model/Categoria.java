@@ -8,7 +8,10 @@ public class Categoria {
         this.id = id;
         this.nome = nome;
     }
-
+    public Categoria() {}
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
     public void setId(Long id) {
         this.id = id;
     }

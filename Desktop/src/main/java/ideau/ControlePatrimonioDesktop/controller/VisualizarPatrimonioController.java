@@ -27,10 +27,13 @@ import javafx.stage.Stage;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import static ideau.ControlePatrimonioDesktop.utils.ShowMessage.showMessage;
+import static ideau.ControlePatrimonioDesktop.utils.Utils.retFiltroCampoPorcent;
+import static ideau.ControlePatrimonioDesktop.utils.Utils.retFiltroCampoValor;
 
 public class VisualizarPatrimonioController implements Initializable {
 
@@ -83,6 +86,7 @@ public class VisualizarPatrimonioController implements Initializable {
 
     private HTTPTransmit http;
     private ObjectMapper mapper;
+    DateTimeFormatter dateFormatter;
 
     List<PatrimonioDTO> lstPatr;
 
@@ -91,6 +95,8 @@ public class VisualizarPatrimonioController implements Initializable {
         this.http = new HTTPTransmit();
         this.mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
+        this.dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         ObservableList<PatrimonioDTO> obsListPatr = null;
 
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -133,6 +139,20 @@ public class VisualizarPatrimonioController implements Initializable {
 
             tblPatrimonios.setItems(lstOrdenada);
         });
+
+        //Deixando no formato dd/MM/yyyy
+        colDataAquisicao.setCellFactory(column -> new TableCell<PatrimonioDTO, LocalDate>() {
+            @Override
+            protected void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(dateFormatter.format(item));
+                }
+            }
+        });
+
     }
 
     @FXML
@@ -166,6 +186,7 @@ public class VisualizarPatrimonioController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/telaEdicaoPatrimonio.fxml"));
                 Stage stage = new Stage();
                 stage.setScene(new Scene(loader.load()));
+                stage.setTitle("Editando Patrimônio id: " + selec.getId());
 
                 EdicaoPatrimonioController controller = loader.getController();
                 controller.setPatrimonioDTO(selec);

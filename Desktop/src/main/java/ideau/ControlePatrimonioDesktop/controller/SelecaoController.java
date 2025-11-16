@@ -122,8 +122,20 @@ public class SelecaoController<T> implements Initializable {
             this.tblSelecao.getColumns().add(col);
             this.tblSelecao.getColumns().getFirst().setStyle("-fx-alignment: CENTER;");
             this.tblSelecao.getColumns().getFirst().setMaxWidth(80);
+
+            // Se a coluna for "id", define ordenação descendente
+            if (entry.getValue().equalsIgnoreCase("id")) {
+                col.setSortType(TableColumn.SortType.DESCENDING);
+                tblSelecao.getSortOrder().add(col);
+            }
         }
         tblSelecao.setItems(listaDados);
+
+        // === ORDENAR POR ID (primeira coluna) DESC ===
+        TableColumn<T, ?> colId = tblSelecao.getColumns().get(0); // primeira coluna
+        colId.setSortType(TableColumn.SortType.DESCENDING);
+        tblSelecao.getSortOrder().setAll(colId);
+        tblSelecao.sort();
     }
 
     public T getSelecionado() {

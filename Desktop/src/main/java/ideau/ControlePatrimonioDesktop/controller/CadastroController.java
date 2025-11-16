@@ -1,4 +1,6 @@
 package ideau.ControlePatrimonioDesktop.controller;
+import ideau.ControlePatrimonioDesktop.utils.ShowMessage;
+import ideau.ControlePatrimonioDesktop.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,7 +59,23 @@ public class CadastroController {
         }
     }
 
+    @FXML
+    void abrirCadastroNotas() {
+        try {
+            Utils.abrirTelaCadastro("Notas");
+        } catch (IOException e) {
+            showMessage(Alert.AlertType.ERROR, "Erro ao abrir cadastro de Notas: " + e.getMessage());
+        }
+    }
 
+    @FXML
+    private void abrirCadastroFornecedores() {
+        try {
+            Utils.abrirTelaCadastro("Fornecedores");
+        } catch (IOException e) {
+            showMessage(Alert.AlertType.ERROR, "Erro ao abrir cadastro de Fornecedores: " + e.getMessage());
+        }
+    }
     @FXML
     private void abrirCadastroItens(MouseEvent event) {
         try {
@@ -80,14 +98,6 @@ public class CadastroController {
     private void abrirCadastroCategorias(MouseEvent event) {
         try {
             carregarTela("telaCadastroCategorias");
-        } catch (IOException e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Home: " + e.getMessage());
-        }
-    }
-    @FXML
-    private void abrirCadastroFornecedores(MouseEvent event) {
-        try {
-            carregarTela("telaCadastroFornecedores");
         } catch (IOException e) {
             showMessage(Alert.AlertType.ERROR, "Erro ao carregar tela Home: " + e.getMessage());
         }

@@ -8,7 +8,9 @@ public class Status {
         this.id = id;
         this.nome = nome;
     }
-
+    public Status(String nome) {
+        this.nome = nome;
+    }
     public Status() {};
 
     public void setId(Long id) {
