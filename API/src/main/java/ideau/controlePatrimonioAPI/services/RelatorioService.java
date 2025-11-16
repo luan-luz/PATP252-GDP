@@ -32,11 +32,12 @@ public class RelatorioService {
         List<PatrimonioDTO> patrimonios = filtrarPorStatus(situacao);
 
         patrimonios = patrimonios.stream()
-                .filter(p -> (de == null || !p.getDtAquisicao().isBefore(de)))
-                .filter(p -> (ate == null || !p.getDtAquisicao().isAfter(ate)))
+                .filter(p -> (de == null || (p.getDtAquisicao() != null && !p.getDtAquisicao().isBefore(de))))
+                .filter(p -> (ate == null || (p.getDtAquisicao() != null && !p.getDtAquisicao().isAfter(ate))))
                 .filter(p -> (categoria == null || categoria.isEmpty() || p.getNomeItem().equalsIgnoreCase(categoria)))
                 .filter(p -> (setor == null || setor.isEmpty() || p.getNomeLocal().equalsIgnoreCase(setor)))
                 .collect(Collectors.toList());
+
 
         if ("PDF".equalsIgnoreCase(exportar)) {
             return gerarPdf(patrimonios, imprimirValores);

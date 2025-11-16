@@ -63,7 +63,7 @@ public class Patrimonio {
         this.numPatr = numPatr;
     }
 
-    public BigDecimal getvalCompra() {return this.valCompra;};
+    public BigDecimal getValCompra() {return this.valCompra;};
 
     public void setValCompra(BigDecimal valCompra) {this.valCompra = valCompra;};
 

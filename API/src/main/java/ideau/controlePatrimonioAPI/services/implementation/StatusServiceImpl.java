@@ -2,9 +2,8 @@ package ideau.controlePatrimonioAPI.services.implementation;
 
 import ideau.controlePatrimonioAPI.exception.SimplesHttpException;
 import ideau.controlePatrimonioAPI.exception.ValidacaoException;
-import ideau.controlePatrimonioAPI.model.Local;
+
 import ideau.controlePatrimonioAPI.model.Status;
-import ideau.controlePatrimonioAPI.repository.LocalRepository;
 import ideau.controlePatrimonioAPI.repository.StatusRepository;
 import ideau.controlePatrimonioAPI.services.GenericService;
 import org.springframework.http.HttpStatus;

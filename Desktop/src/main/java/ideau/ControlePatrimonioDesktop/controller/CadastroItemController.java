@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ideau.ControlePatrimonioDesktop.model.*;
 import ideau.ControlePatrimonioDesktop.utils.HTTPTransmit;
+import ideau.ControlePatrimonioDesktop.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -139,28 +140,20 @@ public class CadastroItemController implements Initializable {
         });
 
         btnSelecCategoria.setOnAction(evt -> {
-//            try {
-//                RespostaHTTP resp = http.get("/");
-//            } catch (Exception e) {
-//                showMessage(Alert.AlertType.ERROR, "Erro de comunicação com o servidor: " + e.getMessage());
-//            }
-
-            List<Categoria> categorias = Arrays.asList(
-                    new Categoria(1L, "Notebooks"),
-                    new Categoria(2L, "Cadeiras"),
-                    new Categoria(3L, "Computadores")
-            );
-            try {
-                Categoria categSelec = abrirTelaSelecao(categorias,
-                                                         Map.of("ID", "id",
-                                                         "Nome Da Categoria", "nome"),
-                                                         "Categorias");
-                if (categSelec != null) {
-                    edtCategoria.setText(categSelec.getNome());
-                    mapCategorias.put(categSelec.getId(), categSelec.getNome());
+            List<Categoria> categorias = Utils.getCategoriasAPI();
+            if (categorias != null) {
+                Map<String, String> colunas = new LinkedHashMap<>();
+                colunas.put("ID", "id");
+                colunas.put("Nome Da Categoria", "nome");
+                try {
+                    Categoria categSelec = abrirTelaSelecao(categorias, colunas, "Categorias");
+                    if (categSelec != null) {
+                        edtCategoria.setText(categSelec.getNome());
+                        mapCategorias.put(categSelec.getId(), categSelec.getNome());
+                    }
+                } catch (Exception e) {
+                    showMessage(Alert.AlertType.ERROR, "Erro ao carregar categorias na tabela: " + e.getMessage());
                 }
-            } catch (Exception e) {
-                showMessage(Alert.AlertType.ERROR, "Erro ao carregar categorias na tabela: " + e.getMessage());
             }
         });
 

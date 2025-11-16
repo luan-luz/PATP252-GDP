@@ -8,6 +8,7 @@ import ideau.ControlePatrimonioDesktop.model.*;
 import ideau.ControlePatrimonioDesktop.utils.HTTPTransmit;
 
 import ideau.ControlePatrimonioDesktop.utils.ShowMessage;
+import ideau.ControlePatrimonioDesktop.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -390,48 +391,37 @@ public class CadastroPatrimonioController implements Initializable {
     }
     @FXML
     void abrirTelaSelecLocal() {
-        try {
-            RespostaHTTP resp = http.get("http://localhost:8080/patrimonio");
-            if (resp.getHttpStatus() < 206) {
-                showMessage(Alert.AlertType.ERROR, "Status: " + resp.getHttpStatus() + "Erro: " + resp.getBody());
-            } else if (resp.getHttpStatus() == null) {
-                showMessage(Alert.AlertType.ERROR, "Erro ao contatar o servidor! Entre em contato com o setor de TI.");
-            } else {
-                this.lstLocal = mapper.readValue(resp.getBody(), new TypeReference<List<Local>>() {});
+        this.lstLocal = Utils.getLocaisAPI();
+        if (this.lstLocal != null) {
+            Map<String, String> colunas = new LinkedHashMap<>();
+            colunas.put("ID", "id");
+            colunas.put("Nome Do Local", "nome");
+            try {
+                Local objLocal = abrirTelaSelecao(lstLocal, colunas,"Locais");
+                if (objLocal != null) {
+                    edtLocal.setText(objLocal.getNome());
+                }
+            } catch (Exception e) {
+                showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Locais!" + e.getMessage());
             }
-        } catch (Exception e) {
-            showMessage(Alert.AlertType.ERROR, "Erro de comunicação com a API: " + e.getMessage());
-        }
-        Map<String, String> colunas = new LinkedHashMap<>();
-        colunas.put("ID", "id");
-        colunas.put("Nome Do Local", "nome");
-        try {
-            Local objLocal = abrirTelaSelecao(lstLocal, colunas,"Locais");
-            if (objLocal != null) {
-                edtLocal.setText(objLocal.getNome());
-            }
-        } catch (Exception e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Locais!" + e.getMessage());
         }
     }
 
     @FXML
     void abrirTelaSelecStatus() {
-        this.lstStatus = Arrays.asList(
-                new Status(1L, "Ativo"),
-                new Status(1L, "Em uso"),
-                new Status(1L, "Em manutenção")
-        );
-        Map<String, String> colunas = new LinkedHashMap<>();
-        colunas.put("ID", "id");
-        colunas.put("Nome Do Status", "nome");
-        try {
-            Status objStatus = abrirTelaSelecao(lstStatus, colunas,"Status");
-            if (objStatus != null) {
-                edtStatus.setText(objStatus.getNome());
+        this.lstStatus = Utils.getStatusAPI();
+        if (lstStatus != null) {
+            Map<String, String> colunas = new LinkedHashMap<>();
+            colunas.put("ID", "id");
+            colunas.put("Nome Do Status", "nome");
+            try {
+                Status objStatus = abrirTelaSelecao(lstStatus, colunas,"Status");
+                if (objStatus != null) {
+                    edtStatus.setText(objStatus.getNome());
+                }
+            } catch (Exception e) {
+                showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Status!");
             }
-        } catch (Exception e) {
-            showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Status!");
         }
     }
     @FXML
@@ -445,14 +435,12 @@ public class CadastroPatrimonioController implements Initializable {
         mapColunas.put("Val. Tot.", "vlrTotal");
         mapColunas.put("Fornecedor", "nomeFornecedor");
         try {
-            RespostaHTTP resp = http.get("http://localhost:8080/nota");
-            if (resp.getHttpStatus() <= 206) {
-                System.out.println(resp.getBody());
-                lstNota = mapper.readValue(resp.getBody(), new TypeReference<List<NotaDTO>>() {});
+            lstNota = Utils.getNotasAPI();
+            if (!(lstNota == null)) {
                 NotaDTO notaSelec = abrirTelaSelecao(lstNota, mapColunas, "Notas");
-                if (notaSelec != null) {edtNumNota.setText(notaSelec.getNumNota() + "/" + notaSelec.getSerieNota());}
-            } else {
-                throw new RuntimeException("Status: " + resp.getHttpStatus() + " Erro: " + resp.getBody());
+                if (notaSelec != null) {
+                    edtNumNota.setText(notaSelec.getNumNota() + "/" + notaSelec.getSerieNota());
+                }
             }
         } catch (Exception e) {
             showMessage(Alert.AlertType.ERROR, "Erro ao abrir seleção de Notas: " + e.getMessage());
@@ -521,14 +509,16 @@ public class CadastroPatrimonioController implements Initializable {
             }
         }
         String[] numSerieNota = edtNumNota.getText().split("/");
+        Long numPatr = Long.parseLong(edtNumPatr.getText());
         if (booPodeProsseguir) {
             for (int i = 1; i <= qtd; i++) {
+                numPatr += 1;
                 tblPatrimonios.getItems().add(new PatrimonioDTO(edtNomeItem.getText(),
                                                                 edtStatus.getText(),
                                                                 edtLocal.getText(),
                                                                 numSerieNota[0],
                                                                 numSerieNota[1],
-                                                                edtNumPatr.getText(),
+                                                                numPatr.toString(),
                                                                 valCompra,
                                                                 aliquota,
                                                                 dtpDtAquisicao.getValue()

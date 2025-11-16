@@ -1,13 +1,15 @@
 package ideau.ControlePatrimonioDesktop.utils;
 
-import ideau.ControlePatrimonioDesktop.controller.CadastroItemController;
-import ideau.ControlePatrimonioDesktop.controller.EdicaoItemController;
-import ideau.ControlePatrimonioDesktop.controller.SelecaoController;
-import ideau.ControlePatrimonioDesktop.model.ItemDTO;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import ideau.ControlePatrimonioDesktop.controller.*;
+import ideau.ControlePatrimonioDesktop.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextFormatter;
 import javafx.stage.Modality;
@@ -19,6 +21,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.UnaryOperator;
+
+import static ideau.ControlePatrimonioDesktop.utils.ShowMessage.showMessage;
 
 public class Utils {
 
@@ -59,6 +63,12 @@ public class Utils {
         //colocar na tela de seleção
         if (controller instanceof CadastroItemController cadastroItemController) {
             return (List<T>) cadastroItemController.getLstCadastrados();
+        } else if (controller instanceof CadastroLocalController cadastroLocalController) {
+            return (List<T>) cadastroLocalController.getLstCadastrados();
+        } else if (controller instanceof CadastroStatusController cadastroStatusController) {
+            return (List<T>) cadastroStatusController.getLstCadastrados();
+        } else if (controller instanceof CadastroCategoriaController cadastroCategoriaController) {
+            return (List<T>) cadastroCategoriaController.getLstCadastrados();
         }
 
         return Collections.emptyList();
@@ -109,5 +119,115 @@ public class Utils {
             }
             return null;
         };
+    }
+    public static List<Local> getLocaisAPI() {
+        HTTPTransmit http = new HTTPTransmit();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        try {
+            RespostaHTTP resp = http.get("http://localhost:8080/local");
+            if (resp.getHttpStatus() > 206) {
+                showMessage(Alert.AlertType.ERROR, "Status: " + resp.getHttpStatus() + "Erro: " + resp.getBody());
+            } else if (resp.getHttpStatus() == null) {
+                showMessage(Alert.AlertType.ERROR, "Erro ao contatar o servidor! Entre em contato com o setor de TI.");
+            } else {
+                return mapper.readValue(resp.getBody(), new TypeReference<List<Local>>() {});
+            }
+        } catch (Exception e) {
+            showMessage(Alert.AlertType.ERROR, "Erro de comunicação com a API: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public static List<Status> getStatusAPI() {
+        HTTPTransmit http = new HTTPTransmit();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        try {
+            RespostaHTTP resp = http.get("http://localhost:8080/status");
+            if (resp.getHttpStatus() > 206) {
+                showMessage(Alert.AlertType.ERROR, "Status: " + resp.getHttpStatus() + "Erro: " + resp.getBody());
+            } else if (resp.getHttpStatus() == null) {
+                showMessage(Alert.AlertType.ERROR, "Erro ao contatar o servidor! Entre em contato com o setor de TI.");
+            } else {
+                return mapper.readValue(resp.getBody(), new TypeReference<List<Status>>() {});
+            }
+        } catch (Exception e) {
+            showMessage(Alert.AlertType.ERROR, "Erro de comunicação com a API: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public static List<ItemDTO> getItensAPI() {
+        HTTPTransmit http = new HTTPTransmit();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        try {
+            RespostaHTTP resp = http.get("http://localhost:8080/item");
+            if (resp.getHttpStatus() > 206) {
+                showMessage(Alert.AlertType.ERROR, "Status: " + resp.getHttpStatus() + "Erro: " + resp.getBody());
+            } else if (resp.getHttpStatus() == null) {
+                showMessage(Alert.AlertType.ERROR, "Erro ao contatar o servidor! Entre em contato com o setor de TI.");
+            } else {
+                return mapper.readValue(resp.getBody(), new TypeReference<List<ItemDTO>>() {});
+            }
+        } catch (Exception e) {
+            showMessage(Alert.AlertType.ERROR, "Erro de comunicação com a API: " + e.getMessage());
+        }
+        return null;
+    }
+    public static List<NotaDTO> getNotasAPI() {
+        HTTPTransmit http = new HTTPTransmit();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        try {
+            RespostaHTTP resp = http.get("http://localhost:8080/nota");
+            if (resp.getHttpStatus() > 206) {
+                showMessage(Alert.AlertType.ERROR, "Status: " + resp.getHttpStatus() + "Erro: " + resp.getBody());
+            } else if (resp.getHttpStatus() == null) {
+                showMessage(Alert.AlertType.ERROR, "Erro ao contatar o servidor! Entre em contato com o setor de TI.");
+            } else {
+                return mapper.readValue(resp.getBody(), new TypeReference<List<NotaDTO>>() {});
+            }
+        } catch (Exception e) {
+            showMessage(Alert.AlertType.ERROR, "Erro de comunicação com a API: " + e.getMessage());
+        }
+        return null;
+    }
+    public static List<FornecedorDTO> getFornecedoresAPI() {
+        HTTPTransmit http = new HTTPTransmit();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        try {
+            RespostaHTTP resp = http.get("http://localhost:8080/fornecedor");
+            if (resp.getHttpStatus() > 206) {
+                showMessage(Alert.AlertType.ERROR, "Status: " + resp.getHttpStatus() + "Erro: " + resp.getBody());
+            } else if (resp.getHttpStatus() == null) {
+                showMessage(Alert.AlertType.ERROR, "Erro ao contatar o servidor! Entre em contato com o setor de TI.");
+            } else {
+                return mapper.readValue(resp.getBody(), new TypeReference<List<FornecedorDTO>>() {});
+            }
+        } catch (Exception e) {
+            showMessage(Alert.AlertType.ERROR, "Erro de comunicação com a API: " + e.getMessage());
+        }
+        return null;
+    }
+    public static List<Categoria> getCategoriasAPI() {
+        HTTPTransmit http = new HTTPTransmit();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        try {
+            RespostaHTTP resp = http.get("http://localhost:8080/categoria");
+            if (resp.getHttpStatus() > 206) {
+                showMessage(Alert.AlertType.ERROR, "Status: " + resp.getHttpStatus() + "Erro: " + resp.getBody());
+            } else if (resp.getHttpStatus() == null) {
+                showMessage(Alert.AlertType.ERROR, "Erro ao contatar o servidor! Entre em contato com o setor de TI.");
+            } else {
+                return mapper.readValue(resp.getBody(), new TypeReference<List<Categoria>>() {});
+            }
+        } catch (Exception e) {
+            showMessage(Alert.AlertType.ERROR, "Erro de comunicação com a API: " + e.getMessage());
+        }
+        return null;
     }
 }
