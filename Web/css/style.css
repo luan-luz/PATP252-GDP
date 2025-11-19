@@ -278,7 +278,7 @@ aside .sidebar a:hover span {
     font-size: 10px;
     
     /*transition: all 0.3s ease; */ 
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 7px 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 #sidebar.open-sidebar  {
