@@ -13,7 +13,177 @@
     
     
    <link rel="icon" href="../img/logo.png" type="image/x-icon">
+   
     <title>Gestor</title>
+
+<style>
+body {
+            background-color: #f4f6f8;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        .container1{
+
+        }
+        
+        main{
+            margin-top: 40px;
+            width: 1200px;
+            height: 90vh;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+      .faixa{
+        margin-top: -39px;
+        width: 1800px;
+        height: 3vh;
+      }
+
+        /* Cartão de Perfil */
+        .profile-card {
+            background-color: #ffffff;
+            padding: 1vh;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            height: 85vh;
+        }
+
+        .profile-card img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .profile-card h3 {
+            color: #2f4f4f;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .profile-card p {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .profile-card .action-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .profile-card .action-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .action-btn-danger {
+            background-color: #dc3545;
+        }
+
+        .action-btn-danger:hover {
+            background-color: #c82333;
+        }
+
+ 
+
+        /* Tabelas de Histórico */
+        .history-table h4 {
+            border-radius: 10px;
+            padding: 2px;
+            margin-bottom: 15px;
+            color: #f2fdfd;
+            background-color: #2f4f4f;
+        }
+
+        .history-table{
+            margin-right: -290px;
+        }
+
+        .table th, .table td { 
+            text-align: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #2f4f4f;
+            color: #fff;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Gráfico */
+        .chart-container {
+            margin-top: 10px;
+            position: relative;
+            height: 300px;
+            width: 100%;
+             color: #2f4f4f;
+        }
+
+        .stats{
+            margin-top: 270px;
+            margin-left: -670px;
+        }
+        
+         .stats h4{
+            margin-left: 150px;
+            width: 800px;
+            border-radius: 10px;
+            padding: 2px;   
+            color: #f2fdfd;
+            background-color: #2f4f4f;
+         }
+
+         .footer-content {
+            width: 1500px;
+            height: 5vh;
+            background-color: #427070; 
+            margin-left: -1376px;
+            margin-top: 95vh;}
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .profile-card {
+                padding: 20px;
+            }
+
+            .action-btn {
+                padding: 10px;
+            }
+
+            .stats, .history-table {
+                margin-top: 20px;
+            }
+
+            .col-md-6 {
+                margin-bottom: 20px;
+            }
+        }
+</style>
+    
 </head>
 <body>
     <div  class="container">
@@ -70,21 +240,116 @@
  
 
 
-        <main>
+        <main> 
+    <div class="container"> 
+        <div class="profile-card">
+            <img src="../img/logo.png" alt="Foto de Perfil">
+            <h3>Lorem Ipsum</h3>
+            <p><strong>E-mail:</strong> Lorem.Ipsum@email.com</p>
+            <p><strong>Cargo:</strong> Administrador</p>
+            <p><strong>Telefone:</strong> (00) 99999-9999</p>
+            <p><strong>Data de Nascimento:</strong> 15/08/1985</p>
+            <p><strong>Status:</strong> Ativo</p>
+            <p><strong>Data de Criação:</strong> 01/01/2021</p>
+            <p><strong>Último Acesso:</strong> 20/11/2025</p>
+            <div>
+                <button class="action-btn">Editar Informações</button>
+                <button class="action-btn action-btn-danger" style="margin-top: 10px;">Excluir Conta</button>
+            </div>
+        </div>
  
+        <div class="history-table">
+            <h4>Histórico de Atividades</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Data</th>
+                        <th>Descrição da Atividade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>20/11/2025</td>
+                        <td>Login na conta</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>18/11/2025</td>
+                        <td>Alteração de senha</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>15/11/2025</td>
+                        <td>Alteração de permissões de usuário</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+ 
+        <div class="stats">
+            <h4>Estatísticas de Atividade</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Atividades Recentes</h5>
+                    <ul>
+                        <li>Login: 5 vezes nos últimos 30 dias</li>
+                        <li>Alterações de dados: 2</li>
+                        <li>Permissões alteradas: 1</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>Gráfico de Atividade</h5>
+                    <div class="chart-container">
+                        <canvas id="atividadeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
             
         </main>
 
 
-        
+   <footer>
+        <div class="footer-content"> 
+        </div>
+    </footer>
     </div>
      
-    <button id="open_btn">
+       <button id="open_btn">
         <i  class="material-symbols-sharp">chevron_right</i>
     </button> 
      
 <script src="../js/script.js" defer></script>  
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <script> 
+        const ctx = document.getElementById('atividadeChart').getContext('2d');
+        const atividadeChart = new Chart(ctx, {
+            type: 'bar', 
+            data: {
+                labels: ['Nov', 'Dez', 'Jan', 'Fev', 'Mar'],  
+                datasets: [{
+                    label: 'Atividades do Usuário',
+                    data: [5, 3, 2, 4, 6], 
+                    backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    
 
 </body>
 
