@@ -14,6 +14,228 @@
     
    <link rel="icon" href="../img/logo.png" type="image/x-icon">
     <title>Gestor</title>
+    
+    <style>
+        body {
+            background-color: #f4f6f8;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+        main{
+            margin-left: -150px;
+            width: 1400px;
+            height: 100vh;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+
+        }
+
+        main h1{
+            color: #f7fbfb; 
+            background: #2f4f4f;
+            margin-top: -25px;
+            border-radius: 5px;
+        }
+ 
+
+        /* Configurações de Privacidade */
+        .settings-card-privacy {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: -90px; 
+            width : 35vh;
+            height: 90vh    ;
+            
+        }
+
+        .settings-card-privacy h3 {
+            color: #2f4f4f;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            height: 20vh;
+        }
+
+        .settings-card-privacy p {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Configurações de Segurança */
+        .settings-card-security {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px; 
+            height: 400px;
+            width : 40vh;
+            margin-left: 91px;
+        }
+
+        .settings-card-security h3 {
+            color: #2f4f4f;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .settings-card-security p {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Configurações de Notificação */
+        .settings-card-notifications {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+            margin-left: -300px;
+            height: 400px;
+            width: 650px;
+        }
+
+        .settings-card-notifications h3 {
+            color: #2f4f4f;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .settings-card-notifications p {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Configurações de Backup */
+        .settings-card-backup {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: -50px;
+            margin-left:300px;
+            height: 40vh;
+            width: 600px;
+        }
+
+        .settings-card-backup h3 {
+            color: #2f4f4f;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .settings-card-backup p {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Logs de Acesso */
+        .settings-card-logs {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top:  -160px; 
+            margin-left: 310px;
+            width: 300px;
+           height: 30vh;
+        }
+
+        .settings-card-logs h3 {
+            color: #2f4f4f;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .settings-card-logs p {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+        }
+
+        .action-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .action-btn-danger {
+            background-color: #dc3545;
+        }
+
+        .action-btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        /* Tabelas de Histórico e Gráfico */
+        .table th, .table td {
+            text-align: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #2f4f4f;
+            color: #fff;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Gráfico */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .settings-card {
+                padding: 20px;
+                width: 100%;
+            }
+
+            .action-btn {
+                padding: 10px;
+            }
+
+            .stats, .history-table {
+                margin-top: 20px;
+            }
+
+            .col-md-6 {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div  class="container">
@@ -70,8 +292,93 @@
  
 
 
-        <main>
+        <main >
+            <h1>Configurações do Sistema</h1>
  
+<div class="container">
+        <!-- Configurações de Privacidade -->
+        <div class="settings-card-privacy">
+            <h3>Configurações de Privacidade</h3>
+            <form>
+                <div class="mb-3">
+                    <label for="dataAccess" class="form-label">Quem pode acessar dados privados</label>
+                    <select class="form-select" id="dataAccess">
+                        <option value="admin">Somente Administradores</option>
+                        <option value="user">Administradores e Usuários Autorizados</option>
+                        <option value="public">Todos os Usuários</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="dataRetention" class="form-label">Tempo de Retenção de Dados</label>
+                    <select class="form-select" id="dataRetention">
+                        <option value="30">30 dias</option>
+                        <option value="60">60 dias</option>
+                        <option value="90">90 dias</option>
+                        <option value="forever">Indefinidamente</option>
+                    </select>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="allowTracking">
+                    <label class="form-check-label" for="allowTracking">Permitir rastreamento de dados do usuário</label>
+                </div>
+                <button type="submit" class="action-btn">Salvar Configurações de Privacidade</button>
+            </form>
+        </div>
+
+        <!-- Configurações de Segurança -->
+        <div class="settings-card-security">
+            <h3>Configurações de Segurança</h3>
+            <form>
+                <div class="mb-3">
+                    <label for="adminPassword" class="form-label">Alterar Senha de Admin</label>
+                    <input type="password" class="form-control" id="adminPassword" placeholder="Nova Senha">
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirmar Senha</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar Nova Senha">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="enable2FA">
+                    <label class="form-check-label" for="enable2FA">Ativar Autenticação de Dois Fatores (2FA)</label>
+                </div>
+                <button type="submit" class="action-btn">Salvar Configurações de Segurança</button>
+            </form>
+        </div>
+
+        <!-- Configurações de Notificação -->
+        <div class="settings-card-notifications">
+            <h3>Configurações de Notificação</h3>
+            <form>
+                <div class="mb-3">
+                    <label for="notificationType" class="form-label">Tipo de Notificação</label>
+                    <select class="form-select" id="notificationType">
+                        <option value="email">E-mail</option>
+                        <option value="sms">SMS</option>
+                        <option value="push">Push</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="notificationFrequency" class="form-label">Frequência das Notificações</label>
+                    <select class="form-select" id="notificationFrequency">
+                        <option value="instant">Instantâneo</option>
+                        <option value="daily">Diário</option>
+                        <option value="weekly">Semanal</option>
+                    </select>
+                </div>
+                <button type="submit" class="action-btn">Salvar Configurações de Notificação</button>
+            </form>
+        </div>
+
+        <!-- Logs de Acesso -->
+        <div class="settings-card-logs">
+            <h3>Logs de Acesso</h3>
+            <p><strong>Status de Acesso:</strong> Ativo</p>
+            <button class="action-btn">Ver Logs de Acesso</button>
+        </div>
+
+        <!-- Configurações de Backup -->
+ 
+    </div>
             
         </main>
 

@@ -14,6 +14,174 @@
     
    <link rel="icon" href="../img/logo.png" type="image/x-icon">
     <title>Gestor</title>
+     <style>
+        body {
+            background-color: #f4f6f8;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        main{
+            margin-left: 250px;
+            padding: 20px;
+            width: 1500px ;
+            height: 100vh;
+        }
+       /* Cartão de Alertas */
+    .alerts-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .alerts-card h3 {
+            color: #2f4f4f;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        /* Alerta Item */
+        .alert-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border-left: 5px solid transparent;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .alert-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .alert-item span {
+            font-weight: bold;
+        }
+
+        .alert-item .btn {
+            margin-left: 10px;
+        }
+
+        .alert-danger {
+            border-left-color: #dc3545;
+        }
+
+        .alert-warning {
+            border-left-color: #ffc107;
+        }
+
+        .alert-info {
+            border-left-color: #17a2b8;
+        }
+
+        .alert-success {
+            border-left-color: #28a745;
+        }
+
+        /* Filtros de Alerta */
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .filters select, .filters input {
+            width: 200px;
+        }
+
+        .filters .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .filters .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Detalhes do Alerta */
+        .alert-details {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .alert-details h4 {
+            color: #2f4f4f;
+            margin-bottom: 10px;
+        }
+
+        .alert-details p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .alert-details .btn {
+            margin-top: 15px;
+        }
+
+        /* Barra de Urgência */
+        .urgency-bar {
+            width: 100%;
+            height: 8px;
+            margin-top: 5px;
+        }
+
+        .high-urgency {
+            background-color: #dc3545;
+            width: 100%;
+        }
+
+        .medium-urgency {
+            background-color: #ffc107;
+            width: 75%;
+        }
+
+        .low-urgency {
+            background-color: #28a745;
+            width: 50%;
+        }
+
+        /* Histórico de Ações */
+        .history-actions {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .history-actions p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .history-actions .action-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filters select, .filters input, .filters .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div  class="container">
@@ -71,7 +239,92 @@
 
 
         <main>
- 
+<div class="container">
+        <!-- Filtros de Consulta -->
+        <div class="alerts-card">
+            <h3>Alertas do Sistema</h3>
+            <div class="filters">
+                <div>
+                    <label for="alertType">Tipo de Alerta:</label>
+                    <select id="alertType">
+                        <option value="">Todos</option>
+                        <option value="error">Erro</option>
+                        <option value="warning">Aviso</option>
+                        <option value="info">Informativo</option>
+                        <option value="success">Sucesso</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="alertDate">Data:</label>
+                    <input type="date" id="alertDate">
+                </div>
+                <button class="btn" onclick="filterAlerts()">Filtrar</button>
+            </div>
+
+            <!-- Lista de Alertas -->
+            <div class="alert-item alert-danger" onclick="showAlertDetails('Erro de Login', 'Tentativa de login falhada com a conta admin. Ação necessária: Verificar logs de acesso e bloquear IP.', 'alta', 'João Silva', '20/11/2025 - 14:30')">
+                <div>
+                    <span>Erro de Login</span><br>
+                    <small>20/11/2025 - 14:30</small>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-danger">Resolver</button>
+                </div>
+            </div>
+
+            <div class="alert-item alert-warning" onclick="showAlertDetails('Tentativa de Acesso Não Autorizado', 'Tentativa de acesso ao painel administrativo sem permissão. Ação necessária: Reforçar segurança.', 'média', 'Maria Souza', '19/11/2025 - 16:50')">
+                <div>
+                    <span>Tentativa de Acesso Não Autorizado</span><br>
+                    <small>19/11/2025 - 16:50</small>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-warning">Investigar</button>
+                </div>
+            </div>
+
+            <div class="alert-item alert-info" onclick="showAlertDetails('Atualização de Sistema', 'A atualização do sistema foi realizada com sucesso. Verifique os logs para confirmar a integridade dos dados.', 'baixa', 'Carlos Lima', '18/11/2025 - 10:00')">
+                <div>
+                    <span>Atualização de Sistema Concluída</span><br>
+                    <small>18/11/2025 - 10:00</small>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-info">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="alert-item alert-success" onclick="showAlertDetails('Backup Realizado', 'O backup do sistema foi completado com sucesso. Todos os dados foram salvos no servidor.', 'baixa', 'João Silva', '17/11/2025 - 23:59')">
+                <div>
+                    <span>Backup Realizado com Sucesso</span><br>
+                    <small>17/11/2025 - 23:59</small>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-success">Ver Logs</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detalhes do Alerta -->
+        <div class="alert-details" id="alertDetails" style="display: none;">
+            <h4>Detalhes do Alerta</h4>
+            <p><strong>Título:</strong> <span id="alertTitle"></span></p>
+            <p><strong>Descrição:</strong> <span id="alertDescription"></span></p>
+            <p><strong>Urgência:</strong> <span id="alertUrgency"></span></p>
+            <div id="urgencyBar" class="urgency-bar"></div>
+            <p><strong>Responsável:</strong> <span id="alertResponsible"></span></p>
+            <p><strong>Data de Fechamento:</strong> <span id="alertCloseDate"></span></p>
+            <div class="history-actions" id="alertHistory">
+                <h5>Histórico de Ações:</h5>
+                <div class="action-item">
+                    <span>Ação 1: Investigação realizada</span><small> - 25/11/2025 14:00</small>
+                </div>
+                <div class="action-item">
+                    <span>Ação 2: IP bloqueado</span><small> - 25/11/2025 15:00</small>
+                </div>
+            </div>
+            <button class="btn btn-sm btn-success">Marcar como Resolvido</button>
+            <button class="btn btn-sm btn-info">Adicionar Notas</button>
+        </div>
+    </div>
             
         </main>
 
@@ -85,7 +338,37 @@
      
 <script src="../js/script.js" defer></script>  
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+        function filterAlerts() {
+            const alertType = document.getElementById("alertType").value;
+            const alertDate = document.getElementById("alertDate").value;
 
+            // Lógica de filtro de alertas pode ser implementada aqui
+
+            alert(`Filtros selecionados:\nTipo: ${alertType}\nData: ${alertDate}`);
+        }
+
+        function showAlertDetails(title, description, urgency, responsible, closeDate) {
+            // Exibir detalhes do alerta
+            document.getElementById("alertDetails").style.display = 'block';
+            document.getElementById("alertTitle").innerText = title;
+            document.getElementById("alertDescription").innerText = description;
+            document.getElementById("alertUrgency").innerText = urgency.charAt(0).toUpperCase() + urgency.slice(1);
+            document.getElementById("alertResponsible").innerText = responsible;
+            document.getElementById("alertCloseDate").innerText = closeDate;
+
+            // Atualizar a barra de urgência
+            let urgencyBar = document.getElementById("urgencyBar");
+
+            if (urgency === 'alta') {
+                urgencyBar.className = 'urgency-bar high-urgency';
+            } else if (urgency === 'média') {
+                urgencyBar.className = 'urgency-bar medium-urgency';
+            } else {
+                urgencyBar.className = 'urgency-bar low-urgency';
+            }
+        }
+    </script>
 </body>
 
 </html
