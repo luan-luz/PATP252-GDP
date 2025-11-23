@@ -38,7 +38,7 @@ public class CategoriaServiceImpl implements GenericService<Categoria, Categoria
                 mapErros.put(intAtual, erros);
             } else {
                 try {
-                    mapRetorno.put(intAtual, new Categoria(repo.save(entry.getValue()).getId()));
+                    mapRetorno.put(intAtual, new Categoria(repo.save(entry.getValue()).getNome()));
                 } catch (Exception e) {
                     mapErros.put(intAtual, e.getMessage());
                 }

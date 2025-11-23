@@ -456,7 +456,12 @@ public class CadastroPatrimonioController implements Initializable {
         Integer qtd = spnQuantidade.getValue();
 
         boolean booPodeProsseguir = true;
-        if (edtNomeItem.getText().isBlank()) {
+        if (edtNumNota.getText().isBlank()) {
+            booPodeProsseguir = false;
+            if (!edtNumNota.getStyleClass().contains("error")) {
+                edtNumNota.getStyleClass().add("error");
+            };
+        } else if (edtNomeItem.getText().isBlank()) {
             booPodeProsseguir = false;
             if (!edtNomeItem.getStyleClass().contains("error")) {
                 edtNomeItem.getStyleClass().add("error");
@@ -507,25 +512,30 @@ public class CadastroPatrimonioController implements Initializable {
                 };
                 showMessage(Alert.AlertType.ERROR, "O valor: " + edtAliquota.getText() + " não é válido!");
             }
-        }
-        String[] numSerieNota = edtNumNota.getText().split("/");
-        Long numPatr = Long.parseLong(edtNumPatr.getText());
-        if (booPodeProsseguir) {
-            for (int i = 1; i <= qtd; i++) {
-                numPatr += 1;
-                tblPatrimonios.getItems().add(new PatrimonioDTO(edtNomeItem.getText(),
-                                                                edtStatus.getText(),
-                                                                edtLocal.getText(),
-                                                                numSerieNota[0],
-                                                                numSerieNota[1],
-                                                                numPatr.toString(),
-                                                                valCompra,
-                                                                aliquota,
-                                                                dtpDtAquisicao.getValue()
-                ));
+            String[] numSerieNota = edtNumNota.getText().split("/");
+            Long numPatr = null;
+            if (!edtNumPatr.getText().isBlank()) {
+                numPatr = Long.parseLong(edtNumPatr.getText());
             }
-        }
-        limparCampos();
+            if (booPodeProsseguir) {
+                for (int i = 1; i <= qtd; i++) {
+                    tblPatrimonios.getItems().add(new PatrimonioDTO(edtNomeItem.getText(),
+                                                                    edtStatus.getText(),
+                                                                    edtLocal.getText(),
+                                                                    numSerieNota[0],
+                                                                    numSerieNota[1],
+                                                                    numPatr == null ? "" : numPatr.toString(),
+                                                                    valCompra,
+                                                                    aliquota,
+                                                                    dtpDtAquisicao.getValue()
+                    ));
+                    if (numPatr != null) {
+                        numPatr += 1;
+                    }
+                }
+            }
+            limparCampos();
+            }
     }
 
     @FXML

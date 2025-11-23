@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -81,6 +82,8 @@ public class CadastroFornecedorController {
                     this.lstCadastrados = map.values().stream().toList();
                     showMessage(Alert.AlertType.INFORMATION, "Fornecedor cadastrado com sucesso!");
                     limparCampos();
+                    Stage stage = (Stage) edtRazao.getScene().getWindow();
+                    stage.close();
                 } else {
                     throw new Exception("Status: " + resp.getHttpStatus() + "Erro: " + resp.getBody());
                 }

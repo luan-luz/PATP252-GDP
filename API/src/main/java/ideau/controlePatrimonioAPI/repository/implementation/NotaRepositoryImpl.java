@@ -66,7 +66,7 @@ public class NotaRepositoryImpl implements NotaRepository {
                        "from  " +
                        "  notas_f n " +
                        "left outer join " +
-                       "  fornecedores f on n.fornecedor_id = f.id " +
+                       "  fornecedor f on n.fornecedor_id = f.id " +
                        "order by id;";
         try (Connection con = ds.getConnection();
              PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -103,7 +103,7 @@ public class NotaRepositoryImpl implements NotaRepository {
                 "from  " +
                 "  notas_f n " +
                 "left outer join " +
-                "  fornecedores f on n.fornecedor_id = f.id " +
+                "  fornecedor f on n.fornecedor_id = f.id " +
                 "where n.id = ? "+
                 "order by id;";
         try (Connection con = ds.getConnection();

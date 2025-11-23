@@ -46,14 +46,10 @@ public class VisualizarController {
     }
 
     @FXML
-    void abrirVisualizarFornecedores(ActionEvent event) {
-
-    }
+    void abrirVisualizarFornecedores(ActionEvent event) { carregarTela("telaVisualizarFornecedores"); }
 
     @FXML
-    void abrirVisualizarNotas(ActionEvent event) {
-
-    }
+    void abrirVisualizarNotas(ActionEvent event) { carregarTela("telaVisualizarNotas"); }
 
     @FXML
     void abrirVisualizarPatrimonio(ActionEvent event) {
