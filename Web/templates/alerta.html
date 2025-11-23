@@ -24,25 +24,39 @@
         main{
             margin-left: 250px;
             padding: 20px;
-            width: 1500px ;
-            height: 100vh;
+            width: 1350px ;
+            height: 90vh;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-left: -110px;
         }
-       /* Cartão de Alertas */
-    .alerts-card {
+ 
+
+        /* Cartão de Alertas */
+        .alerts-card {
             background-color: #ffffff;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+            flex: 1 1 60%;   
+             width: 355px;
+            height: 85vh;
         }
 
         .alerts-card h3 {
-            color: #2f4f4f;
+            color: #e7f8f8;
+            background: #568585;
             margin-bottom: 20px;
-            font-size: 2rem;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            padding: 5px; 
+            text-align: center;
         }
 
-        /* Alerta Item */
+        /* Tabela de Alertas */
         .alert-item {
             display: flex;
             justify-content: space-between;
@@ -52,6 +66,8 @@
             border-left: 5px solid transparent;
             transition: background-color 0.3s ease;
             border-radius: 8px;
+            cursor: pointer; /* Tornar o alerta clicável */
+            height: 10vh;
         }
 
         .alert-item:hover {
@@ -82,11 +98,11 @@
             border-left-color: #28a745;
         }
 
-        /* Filtros de Alerta */
         .filters {
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .filters select, .filters input {
@@ -106,16 +122,25 @@
 
         /* Detalhes do Alerta */
         .alert-details {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 10px;
+            padding: 20px;
             background-color: #f1f1f1;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            height: 83vh;
+            width: 400px;
+            margin-left: -500px;
         }
 
         .alert-details h4 {
-            color: #2f4f4f;
-            margin-bottom: 10px;
+            color: #e7f8f8;
+            background: #568585;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            padding: 5px;
+            margin-left: 10px;
+            text-align: center; 
         }
 
         .alert-details p {
@@ -169,6 +194,25 @@
             margin-bottom: 8px;
         }
 
+                .footer-content { 
+            margin-top:   92vh;     
+            margin-left: -1415px;
+            width: 1420px;
+            height: 5vh;
+        }
+
+        /* Gráfico de Alertas */
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            margin-top: 200px;
+            margin-left: 600px;
+            flex: 1;
+             width: 70%;
+            padding-left: 30px;
+        }
+
         /* Responsividade */
         @media (max-width: 768px) {
             .filters {
@@ -180,7 +224,18 @@
                 width: 100%;
                 margin-bottom: 10px;
             }
+
+            .alerts-card {
+                max-width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .chart-container {
+                max-width: 100%;
+                margin-top: 30px;
+            }
         }
+
     </style>
 </head>
 <body>
@@ -239,14 +294,14 @@
 
 
         <main>
-<div class="container">
+    <div class="container">
         <!-- Filtros de Consulta -->
         <div class="alerts-card">
             <h3>Alertas do Sistema</h3>
             <div class="filters">
                 <div>
                     <label for="alertType">Tipo de Alerta:</label>
-                    <select id="alertType">
+                    <select id="alertType" onchange="filterAlerts()">
                         <option value="">Todos</option>
                         <option value="error">Erro</option>
                         <option value="warning">Aviso</option>
@@ -256,55 +311,60 @@
                 </div>
                 <div>
                     <label for="alertDate">Data:</label>
-                    <input type="date" id="alertDate">
+                    <input type="date" id="alertDate" onchange="filterAlerts()">
                 </div>
                 <button class="btn" onclick="filterAlerts()">Filtrar</button>
             </div>
 
             <!-- Lista de Alertas -->
-            <div class="alert-item alert-danger" onclick="showAlertDetails('Erro de Login', 'Tentativa de login falhada com a conta admin. Ação necessária: Verificar logs de acesso e bloquear IP.', 'alta', 'João Silva', '20/11/2025 - 14:30')">
-                <div>
-                    <span>Erro de Login</span><br>
-                    <small>20/11/2025 - 14:30</small>
+            <div id="alertList">
+                <div class="alert-item alert-danger" data-type="error" data-date="2025-11-20" onclick="showAlertDetails('Erro de Login', 'Tentativa de login falhada com a conta admin. Ação necessária: Verificar logs de acesso e bloquear IP.', 'alta', 'admin', '20/11/2025 - 14:30')">
+                    <div>
+                        <span>Erro de Login</span><br>
+                        <small>20/11/2025 - 14:30</small>
+                    </div>
+                    <div>
+                        <button class="btn btn-sm btn-danger">Resolver</button>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn btn-sm btn-danger">Resolver</button>
-                </div>
-            </div>
 
-            <div class="alert-item alert-warning" onclick="showAlertDetails('Tentativa de Acesso Não Autorizado', 'Tentativa de acesso ao painel administrativo sem permissão. Ação necessária: Reforçar segurança.', 'média', 'Maria Souza', '19/11/2025 - 16:50')">
-                <div>
-                    <span>Tentativa de Acesso Não Autorizado</span><br>
-                    <small>19/11/2025 - 16:50</small>
+                <div class="alert-item alert-warning" data-type="warning" data-date="2025-11-19" onclick="showAlertDetails('Tentativa de Acesso Não Autorizado', 'Tentativa de acesso ao painel administrativo sem permissão. Ação necessária: Reforçar segurança.', 'média', 'admin', '19/11/2025 - 16:50')">
+                    <div>
+                        <span>Tentativa de Acesso Não Autorizado</span><br>
+                        <small>19/11/2025 - 16:50</small>
+                    </div>
+                    <div>
+                        <button class="btn btn-sm btn-warning">Investigar</button>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn btn-sm btn-warning">Investigar</button>
-                </div>
-            </div>
 
-            <div class="alert-item alert-info" onclick="showAlertDetails('Atualização de Sistema', 'A atualização do sistema foi realizada com sucesso. Verifique os logs para confirmar a integridade dos dados.', 'baixa', 'Carlos Lima', '18/11/2025 - 10:00')">
-                <div>
-                    <span>Atualização de Sistema Concluída</span><br>
-                    <small>18/11/2025 - 10:00</small>
+                <div class="alert-item alert-info" data-type="info" data-date="2025-11-18" onclick="showAlertDetails('Atualização de Sistema', 'A atualização do sistema foi realizada com sucesso. Verifique os logs para confirmar a integridade dos dados.', 'baixa', 'admin', '18/11/2025 - 10:00')">
+                    <div>
+                        <span>Atualização de Sistema Concluída</span><br>
+                        <small>18/11/2025 - 10:00</small>
+                    </div>
+                    <div>
+                        <button class="btn btn-sm btn-info">Ver Detalhes</button>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn btn-sm btn-info">Ver Detalhes</button>
-                </div>
-            </div>
 
-            <div class="alert-item alert-success" onclick="showAlertDetails('Backup Realizado', 'O backup do sistema foi completado com sucesso. Todos os dados foram salvos no servidor.', 'baixa', 'João Silva', '17/11/2025 - 23:59')">
-                <div>
-                    <span>Backup Realizado com Sucesso</span><br>
-                    <small>17/11/2025 - 23:59</small>
-                </div>
-                <div>
-                    <button class="btn btn-sm btn-success">Ver Logs</button>
+                <div class="alert-item alert-success" data-type="success" data-date="2025-11-17" onclick="showAlertDetails('Backup Realizado', 'O backup do sistema foi completado com sucesso. Todos os dados foram salvos no servidor.', 'baixa', 'admin', '17/11/2025 - 23:59')">
+                    <div>
+                        <span>Backup Realizado com Sucesso</span><br>
+                        <small>17/11/2025 - 23:59</small>
+                    </div>
+                    <div>
+                        <button class="btn btn-sm btn-success">Ver Logs</button>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Detalhes do Alerta -->
-        <div class="alert-details" id="alertDetails" style="display: none;">
+ 
+        <div class="chart-container">
+            <canvas id="alertStats"></canvas>
+        </div>
+ 
+        <div class="alert-details" id="alertDetails">
             <h4>Detalhes do Alerta</h4>
             <p><strong>Título:</strong> <span id="alertTitle"></span></p>
             <p><strong>Descrição:</strong> <span id="alertDescription"></span></p>
@@ -312,7 +372,7 @@
             <div id="urgencyBar" class="urgency-bar"></div>
             <p><strong>Responsável:</strong> <span id="alertResponsible"></span></p>
             <p><strong>Data de Fechamento:</strong> <span id="alertCloseDate"></span></p>
-            <div class="history-actions" id="alertHistory">
+            <div class="history-actions">
                 <h5>Histórico de Ações:</h5>
                 <div class="action-item">
                     <span>Ação 1: Investigação realizada</span><small> - 25/11/2025 14:00</small>
@@ -322,14 +382,16 @@
                 </div>
             </div>
             <button class="btn btn-sm btn-success">Marcar como Resolvido</button>
-            <button class="btn btn-sm btn-info">Adicionar Notas</button>
         </div>
     </div>
             
         </main>
 
 
-        
+                     <footer>
+        <div class="footer-content"> 
+        </div>
+    </footer>
     </div>
      
        <button id="open_btn">
@@ -337,19 +399,51 @@
     </button> 
      
 <script src="../js/script.js" defer></script>  
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
         function filterAlerts() {
             const alertType = document.getElementById("alertType").value;
             const alertDate = document.getElementById("alertDate").value;
+ 
+            localStorage.setItem("alertType", alertType);
+            localStorage.setItem("alertDate", alertDate);
 
-            // Lógica de filtro de alertas pode ser implementada aqui
+            const alertItems = document.querySelectorAll('.alert-item');
 
-            alert(`Filtros selecionados:\nTipo: ${alertType}\nData: ${alertDate}`);
+            alertItems.forEach(item => {
+                const itemType = item.getAttribute('data-type');
+                const itemDate = item.getAttribute('data-date');
+
+                let show = true;  
+ 
+                if (alertType && itemType !== alertType) {
+                    show = false;
+                }
+ 
+                if (alertDate && itemDate !== alertDate) {
+                    show = false;
+                }
+
+                item.style.display = show ? 'flex' : 'none';
+            });
         }
+ 
+        window.onload = function() {
+            const alertType = localStorage.getItem("alertType");
+            const alertDate = localStorage.getItem("alertDate");
+
+            if (alertType) {
+                document.getElementById("alertType").value = alertType;
+            }
+
+            if (alertDate) {
+                document.getElementById("alertDate").value = alertDate;
+            }
+ 
+            filterAlerts();
+        };
 
         function showAlertDetails(title, description, urgency, responsible, closeDate) {
-            // Exibir detalhes do alerta
             document.getElementById("alertDetails").style.display = 'block';
             document.getElementById("alertTitle").innerText = title;
             document.getElementById("alertDescription").innerText = description;
@@ -357,9 +451,7 @@
             document.getElementById("alertResponsible").innerText = responsible;
             document.getElementById("alertCloseDate").innerText = closeDate;
 
-            // Atualizar a barra de urgência
             let urgencyBar = document.getElementById("urgencyBar");
-
             if (urgency === 'alta') {
                 urgencyBar.className = 'urgency-bar high-urgency';
             } else if (urgency === 'média') {
@@ -367,6 +459,28 @@
             } else {
                 urgencyBar.className = 'urgency-bar low-urgency';
             }
+ 
+            var ctx = document.getElementById('alertStats').getContext('2d');
+            var alertStatsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Erros', 'Avisos', 'Informativos', 'Sucessos'],
+                    datasets: [{
+                        label: 'Alertas',
+                        data: [12, 5, 8, 15],
+                        backgroundColor: ['#dc3545', '#ffc107', '#17a2b8', '#28a745'],
+                        borderColor: ['#dc3545', '#ffc107', '#17a2b8', '#28a745'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
         }
     </script>
 </body>
