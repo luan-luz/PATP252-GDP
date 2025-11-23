@@ -2,6 +2,7 @@ package ideau.ControlePatrimonioDesktop.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import ideau.ControlePatrimonioDesktop.model.*;
 import ideau.ControlePatrimonioDesktop.utils.HTTPTransmit;
@@ -88,6 +89,7 @@ public class CadastroNotaController implements Initializable {
         this.http = new HTTPTransmit();
         this.mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         this.dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     }
 
@@ -146,6 +148,8 @@ public class CadastroNotaController implements Initializable {
                     });
                     showMessage(Alert.AlertType.INFORMATION, "Nota Cadastrada com Sucesso!");
                     limparCampos();
+                    Stage stage = (Stage) btnAdicionar.getScene().getWindow();
+                    stage.close();
                 } else {
                     throw new Exception("Status" + resp.getBody() + " Erro: " + resp.getBody());
                 }

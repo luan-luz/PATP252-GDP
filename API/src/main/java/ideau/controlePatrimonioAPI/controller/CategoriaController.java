@@ -1,4 +1,4 @@
-package ideau.controlePatrimonioAPI.controller.implementation;
+package ideau.controlePatrimonioAPI.controller;
 
 import ideau.controlePatrimonioAPI.controller.GenericController;
 import ideau.controlePatrimonioAPI.model.Categoria;

@@ -53,7 +53,7 @@ CREATE TABLE notas_f (
     n_nfe VARCHAR(50),
     dt_emissao DATE,
     vlr_total NUMERIC(12,2),
-    fornecedor_id BIGINT REFERENCES fornecedores(id)
+    fornecedor_id BIGINT REFERENCES fornecedor(id)
 );
 
 CREATE TABLE item (

@@ -63,7 +63,9 @@ public class SelecaoController<T> implements Initializable {
 
                 if (objEditar != null && index >= 0) {
                     objEditar = abrirTelaEdicao(nomeTela, objEditar);
-                    tblSelecao.getItems().set(index, objEditar);
+                    if (objEditar != null) {
+                        tblSelecao.getItems().set(index, objEditar);
+                    }
                 }
             } catch (Exception e) {
                 showMessage(Alert.AlertType.ERROR, "Erro ao abrir tela de edição: " + e.getMessage());

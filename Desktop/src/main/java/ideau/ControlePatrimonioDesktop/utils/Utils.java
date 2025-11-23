@@ -78,6 +78,8 @@ public class Utils {
             return (List<T>) cadastroStatusController.getLstCadastrados();
         } else if (controller instanceof CadastroCategoriaController cadastroCategoriaController) {
             return (List<T>) cadastroCategoriaController.getLstCadastrados();
+        } else if (controller instanceof CadastroFornecedorController cadastroFornecedorController) {
+            return (List<T>) cadastroFornecedorController.getLstCadastrados();
         }
 
         return Collections.emptyList();
@@ -96,6 +98,8 @@ public class Utils {
         //Todo novo controller de edição deve ser colocado aqui. Deve ter o método setObjEdicao
         if(controller instanceof EdicaoItemController edicaoController) {
             edicaoController.setObjEdicao((ItemDTO) obj);
+        } else if(controller instanceof EdicaoNotasController edicaoController) {
+            edicaoController.setObjEdicao((NotaDTO) obj);
         }
 
         stage.showAndWait();
@@ -103,6 +107,8 @@ public class Utils {
         //Todo novo controller de edição deve ser colocado aqui. Deve ter o método getEditado, para retornar o
         // objeto editado e colocar na tabela
         if(controller instanceof EdicaoItemController edicaoController) {
+            return (T) edicaoController.getEditado();
+        } else if(controller instanceof EdicaoNotasController edicaoController) {
             return (T) edicaoController.getEditado();
         }
 
